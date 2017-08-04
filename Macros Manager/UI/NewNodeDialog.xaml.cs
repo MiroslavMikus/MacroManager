@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Macros_Manager
+namespace Macros_Manager.UI
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for NewNodeDialog.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class NewNodeDialog : UserControl
     {
-        public MainWindow()
+        public NewNodeDialog()
         {
             InitializeComponent();
         }
