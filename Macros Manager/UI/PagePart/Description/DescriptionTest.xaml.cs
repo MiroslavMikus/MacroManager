@@ -1,6 +1,6 @@
 ﻿using System.Windows.Controls;
 
-namespace Macros_Manager.UI.PagePart
+namespace Macros_Manager.UI.PagePart.Description
 {
     /// <summary>
     /// Interaction logic for DescriptionTest.xaml

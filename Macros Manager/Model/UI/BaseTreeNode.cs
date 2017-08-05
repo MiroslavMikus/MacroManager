@@ -9,13 +9,13 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using Macros_Manager.Model.Interfaces;
 using Macros_Manager.UI.PagePart;
+using Macros_Manager.UI.PagePart.Description;
 using Macros_Manager.UI.Tools;
 
 namespace Macros_Manager.Model.UI
 {
     public abstract class BaseTreeNode : BaseNotifyPropertyChanged, INode
     {
-        private string _description;
         private ICollection<INode> _childNodes;
 
         protected BaseTreeNode(bool a_canBeDeleted = true)

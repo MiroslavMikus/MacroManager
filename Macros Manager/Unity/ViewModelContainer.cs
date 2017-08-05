@@ -10,6 +10,7 @@ using Macros_Manager.UI.Content;
 using Macros_Manager.UI.NodesView;
 using Macros_Manager.UI.PagePart;
 using Microsoft.Practices.Unity;
+using DescriptionTest = Macros_Manager.UI.PagePart.Description.DescriptionTest;
 
 namespace Macros_Manager.Unity
 {

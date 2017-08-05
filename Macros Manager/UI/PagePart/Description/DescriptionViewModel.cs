@@ -1,18 +1,21 @@
 ﻿using System;
 using System.IO;
-using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Documents;
 using System.Windows.Input;
+using System.Windows.Threading;
 using System.Xaml;
+using Macros_Manager.Annotations;
+using Macros_Manager.Tools;
 using Macros_Manager.UI.Tools;
 using Markdig;
 using Markdig.Wpf;
 using Newtonsoft.Json;
 using XamlReader = System.Windows.Markup.XamlReader;
 
-namespace Macros_Manager.UI.PagePart
+namespace Macros_Manager.UI.PagePart.Description
 {
     public class DescriptionViewModel : BaseNotifyPropertyChanged
     {
@@ -28,7 +31,18 @@ namespace Macros_Manager.UI.PagePart
         public DescriptionViewModel(DescriptionState a_initState = DescriptionState.SplitView)
         {
             State = a_initState;
+
+            MdDescripiton = new NotifyTaskCompletion<FlowDocument>(GenerateDocument(RawDescripiton));
+
+            _updateDescription = a =>
+            {
+                MdDescripiton.WatchTaskAsync(GenerateDocument(a),5000);
+            };
+
+            _updateDescription.SyncWithUi(RawDescripiton);
         }
+
+        private readonly Action<string> _updateDescription;
 
 
         public string RawDescripiton
@@ -38,22 +52,24 @@ namespace Macros_Manager.UI.PagePart
             {
                 this.MutateVerbose(ref _rawDescription, value, RaisePropertyChanged());
 
-                MdDescripiton = UpdateDocument(value);
+                _updateDescription.SyncWithUi(value);
             }
         }
 
         public DescriptionState State { get; set; }
 
-        private FlowDocument _mdDescripiton;
+        private NotifyTaskCompletion<FlowDocument> _mdDescripiton;
         [JsonIgnore]
-        public FlowDocument MdDescripiton
+        public NotifyTaskCompletion<FlowDocument> MdDescripiton
         {
             get { return _mdDescripiton; }
             set { this.MutateVerbose(ref _mdDescripiton, value, RaisePropertyChanged()); }
         }
 
-        private FlowDocument UpdateDocument(string a_document)
+        private async Task<FlowDocument> GenerateDocument(string a_document)
         {
+            if (string.IsNullOrEmpty(a_document)) return null;
+
             var xaml = Markdig.Wpf.Markdown.ToXaml(a_document, BuildPipeline());
 
             using (var stream = new MemoryStream(Encoding.UTF8.GetBytes(xaml)))
@@ -64,6 +80,7 @@ namespace Macros_Manager.UI.PagePart
 
                 return document;
             }
+
         }
 
         [JsonIgnore]
@@ -71,38 +88,5 @@ namespace Macros_Manager.UI.PagePart
         {
             State = State.Next();
         });
-    }
-    public enum DescriptionState
-    {
-        ViewOnly,
-        SplitView,
-        EditOnly
-    }
-
-    public static class EnumExtensions
-    {
-        public static T Next<T>(this T a_src) where T : struct
-        {
-            if (!typeof(T).IsEnum) throw new ArgumentException($"Argumnent {typeof(T).FullName} is not an Enum");
-
-            T[] arr = (T[])Enum.GetValues(a_src.GetType());
-
-            int j = Array.IndexOf<T>(arr, a_src) + 1;
-
-            return (arr.Length == j) ? arr[0] : arr[j];
-        }
-    }
-
-    public class MyXamlSchemaContext : XamlSchemaContext
-    {
-        public override bool TryGetCompatibleXamlNamespace(string a_xamlNamespace, out string a_compatibleNamespace)
-        {
-            if (!a_xamlNamespace.Equals("clr-namespace:Markdig.Wpf"))
-                return base.TryGetCompatibleXamlNamespace(a_xamlNamespace, out a_compatibleNamespace);
-
-            a_compatibleNamespace = $"clr-namespace:Markdig.Wpf;assembly={Assembly.GetAssembly(typeof(Markdig.Wpf.Styles)).FullName}";
-
-            return true;
-        }
     }
 }

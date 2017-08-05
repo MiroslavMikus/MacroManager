@@ -41,8 +41,8 @@ namespace Macros_Manager.Annotations
   public sealed class NotNullAttribute : Attribute { }
 
   /// <summary>
-  /// Can be appplied to symbols of types derived from IEnumerable as well as to symbols of Task
-  /// and Lazy classes to indicate that the value of a collection item, of the Task.Result property
+  /// Can be appplied to symbols of types derived from IEnumerable as well as to symbols of CompletedTask
+  /// and Lazy classes to indicate that the value of a collection item, of the CompletedTask.Result property
   /// or of the Lazy.Value property can never be null.
   /// </summary>
   [AttributeUsage(
@@ -51,8 +51,8 @@ namespace Macros_Manager.Annotations
   public sealed class ItemNotNullAttribute : Attribute { }
 
   /// <summary>
-  /// Can be appplied to symbols of types derived from IEnumerable as well as to symbols of Task
-  /// and Lazy classes to indicate that the value of a collection item, of the Task.Result property
+  /// Can be appplied to symbols of types derived from IEnumerable as well as to symbols of CompletedTask
+  /// and Lazy classes to indicate that the value of a collection item, of the CompletedTask.Result property
   /// or of the Lazy.Value property can be null.
   /// </summary>
   [AttributeUsage(

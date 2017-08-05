@@ -147,8 +147,10 @@
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Repository\LocalStorage\FileTool.cs" />
     <Compile Include="Repository\LocalStorage\JsonStorage.cs" />
-    <Compile Include="UI\PagePart\DescriptionViewModel.cs" />
-    <Compile Include="UI\PagePart\DescriptionTest.xaml.cs">
+    <Compile Include="Tools\CloneObject.cs" />
+    <Compile Include="UI\PagePart\Description\DescriptionState.cs" />
+    <Compile Include="UI\PagePart\Description\DescriptionViewModel.cs" />
+    <Compile Include="UI\PagePart\Description\DescriptionTest.xaml.cs">
       <DependentUpon>DescriptionTest.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\Content\NewNodeValueConverter.cs" />
@@ -166,10 +168,14 @@
     <Compile Include="UI\NodesView\PowershellView.xaml.cs">
       <DependentUpon>PowershellView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Tools\EnumExtensions.cs" />
+    <Compile Include="Tools\FuncTool.cs" />
+    <Compile Include="UI\PagePart\Description\MyXamlSchemaContext.cs" />
     <Compile Include="UI\Tools\AsyncRelayCommand.cs" />
     <Compile Include="UI\Tools\BaseNotifyPropertyChanged.cs" />
     <Compile Include="UI\Tools\IsNullConverter.cs" />
     <Compile Include="UI\Tools\NotifyPropertyChangedExtension.cs" />
+    <Compile Include="UI\Tools\NotifyTaskCompletion.cs" />
     <Compile Include="UI\Tools\RelayCommand.cs" />
     <Compile Include="UI\ValidationRules\NotEmptyValidationRule.cs" />
     <Compile Include="Unity\MacroContainer.cs" />
@@ -216,7 +222,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Page Include="UI\PagePart\DescriptionTest.xaml">
+    <Page Include="UI\PagePart\Description\DescriptionTest.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

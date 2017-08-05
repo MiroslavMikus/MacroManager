@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Macros_Manager.UI.Tools
 {
@@ -14,6 +10,11 @@ namespace Macros_Manager.UI.Tools
         protected virtual void OnPropertyChanged([CallerMemberName]string a_propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(a_propertyName));
+        }
+        protected virtual void OnPropertyChanged(params string[] a_propertyName)
+        {
+            foreach (var property in a_propertyName)
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(property));
         }
         protected void OnPropertyChanged(PropertyChangedEventArgs e)
         {

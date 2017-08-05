@@ -4,7 +4,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Macros_Manager.Tools;
 using Macros_Manager.UI.PagePart;
+using Macros_Manager.UI.PagePart.Description;
 
 namespace Macros_Manager.Test
 {

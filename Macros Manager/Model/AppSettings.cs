@@ -25,12 +25,10 @@ namespace Macros_Manager.Model
 
         private AppSettings()
         {
-//#if !DEBUG
             Dispatcher.CurrentDispatcher.ShutdownStarted += (a_sender, a_args) =>
             {
                 Store();
             };
-//#endif
         }
 
         public static AppSettings GetSettings()
@@ -39,7 +37,7 @@ namespace Macros_Manager.Model
 
             try
             {
-                throw new Exception();
+                //throw new Exception("Use Fake Settings");
                 string settings = FileTool.ReadFile(StorageDefs.AppSettings);
                 result = JsonStorage.DeserializeWithType<AppSettings>(settings);
             }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Windows.Input;
 using Macros_Manager.UI.PagePart;
+using Macros_Manager.UI.PagePart.Description;
 
 namespace Macros_Manager.Model.Interfaces
 {
