@@ -16,36 +16,16 @@ namespace Macros_Manager.UI.Tools
             }
         }
 
-        private CancellationTokenSource _tokenSource = new CancellationTokenSource();
-
         public async Task WatchTaskAsync(Task<TResult> a_newTask, int a_delay = 0)
         {
 
-            CancellationTokenSource newtokenSource = new CancellationTokenSource();
             try
             {
-                _tokenSource.Cancel();
-
-                TempTask = a_newTask;
-
-                await System.Threading.Tasks.Task.Delay(a_delay, newtokenSource.Token);
-
                 await TempTask;
-
-                Task = TempTask;
-
-                TempTask?.Dispose();
-            }
-            catch (OperationCanceledException ex)
-            {
             }
             catch
             {
                 // ignored
-            }
-            finally
-            {
-                _tokenSource = newtokenSource;
             }
 
             OnPropertyChanged("Status", "IsCompleted", "IsNotCompleted");

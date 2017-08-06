@@ -31,18 +31,32 @@ namespace Macros_Manager.UI.PagePart.Description
         public DescriptionViewModel(DescriptionState a_initState = DescriptionState.SplitView)
         {
             State = a_initState;
-
-            MdDescripiton = new NotifyTaskCompletion<FlowDocument>(GenerateDocument(RawDescripiton));
-
-            _updateDescription = a =>
-            {
-                MdDescripiton.WatchTaskAsync(GenerateDocument(a),5000);
-            };
-
-            _updateDescription.SyncWithUi(RawDescripiton);
+            Timer = CreateTimer();
         }
 
-        private readonly Action<string> _updateDescription;
+        public DispatcherTimer CreateTimer()
+        {
+            return new DispatcherTimer(TimeSpan.FromMilliseconds(1000),
+                DispatcherPriority.Normal,
+                (a, b) =>
+                {
+                    MdDescripiton = GenerateDocument(RawDescripiton);
+                    Timer?.Stop();
+                }, Dispatcher.CurrentDispatcher);
+        }
+
+        [JsonIgnore]
+        public ICommand UpdateDocument => new RelayCommand<object>((a) =>
+        {
+            MdDescripiton = GenerateDocument(RawDescripiton);
+        });
+
+        private double _dismissButtonProgress;
+        public double DismissButtonProgress
+        {
+            get { return _dismissButtonProgress; }
+            set { this.MutateVerbose(ref _dismissButtonProgress, value, RaisePropertyChanged()); }
+        }
 
 
         public string RawDescripiton
@@ -51,22 +65,25 @@ namespace Macros_Manager.UI.PagePart.Description
             set
             {
                 this.MutateVerbose(ref _rawDescription, value, RaisePropertyChanged());
-
-                _updateDescription.SyncWithUi(value);
+                Timer.Interval = TimeSpan.FromMilliseconds(1000);
+                Timer.Start();
             }
         }
 
+        public DispatcherTimer Timer;
+
         public DescriptionState State { get; set; }
 
-        private NotifyTaskCompletion<FlowDocument> _mdDescripiton;
+        public FlowDocument _mdDescripiton;
+
         [JsonIgnore]
-        public NotifyTaskCompletion<FlowDocument> MdDescripiton
+        public FlowDocument MdDescripiton
         {
             get { return _mdDescripiton; }
             set { this.MutateVerbose(ref _mdDescripiton, value, RaisePropertyChanged()); }
         }
 
-        private async Task<FlowDocument> GenerateDocument(string a_document)
+        private FlowDocument GenerateDocument(string a_document)
         {
             if (string.IsNullOrEmpty(a_document)) return null;
 
