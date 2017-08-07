@@ -30,6 +30,7 @@
         <Button DockPanel.Dock="Bottom" Content="Run" Margin="10" Command="{Binding RunMacro}"></Button>
 
         <TextBox Margin="10"
+                 Padding="5"
                  VerticalContentAlignment="Top"
                  TextWrapping="Wrap"
                  AcceptsReturn="True"     

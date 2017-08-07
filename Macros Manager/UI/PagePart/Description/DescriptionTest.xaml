@@ -8,6 +8,11 @@
              Background="DarkGray"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="400">
+    <UserControl.InputBindings>
+        <KeyBinding Modifiers="Control"
+                    Key="U"
+                    Command="{Binding Description.UpdateDocument}"></KeyBinding>
+    </UserControl.InputBindings>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
@@ -17,11 +22,14 @@
         <FlowDocumentScrollViewer Document="{Binding Description.MdDescripiton }" Grid.Column="0"/>
         <GridSplitter Width="2" ResizeBehavior="PreviousAndNext" Grid.Column="1"/>
         <DockPanel Grid.Column="2" LastChildFill="True">
-            <Button DockPanel.Dock="Bottom" Margin="10" Command="{Binding DismissComand}">Update Document</Button>
+            <Button x:Name="UpdateButton" DockPanel.Dock="Bottom" Margin="10" 
+                    Command="{Binding Description.UpdateDocument}"
+                    ToolTip="Update Document without delay (Ctrl+U)">Update Document</Button>
             <TextBox VerticalContentAlignment="Top" 
                      FontFamily="Consolas" 
-                     Text="{Binding Description.RawDescripiton, UpdateSourceTrigger=PropertyChanged}" 
                      TextWrapping="Wrap" 
+                     Padding="5"
+                     Text="{Binding Description.RawDescripiton, UpdateSourceTrigger=PropertyChanged}" 
                      AcceptsReturn="True"/>
         </DockPanel>
     </Grid>
