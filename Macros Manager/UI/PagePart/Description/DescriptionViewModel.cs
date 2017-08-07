@@ -41,8 +41,7 @@ namespace Macros_Manager.UI.PagePart.Description
                 DispatcherPriority.Normal,
                 (a, b) =>
                 {
-                    double percent = 100.0 / RefreshInterval;
-                    DismissButtonProgress += percent;
+                    RefreshProgress += 100.0 / (RefreshInterval / 100.0);
                 }, Dispatcher.CurrentDispatcher);
         }
 
@@ -59,9 +58,9 @@ namespace Macros_Manager.UI.PagePart.Description
 
         private void StopTimers()
         {
-            ProgressTimer?.Stop();
             RefreshTimer?.Stop();
-            DismissButtonProgress = 0;
+            ProgressTimer?.Stop();
+            RefreshProgress = 0;
         }
         [JsonIgnore]
         public ICommand UpdateDocument => new RelayCommand<object>((a) =>
@@ -70,11 +69,11 @@ namespace Macros_Manager.UI.PagePart.Description
             MdDescripiton = GenerateDocument(RawDescripiton);
         });
 
-        private double _dismissButtonProgress;
-        public double DismissButtonProgress
+        private double _refreshProgress;
+        public double RefreshProgress
         {
-            get { return _dismissButtonProgress; }
-            set { this.MutateVerbose(ref _dismissButtonProgress, value, RaisePropertyChanged()); }
+            get { return _refreshProgress; }
+            set { this.MutateVerbose(ref _refreshProgress, value, RaisePropertyChanged()); }
         }
 
         private int _refreshInterval; // in seconds
@@ -91,6 +90,7 @@ namespace Macros_Manager.UI.PagePart.Description
             set
             {
                 this.MutateVerbose(ref _rawDescription, value, RaisePropertyChanged());
+                StopTimers();
                 RefreshTimer.Interval = TimeSpan.FromMilliseconds(RefreshInterval);
                 RefreshTimer.Start();
                 ProgressTimer.Start();

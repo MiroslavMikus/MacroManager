@@ -25,6 +25,7 @@
             <Button x:Name="UpdateButton" DockPanel.Dock="Bottom" Margin="10" 
                     Command="{Binding Description.UpdateDocument}"
                     ToolTip="Update Document without delay (Ctrl+U)">Update Document</Button>
+            <ProgressBar DockPanel.Dock="Bottom" Value="{Binding Description.RefreshProgress}" Margin="2"></ProgressBar>            
             <TextBox VerticalContentAlignment="Top" 
                      FontFamily="Consolas" 
                      TextWrapping="Wrap" 
