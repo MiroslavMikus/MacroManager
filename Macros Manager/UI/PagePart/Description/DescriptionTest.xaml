@@ -16,14 +16,13 @@
         </Grid.ColumnDefinitions>
         <FlowDocumentScrollViewer Document="{Binding Description.MdDescripiton }" Grid.Column="0"/>
         <GridSplitter Width="2" ResizeBehavior="PreviousAndNext" Grid.Column="1"/>
-        <Grid Grid.Column="2">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="50"/>
-            </Grid.RowDefinitions>
-            <TextBox Grid.Row="0" FontFamily="Consolas" Text="{Binding Description.RawDescripiton, UpdateSourceTrigger=PropertyChanged}" TextWrapping="Wrap" AcceptsReturn="True"></TextBox>
-            <Button Grid.Row="1" Margin="10"
-                    Command="{Binding DismissComand}">Update Document</Button>
-        </Grid>
+        <DockPanel Grid.Column="2" LastChildFill="True">
+            <Button DockPanel.Dock="Bottom" Margin="10" Command="{Binding DismissComand}">Update Document</Button>
+            <TextBox VerticalContentAlignment="Top" 
+                     FontFamily="Consolas" 
+                     Text="{Binding Description.RawDescripiton, UpdateSourceTrigger=PropertyChanged}" 
+                     TextWrapping="Wrap" 
+                     AcceptsReturn="True"/>
+        </DockPanel>
     </Grid>
 </UserControl>

@@ -16,13 +16,8 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </UserControl.Resources>
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="60"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="55"/>
-        </Grid.RowDefinitions>
-        <TextBox Grid.Row="0" materialDesign:HintAssist.Hint="Name" Margin="10"
+    <DockPanel LastChildFill="True">
+        <TextBox DockPanel.Dock="Top" materialDesign:HintAssist.Hint="Name" Margin="10"
                  Style="{StaticResource MaterialDesignFloatingHintTextBox}" >
             <TextBox.Text>
                 <Binding Path="Name" UpdateSourceTrigger="PropertyChanged">
@@ -32,18 +27,16 @@
                 </Binding>
             </TextBox.Text>
         </TextBox>
-        
-        <TextBox Grid.Row="1" Margin="10"
+        <Button DockPanel.Dock="Bottom" Content="Run" Margin="10" Command="{Binding RunMacro}"></Button>
+
+        <TextBox Margin="10"
+                 VerticalContentAlignment="Top"
                  TextWrapping="Wrap"
                  AcceptsReturn="True"     
+                 AcceptsTab="True"
                  FontFamily="Consolas"
                  VerticalScrollBarVisibility="Auto"
                  materialDesign:HintAssist.Hint="Powershell Script"
-                 Style="{DynamicResource MaterialDesignTextAreaTextBox}"
                  Text="{Binding Macro.Settings.PowershellScript}"/>
-        <StackPanel Grid.Row="2">
-            <Button Content="Run" Margin="10"
-                    Command="{Binding RunMacro}"></Button>
-        </StackPanel>
-    </Grid>
+    </DockPanel>
 </UserControl>

@@ -37,7 +37,7 @@ namespace Macros_Manager.Model
 
             try
             {
-                throw new Exception("use fake settings");
+                throw new Exception("Use fake settings");
                 string settings = FileTool.ReadFile(StorageDefs.AppSettings);
                 result = JsonStorage.DeserializeWithType<AppSettings>(settings);
             }
