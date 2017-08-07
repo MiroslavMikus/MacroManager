@@ -4,7 +4,6 @@ using System.Linq;
 using System.Management.Automation;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Controls;
 using Macros_Manager.Macro.Interfaces;
 using Macros_Manager.Model.Interfaces;
 
@@ -43,12 +42,5 @@ namespace Macros_Manager.Macro.Powershell
                 LastResult = ps.Invoke();
             }
         }
-    }
-
-    public class PowershellSettings : ISettings
-    {
-        public string PowershellScript { get; set; }
-        public ContentControl Content { get; }
-        public bool IsValid() => true;
     }
 }

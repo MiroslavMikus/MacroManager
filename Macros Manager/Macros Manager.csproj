@@ -137,9 +137,9 @@
     </Compile>
     <Compile Include="Macro\FakeMacro.cs" />
     <Compile Include="Macro\Powershell\PowershellMacro.cs" />
+    <Compile Include="Macro\Powershell\PowershellSettings.cs" />
     <Compile Include="Model\AppSettings.cs" />
     <Compile Include="Model\FakeTreeModel.cs" />
-    <Compile Include="Model\Interfaces\ILabelNode.cs" />
     <Compile Include="Model\UI\BaseTreeNode.cs" />
     <Compile Include="Model\UI\LabelNode.cs" />
     <Compile Include="Model\UI\PowerShellNode.cs" />
@@ -147,6 +147,7 @@
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Repository\LocalStorage\FileTool.cs" />
     <Compile Include="Repository\LocalStorage\JsonStorage.cs" />
+    <Compile Include="Repository\LocalStorage\StorageDefs.cs" />
     <Compile Include="UI\PagePart\Description\DescriptionState.cs" />
     <Compile Include="UI\PagePart\Description\DescriptionViewModel.cs" />
     <Compile Include="UI\PagePart\Description\DescriptionTest.xaml.cs">
@@ -178,6 +179,8 @@
     <Compile Include="UI\Tools\RelayCommand.cs" />
     <Compile Include="UI\ValidationRules\NotEmptyValidationRule.cs" />
     <Compile Include="Unity\MacroContainer.cs" />
+    <Compile Include="Tools\StringExtensions.cs" />
+    <Compile Include="Unity\TypeDef.cs" />
     <Compile Include="Unity\ViewModelContainer.cs" />
     <Compile Include="Unity\UnityDefs.cs" />
   </ItemGroup>

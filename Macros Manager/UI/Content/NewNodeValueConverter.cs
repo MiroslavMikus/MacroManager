@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Windows.Data;
 using Macros_Manager.Model.Interfaces;
 using Macros_Manager.Model.UI;
+using Macros_Manager.Tools;
 using Macros_Manager.Unity;
 
 namespace Macros_Manager.UI.Content

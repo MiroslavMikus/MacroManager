@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -23,12 +22,5 @@ namespace Macros_Manager.Repository.LocalStorage
             if (!Directory.Exists(a_path))
                 Directory.CreateDirectory(a_path);
         }
-    }
-
-    public static class StorageDefs
-    {
-        private static readonly string _actualDirectory = System.AppDomain.CurrentDomain.BaseDirectory;
-        public static string Settings = Path.Combine(_actualDirectory, "Settings");
-        public static string AppSettings = Path.Combine(Settings, "AppSettings");
     }
 }
