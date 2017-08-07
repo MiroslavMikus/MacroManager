@@ -26,28 +26,47 @@ namespace Macros_Manager.UI.PagePart.Description
                 .Build();
         }
 
-        private string _rawDescription;
 
         public DescriptionViewModel(DescriptionState a_initState = DescriptionState.SplitView)
         {
             State = a_initState;
-            Timer = CreateTimer();
+            RefreshTimer = CreateRefreshTimer();
+            ProgressTimer = CreateProgressTimer();
+            RefreshInterval = 5;
         }
 
-        public DispatcherTimer CreateTimer()
+    private DispatcherTimer CreateProgressTimer()
+        {
+            return new DispatcherTimer(TimeSpan.FromMilliseconds(100),
+                DispatcherPriority.Normal,
+                (a, b) =>
+                {
+                    double percent = 100.0 / RefreshInterval;
+                    DismissButtonProgress += percent;
+                }, Dispatcher.CurrentDispatcher);
+        }
+
+        private DispatcherTimer CreateRefreshTimer()
         {
             return new DispatcherTimer(TimeSpan.FromMilliseconds(1000),
                 DispatcherPriority.Normal,
                 (a, b) =>
                 {
                     MdDescripiton = GenerateDocument(RawDescripiton);
-                    Timer?.Stop();
+                    StopTimers();
                 }, Dispatcher.CurrentDispatcher);
         }
 
+        private void StopTimers()
+        {
+            ProgressTimer?.Stop();
+            RefreshTimer?.Stop();
+            DismissButtonProgress = 0;
+        }
         [JsonIgnore]
         public ICommand UpdateDocument => new RelayCommand<object>((a) =>
         {
+            StopTimers();
             MdDescripiton = GenerateDocument(RawDescripiton);
         });
 
@@ -58,23 +77,34 @@ namespace Macros_Manager.UI.PagePart.Description
             set { this.MutateVerbose(ref _dismissButtonProgress, value, RaisePropertyChanged()); }
         }
 
+        private int _refreshInterval; // in seconds
+        public int RefreshInterval
+        {
+            get { return _refreshInterval * 1000; }
+            set { this.MutateVerbose(ref _refreshInterval, value, RaisePropertyChanged()); }
+        }
 
+        private string _rawDescription;
         public string RawDescripiton
         {
             get { return _rawDescription; }
             set
             {
                 this.MutateVerbose(ref _rawDescription, value, RaisePropertyChanged());
-                Timer.Interval = TimeSpan.FromMilliseconds(1000);
-                Timer.Start();
+                RefreshTimer.Interval = TimeSpan.FromMilliseconds(RefreshInterval);
+                RefreshTimer.Start();
+                ProgressTimer.Start();
             }
         }
 
-        public DispatcherTimer Timer;
+        [JsonIgnore]
+        public DispatcherTimer RefreshTimer;
+        [JsonIgnore]
+        public DispatcherTimer ProgressTimer;
 
         public DescriptionState State { get; set; }
 
-        public FlowDocument _mdDescripiton;
+        private FlowDocument _mdDescripiton;
 
         [JsonIgnore]
         public FlowDocument MdDescripiton
