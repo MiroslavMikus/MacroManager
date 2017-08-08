@@ -136,6 +136,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="MacroController\IMacroController.cs" />
+    <Compile Include="MacroController\LoopController.cs" />
     <Compile Include="MacroController\SimpleMacroController.cs" />
     <Compile Include="Macro\FakeMacro.cs" />
     <Compile Include="Macro\Powershell\PowershellMacro.cs" />

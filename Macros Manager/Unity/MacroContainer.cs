@@ -26,7 +26,7 @@ namespace Macros_Manager.Unity
             Container.RegisterType<ContentControl, TestContent>(UnityDefs.Powershell.View);
 
             // Controllers
-            Container.RegisterType<IMacroController, SimpleMacroController>(MacroType.Macro.ToString());
+            Container.RegisterType<IMacroController, LoopController>(MacroType.Macro.ToString());
 
 
             // Powershell

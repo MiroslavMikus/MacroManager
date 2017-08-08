@@ -14,19 +14,11 @@ namespace Macros_Manager.MacroController
         }
         private readonly CancellationTokenSource _tokenSource = new CancellationTokenSource();
         public IMacro Macro { get; set; }
-        public MacroType MType => MacroType.Macro;
-        public ICommand Execute
+        public virtual MacroType MType => MacroType.Macro;
+        public virtual ICommand Execute => new AsyncRelayCommand(async () =>
         {
-            get
-            {
-                return new AsyncRelayCommand(async () =>
-                {
-                    IsRunning = true;
-                    await Macro.Run(_tokenSource.Token);
-                    IsRunning = false;
-                });
-            }
-        }
+            await Macro.Run(_tokenSource.Token);
+        });
 
         public ICommand Stop
         {
@@ -38,8 +30,18 @@ namespace Macros_Manager.MacroController
                 });
             }
         }
-        public bool IsRunning { get; set; }
-        public bool IsActive { get; set; }
 
+        private bool _isRunning;
+        public bool IsRunning
+        {
+            get { return _isRunning; }
+            set { this.MutateVerbose(ref _isRunning, value, RaisePropertyChanged()); }
+        }
+        private bool _isActive;
+        public bool IsActive
+        {
+            get { return _isActive; }
+            set { this.MutateVerbose(ref _isActive, value, RaisePropertyChanged()); }
+        }
     }
 }
