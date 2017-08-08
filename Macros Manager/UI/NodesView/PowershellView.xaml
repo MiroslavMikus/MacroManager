@@ -7,15 +7,7 @@
              xmlns:validation="clr-namespace:Macros_Manager.UI.ValidationRules"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
-    <UserControl.Resources>
-        <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.TextBox.xaml" />
-                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.ComboBox.xaml" />
-                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Slider.xaml" />
-            </ResourceDictionary.MergedDictionaries>
-        </ResourceDictionary>
-    </UserControl.Resources>
+
     <DockPanel LastChildFill="True">
         <TextBox DockPanel.Dock="Top" materialDesign:HintAssist.Hint="Name" Margin="10"
                  Style="{StaticResource MaterialDesignFloatingHintTextBox}" >
@@ -27,7 +19,7 @@
                 </Binding>
             </TextBox.Text>
         </TextBox>
-        <Button DockPanel.Dock="Bottom" Content="Run" Margin="10" Command="{Binding RunMacro}"></Button>
+        <Button DockPanel.Dock="Bottom" Content="_Run" Margin="10" Command="{Binding RunMacro}"></Button>
 
         <TextBox Margin="10"
                  Padding="5"
@@ -38,6 +30,6 @@
                  FontFamily="Consolas"
                  VerticalScrollBarVisibility="Auto"
                  materialDesign:HintAssist.Hint="Powershell Script"
-                 Text="{Binding Macro.Settings.PowershellScript}"/>
+                 Text="{Binding Macro.Script, UpdateSourceTrigger=PropertyChanged}"/>
     </DockPanel>
 </UserControl>

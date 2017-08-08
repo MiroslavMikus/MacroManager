@@ -10,8 +10,14 @@ namespace Macros_Manager.Macro.Powershell
 {
     public class PowershellMacro : IMacro
     {
+        public PowershellMacro()
+        {
+            ImportedSettings = new List<string>();
+        }
+
         public string Name { get; set; }
-        public ICollection<string> Script { get; set; }
+        public ICollection<string> ImportedSettings { get; set; }
+        public string Script { get; set; }
         public string Description { get; set; }
         public object LastResult { get; set; }
 
@@ -19,10 +25,11 @@ namespace Macros_Manager.Macro.Powershell
         {
             using (PowerShell ps = PowerShell.Create())
             {
-                foreach (var script in Script)
+                foreach (var script in ImportedSettings)
                 {
                     ps.AddScript(script);
                 }
+                ps.AddScript(Script);
                 LastResult = ps.Invoke();
             }
         }

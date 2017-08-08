@@ -6,7 +6,8 @@ namespace Macros_Manager.Macro
     {
         string Name { get; set; }
         void Run();
-        ICollection<string> Script { get; set; }
+        ICollection<string> ImportedSettings { get; set; }
+        string Script { get; set; }
         object LastResult { get; set; }
     }
 }

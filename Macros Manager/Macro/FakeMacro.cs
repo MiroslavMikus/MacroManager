@@ -1,14 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Macros_Manager.Model.Interfaces;
+﻿using System.Collections.Generic;
 
 namespace Macros_Manager.Macro
 {
     public class FakeMacro : IMacro
     {
+        public FakeMacro()
+        {
+                ImportedSettings = new List<string>();
+        }
         public string Name { get; set; } = "fake";
 
         public string ExternalMacro { get; set; }
@@ -16,7 +15,10 @@ namespace Macros_Manager.Macro
         {
         }
 
-        public ISettings Settings { get; set; }
+        public ICollection<string> ImportedSettings { get; set; }
+        public string Script { get; set; }
+
+
         public string Description { get; set; }
         public object LastResult { get; set; }
     }
