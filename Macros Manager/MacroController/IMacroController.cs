@@ -14,8 +14,6 @@ namespace Macros_Manager.MacroController
         ICommand Execute { get; }
         [JsonIgnore]
         ICommand Stop { get; }
-        [JsonIgnore]
-        bool IsRunning { get; set; }
         bool IsActive { get; set; }
     }
 }

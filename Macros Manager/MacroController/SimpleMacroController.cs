@@ -20,23 +20,12 @@ namespace Macros_Manager.MacroController
             await Macro.Run(_tokenSource.Token);
         });
 
-        public ICommand Stop
+        public virtual ICommand Stop => new RelayCommand<object>(a =>
         {
-            get
-            {
-                return new RelayCommand<object>(a =>
-                {
-                    _tokenSource.Cancel();
-                });
-            }
-        }
+            _tokenSource.Cancel();
+        });
 
-        private bool _isRunning;
-        public bool IsRunning
-        {
-            get { return _isRunning; }
-            set { this.MutateVerbose(ref _isRunning, value, RaisePropertyChanged()); }
-        }
+
         private bool _isActive;
         public bool IsActive
         {
