@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Windows.Controls;
 using System.Windows.Input;
 using Macros_Manager.Macro;
+using Macros_Manager.MacroController;
 using Macros_Manager.Model.Interfaces;
 using Macros_Manager.UI.Tools;
 using Macros_Manager.Unity;
@@ -16,19 +17,19 @@ namespace Macros_Manager.Model.UI
 {
     public class PowerShellNode : BaseTreeNode, IMacroNode
     {
-        public PowerShellNode(IMacro a_macro, bool a_canBeDeleted = true) : base(a_canBeDeleted)
+        public PowerShellNode(IMacroController a_macroController, bool a_canBeDeleted = true) : base(a_canBeDeleted)
         {
-            Macro = a_macro;
+            MController = a_macroController;
         }
 
-        public IMacro Macro { get; set; }
+        public IMacroController MController { get; set; }
 
         public sealed override string Name
         {
-            get { return Macro.Name; }
+            get { return MController.Macro.Name; }
             set
             {
-                Macro.Name = value;
+                MController.Macro.Name = value;
                 RaisePropertyChanged().Invoke(new PropertyChangedEventArgs("Name"));
             }
         }
@@ -45,7 +46,8 @@ namespace Macros_Manager.Model.UI
         [JsonIgnore]
         public ICommand RunMacro => new RelayCommand<object>(a =>
         {
-            Macro.Run();
+            MController.Macro.Run();
         });
+
     }
 }

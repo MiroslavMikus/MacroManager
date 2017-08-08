@@ -7,7 +7,6 @@
              xmlns:validation="clr-namespace:Macros_Manager.UI.ValidationRules"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
-
     <DockPanel LastChildFill="True">
         <TextBox DockPanel.Dock="Top" materialDesign:HintAssist.Hint="Name" Margin="10"
                  Style="{StaticResource MaterialDesignFloatingHintTextBox}" >
