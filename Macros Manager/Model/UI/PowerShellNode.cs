@@ -43,11 +43,5 @@ namespace Macros_Manager.Model.UI
 
             return result;
         }
-        [JsonIgnore]
-        public ICommand RunMacro => new RelayCommand<object>(a =>
-        {
-            MController.Macro.Run();
-        });
-
     }
 }

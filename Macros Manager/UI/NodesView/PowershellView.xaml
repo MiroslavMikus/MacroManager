@@ -18,7 +18,7 @@
                 </Binding>
             </TextBox.Text>
         </TextBox>
-        <Button DockPanel.Dock="Bottom" Content="_Run" Margin="10" Command="{Binding RunMacro}"></Button>
+        <Button DockPanel.Dock="Bottom" Content="_Run" Margin="10" Command="{Binding MController.Execute }"></Button>
 
         <TextBox Margin="10"
                  Padding="5"
@@ -29,6 +29,6 @@
                  FontFamily="Consolas"
                  VerticalScrollBarVisibility="Auto"
                  materialDesign:HintAssist.Hint="Powershell Script"
-                 Text="{Binding Macro.Script, UpdateSourceTrigger=PropertyChanged}"/>
+                 Text="{Binding MController.Macro.Script, UpdateSourceTrigger=PropertyChanged}"/>
     </DockPanel>
 </UserControl>

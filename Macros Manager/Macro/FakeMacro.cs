@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Macros_Manager.Macro
 {
@@ -11,8 +13,10 @@ namespace Macros_Manager.Macro
         public string Name { get; set; } = "fake";
 
         public string ExternalMacro { get; set; }
-        public void Run()
+
+        public Task Run(CancellationToken a_token)
         {
+            throw new System.NotImplementedException();
         }
 
         public ICollection<string> ImportedSettings { get; set; }
