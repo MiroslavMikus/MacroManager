@@ -11,8 +11,8 @@ namespace Macros_Manager.Unity
             public const string LabelViewModel = "LabelViewModel";
         }
 
-        public static TypeDef Powershell { get; } = new TypeDef("Powershell", TypeDef.Types.Macro | TypeDef.Types.LoopMacro);
-        public static TypeDef AHK { get; } = new TypeDef("AHK", TypeDef.Types.Macro | TypeDef.Types.LoopMacro|TypeDef.Types.ToogleMacro);
-        public static TypeDef Label { get; } = new TypeDef("Label", TypeDef.Types.None, false);
+        public static TypeDef Powershell { get; } = new TypeDef("Powershell", MacroType.Macro | MacroType.LoopMacro);
+        public static TypeDef AHK { get; } = new TypeDef("AHK", MacroType.Macro | MacroType.LoopMacro| MacroType.ToogleMacro);
+        public static TypeDef Label { get; } = new TypeDef("Label", MacroType.None, false);
     }
 }

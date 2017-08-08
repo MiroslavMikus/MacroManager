@@ -26,7 +26,6 @@ namespace Macros_Manager.UI.PagePart.Description
                 .Build();
         }
 
-
         public DescriptionViewModel(DescriptionState a_initState = DescriptionState.SplitView)
         {
             State = a_initState;

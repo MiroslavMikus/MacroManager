@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
 using System.Windows.Input;
-using Macros_Manager.Macro.Interfaces;
+using Macros_Manager.Macro;
 using Macros_Manager.Model.Interfaces;
 using Macros_Manager.UI.Tools;
 using Macros_Manager.Unity;

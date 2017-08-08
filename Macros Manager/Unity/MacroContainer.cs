@@ -4,10 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
-using Macros_Manager.Macro.Interfaces;
+using Macros_Manager.Macro;
 using Macros_Manager.Macro.Powershell;
 using Macros_Manager.Model.Interfaces;
 using Macros_Manager.Model.UI;
+using Macros_Manager.Tools;
 using Macros_Manager.UI.Content;
 using Microsoft.Practices.Unity;
 
@@ -24,12 +25,10 @@ namespace Macros_Manager.Unity
             Container.RegisterType<ContentControl, TestContent>(UnityDefs.Powershell.View);
 
             // Powershell
-            Container.RegisterType<ISettings, PowershellSettings>(UnityDefs.Powershell.Settings);
 
             Container.RegisterType<IMacro, PowershellMacro>
                 (UnityDefs.Powershell.Instance,
-                new TransientLifetimeManager(),
-                new InjectionConstructor(Container.Resolve<ISettings>(UnityDefs.Powershell.Settings)));
+                new TransientLifetimeManager());
 
             Container.RegisterType<INode, PowerShellNode>
                 (UnityDefs.Powershell.MacroNode,

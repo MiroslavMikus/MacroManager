@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Macros_Manager.Macro.Interfaces;
 using Macros_Manager.Model.Interfaces;
 
 namespace Macros_Manager.Macro

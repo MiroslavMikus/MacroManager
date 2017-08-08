@@ -135,15 +135,15 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="MacroController\IMacroController.cs" />
     <Compile Include="Macro\FakeMacro.cs" />
     <Compile Include="Macro\Powershell\PowershellMacro.cs" />
-    <Compile Include="Macro\Powershell\PowershellSettings.cs" />
     <Compile Include="Model\AppSettings.cs" />
     <Compile Include="Model\FakeTreeModel.cs" />
     <Compile Include="Model\UI\BaseTreeNode.cs" />
     <Compile Include="Model\UI\LabelNode.cs" />
     <Compile Include="Model\UI\PowerShellNode.cs" />
-    <Compile Include="Model\UI\UnityContainerExtensions.cs" />
+    <Compile Include="Tools\UnityContainerExtensions.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Repository\LocalStorage\FileTool.cs" />
     <Compile Include="Repository\LocalStorage\JsonStorage.cs" />
@@ -180,6 +180,7 @@
     <Compile Include="UI\ValidationRules\NotEmptyValidationRule.cs" />
     <Compile Include="Unity\MacroContainer.cs" />
     <Compile Include="Tools\StringExtensions.cs" />
+    <Compile Include="Unity\MacroType.cs" />
     <Compile Include="Unity\TypeDef.cs" />
     <Compile Include="Unity\ViewModelContainer.cs" />
     <Compile Include="Unity\UnityDefs.cs" />
@@ -189,12 +190,9 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Model\Interfaces\IHasContent.cs" />
-    <Compile Include="Macro\Interfaces\ILoopMacro.cs" />
-    <Compile Include="Macro\Interfaces\IMacro.cs" />
+    <Compile Include="Macro\IMacro.cs" />
     <Compile Include="Model\Interfaces\IMacroNode.cs" />
     <Compile Include="Model\Interfaces\INode.cs" />
-    <Compile Include="Macro\Interfaces\ISettings.cs" />
-    <Compile Include="Macro\Interfaces\IToogleMacro.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>

@@ -1,4 +1,4 @@
-using Macros_Manager.Macro.Interfaces;
+using Macros_Manager.Macro;
 
 namespace Macros_Manager.Model.Interfaces
 {

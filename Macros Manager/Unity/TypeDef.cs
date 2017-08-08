@@ -7,50 +7,42 @@ namespace Macros_Manager.Unity
 {
     public class TypeDef
     {
-        public TypeDef(string a_instanceName, Types a_possibleTypes, bool a_hasSubtype = true)
+        public TypeDef(string a_instanceName, MacroType a_possibleMacroType, bool a_hasSubtype = true)
         {
             Instance = a_instanceName;
-            _types = a_possibleTypes;
+            _macroType = a_possibleMacroType;
             HasSubtype = a_hasSubtype;
         }
-        private readonly Types _types;
+        private readonly MacroType _macroType;
         public bool HasSubtype { get; set; }
 
         public List<string> PossibleTypes
         {
             get
             {
-                return Enum.GetValues(typeof (Types))
-                    .Cast<Types>()
+                return Enum.GetValues(typeof(MacroType))
+                    .Cast<MacroType>()
                     .Select(CheckType)
                     .Where(a => a != null)
                     .ToList();
             }
         }
 
-        private string CheckType(Types a_type)
+        private string CheckType(MacroType a_macroType)
         {
-            return (_types & a_type) == a_type ? a_type.ToString() : null;
+            return (_macroType & a_macroType) == a_macroType ? a_macroType.ToString() : null;
         }
 
         public string Instance { get; set; }
         public string View => Instance.Combine(DefaultView);
         public string Settings => Instance.Combine(DefaultSettings);
-        public string MacroNode => Instance.Combine(Types.Macro);
-        public string LoopNode => Instance.Combine(Types.LoopMacro);
-        public string ToogleNode => Instance.Combine(Types.ToogleMacro);
+        public string MacroNode => Instance.Combine(MacroType.Macro);
+        public string LoopNode => Instance.Combine(MacroType.LoopMacro);
+        public string ToogleNode => Instance.Combine(MacroType.ToogleMacro);
 
         public static string DefaultView = "View";
 
         public static string DefaultSettings = "Settings";
 
-        [Flags()]
-        public enum Types
-        {
-            Macro=1,
-            LoopMacro=2,
-            ToogleMacro=4,
-            None=8
-        }
     }
 }

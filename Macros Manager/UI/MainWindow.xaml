@@ -18,7 +18,7 @@
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="{DynamicResource MaterialDesignFont}"
         mc:Ignorable="d"
-        Title="Macro Manager" 
+        Title="MacroType Manager" 
         Height="{Binding Settings.WindowHeight, Mode=TwoWay}" 
         Width="{Binding Settings.WindowWidth, Mode=TwoWay}"
         WindowState="{Binding Settings.WinState, Mode=TwoWay}"

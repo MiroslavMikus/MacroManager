@@ -505,7 +505,7 @@ namespace Macros_Manager.Annotations
   /// <example>
   /// Applying the attribute on a source template method:
   /// <code>
-  /// [SourceTemplate, Macro(Target = "item", Expression = "suggestVariableName()")]
+  /// [SourceTemplate, MacroType(Target = "item", Expression = "suggestVariableName()")]
   /// public static void forEach&lt;T&gt;(this IEnumerable&lt;T&gt; collection) {
   ///   foreach (var item in collection) {
   ///     //$ $END$
@@ -515,7 +515,7 @@ namespace Macros_Manager.Annotations
   /// Applying the attribute on a template method parameter:
   /// <code>
   /// [SourceTemplate]
-  /// public static void something(this Entity x, [Macro(Expression = "guid()", Editable = -1)] string newguid) {
+  /// public static void something(this Entity x, [MacroType(Expression = "guid()", Editable = -1)] string newguid) {
   ///   /*$ var $x$Id = "$newguid$" + x.ToString();
   ///   x.DoSomething($x$Id); */
   /// }
