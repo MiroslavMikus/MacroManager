@@ -6,7 +6,7 @@ namespace Macros_Manager.Model.UI
 {
     public class LabelNode : BaseTreeNode
     {
-        public LabelNode(string a_name, bool a_canBeDeleted = true) : base(a_canBeDeleted)
+        public LabelNode(string a_name) 
         {
             Name = a_name;
         }

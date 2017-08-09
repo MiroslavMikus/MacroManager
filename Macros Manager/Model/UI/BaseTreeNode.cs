@@ -18,9 +18,8 @@ namespace Macros_Manager.Model.UI
     {
         private ICollection<INode> _childNodes;
 
-        protected BaseTreeNode(bool a_canBeDeleted = true)
+        protected BaseTreeNode()
         {
-            CanBeDeleted = a_canBeDeleted;
             ChildNodes = new ObservableCollection<INode>();
             Description = new DescriptionViewModel();
         }

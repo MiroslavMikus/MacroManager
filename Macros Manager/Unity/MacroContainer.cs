@@ -11,6 +11,7 @@ using Macros_Manager.Model.Interfaces;
 using Macros_Manager.Model.UI;
 using Macros_Manager.Tools;
 using Macros_Manager.UI.Content;
+using Macros_Manager.UI.NodesView;
 using Microsoft.Practices.Unity;
 
 namespace Macros_Manager.Unity
@@ -23,33 +24,22 @@ namespace Macros_Manager.Unity
         {
             Container = new UnityContainer();
 
-            Container.RegisterType<ContentControl, TestContent>(UnityDefs.Powershell.View);
-
             // Controllers
-            Container.RegisterType<IMacroController, LoopController>(MacroType.Macro.ToString());
-
+            Container.RegisterType<IMacroController<PowershellMacro>, SimpleMacroController<PowershellMacro>>();
 
             // Powershell
-
             Container.RegisterType<IMacro, PowershellMacro>
                 (UnityDefs.Powershell.Instance,
                 new TransientLifetimeManager());
 
 
             Container.RegisterType<INode, PowerShellNode>
-                (UnityDefs.Powershell.MacroNode,
-                new TransientLifetimeManager(),
-                new InjectionConstructor(
-                    Container.Resolve<IMacroController>(MacroType.Macro.ToString(), new ParameterOverride("a_macro", 
-                    Container.Resolve<IMacro>(UnityDefs.Powershell.Instance))), true));
-            //
+                (UnityDefs.Powershell.MacroNode, new TransientLifetimeManager());
 
             // Label
             Container.RegisterType<INode, LabelNode>
                 (UnityDefs.Label.Instance,
-                new TransientLifetimeManager(),
-                new InjectionConstructor("",true));
-            //
+                new TransientLifetimeManager());
         }
     }
 }

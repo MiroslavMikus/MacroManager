@@ -1,9 +1,10 @@
+using Macros_Manager.Macro;
 using Macros_Manager.MacroController;
 
 namespace Macros_Manager.Model.Interfaces
 {
-    public interface IMacroNode : INode
+    public interface IMacroNode<T> : INode where T : IMacro
     {
-        IMacroController MController { get; set; }
+        IMacroController<T> MController { get; set; }
     }
 }

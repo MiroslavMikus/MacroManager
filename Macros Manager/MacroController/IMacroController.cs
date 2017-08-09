@@ -8,12 +8,16 @@ namespace Macros_Manager.MacroController
 {
     public interface IMacroController : INotifyPropertyChanged
     {
-        IMacro Macro { get; set; }
         MacroType MType { get; }
         [JsonIgnore]
         ICommand Execute { get; }
         [JsonIgnore]
         ICommand Stop { get; }
         bool IsActive { get; set; }
+    }
+
+    public interface IMacroController<T> : IMacroController where T : IMacro
+    {
+        T Macro { get; set; }
     }
 }

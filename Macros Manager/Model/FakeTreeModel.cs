@@ -14,7 +14,7 @@ namespace Macros_Manager.Model
     {
         public static ICollection<INode> GetNodes()
         {
-            var ps = MacroContainer.Container.Resolve<INode>(UnityDefs.Powershell.MacroNode,new PropertyOverride("Name", "Second try"));
+            var ps = MacroContainer.Container.Resolve<INode>(UnityDefs.Powershell.MacroNode);
             ps.Name = "Powershell";
             ObservableCollection<INode> result = new ObservableCollection<INode>
             {
@@ -32,8 +32,8 @@ namespace Macros_Manager.Model
                     }
                 },
                 ps,
-                MacroContainer.Container.Resolve<INode>(UnityDefs.Label.Instance, new ParameterOverride("a_name","AHK"), new ParameterOverride("a_canBeDeleted",false)),
-                MacroContainer.Container.Resolve<INode>(UnityDefs.Label.Instance, new ParameterOverride("a_name","SQL"), new ParameterOverride("a_canBeDeleted",false)),
+                MacroContainer.Container.Resolve<INode>(UnityDefs.Label.Instance, new ParameterOverride("a_name","AHK")),
+                MacroContainer.Container.Resolve<INode>(UnityDefs.Label.Instance, new ParameterOverride("a_name","SQL")),
             };
             return result;
         }

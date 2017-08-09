@@ -6,14 +6,15 @@ using Macros_Manager.Unity;
 
 namespace Macros_Manager.MacroController
 {
-    public class SimpleMacroController : BaseNotifyPropertyChanged, IMacroController
+    public class SimpleMacroController<T> : BaseNotifyPropertyChanged, IMacroController<T> 
+        where T : IMacro
     {
-        public SimpleMacroController(IMacro a_macro)
+        public SimpleMacroController(T a_macro)
         {
             Macro = a_macro;
         }
         private readonly CancellationTokenSource _tokenSource = new CancellationTokenSource();
-        public IMacro Macro { get; set; }
+        public T Macro { get; set; }
         public virtual MacroType MType => MacroType.Macro;
         public virtual ICommand Execute => new AsyncRelayCommand(async () =>
         {

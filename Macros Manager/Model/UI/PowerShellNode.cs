@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Windows.Controls;
 using System.Windows.Input;
 using Macros_Manager.Macro;
+using Macros_Manager.Macro.Powershell;
 using Macros_Manager.MacroController;
 using Macros_Manager.Model.Interfaces;
 using Macros_Manager.UI.Tools;
@@ -15,14 +16,14 @@ using Newtonsoft.Json;
 
 namespace Macros_Manager.Model.UI
 {
-    public class PowerShellNode : BaseTreeNode, IMacroNode
+    public class PowerShellNode : BaseTreeNode, IMacroNode<PowershellMacro>
     {
-        public PowerShellNode(IMacroController a_macroController, bool a_canBeDeleted = true) : base(a_canBeDeleted)
+        public PowerShellNode(IMacroController<PowershellMacro> a_macroController) : base()
         {
             MController = a_macroController;
         }
 
-        public IMacroController MController { get; set; }
+        public IMacroController<PowershellMacro> MController { get; set; }
 
         public sealed override string Name
         {
