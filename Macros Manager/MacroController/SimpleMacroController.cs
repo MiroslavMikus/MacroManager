@@ -26,7 +26,6 @@ namespace Macros_Manager.MacroController
             _tokenSource.Cancel();
         });
 
-
         private bool _isActive;
         public bool IsActive
         {

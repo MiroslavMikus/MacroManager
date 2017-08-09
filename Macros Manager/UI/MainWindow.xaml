@@ -70,7 +70,7 @@
                                      Style="{StaticResource MaterialDesignMultiFloatingActionPopupBox}"
                                      PlacementMode="RightAndAlignMiddles"
                                      UnfurlOrientation="Horizontal"
-                                     ToolTip="Manage items"
+                                     ToolTip="Manage a_items"
                                      Margin="10 0 0 10"
                                      HorizontalAlignment="Left" VerticalAlignment="Bottom">
                     <StackPanel Orientation="Horizontal">

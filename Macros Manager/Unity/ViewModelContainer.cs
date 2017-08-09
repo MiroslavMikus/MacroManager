@@ -9,8 +9,9 @@ using Macros_Manager.UI;
 using Macros_Manager.UI.Content;
 using Macros_Manager.UI.NodesView;
 using Macros_Manager.UI.PagePart;
+using Macros_Manager.UI.PagePart.Description;
+using Macros_Manager.UI.PagePart.VewFrame;
 using Microsoft.Practices.Unity;
-using DescriptionTest = Macros_Manager.UI.PagePart.Description.DescriptionTest;
 
 namespace Macros_Manager.Unity
 {
@@ -23,8 +24,11 @@ namespace Macros_Manager.Unity
             Container = new UnityContainer();
 
             Container.RegisterType<MainWindowViewModel>(UnityDefs.ViewModel.Main,new ContainerControlledLifetimeManager());
-            Container.RegisterType<ContentControl, DescriptionTest>(UnityDefs.ViewModel.LabelViewModel, new ContainerControlledLifetimeManager()); 
-            Container.RegisterType<ContentControl, PowershellView>(UnityDefs.Powershell.View, new ContainerControlledLifetimeManager());
+
+            Container.RegisterType<ContentControl, Description>(UnityDefs.ViewModel.LabelViewModel, new ContainerControlledLifetimeManager()); 
+
+            Container.RegisterType<ContentControl, ViewFrame>(UnityDefs.Powershell.View, new ContainerControlledLifetimeManager(),
+                new InjectionProperty("ContentItems", Container.Resolve<PowershellView>()));
         }
 
         public MainWindowViewModel Main => Container.Resolve<MainWindowViewModel>(UnityDefs.ViewModel.Main);

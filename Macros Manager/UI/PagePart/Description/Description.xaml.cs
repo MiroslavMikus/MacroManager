@@ -3,11 +3,11 @@
 namespace Macros_Manager.UI.PagePart.Description
 {
     /// <summary>
-    /// Interaction logic for DescriptionTest.xaml
+    /// Interaction logic for Description.xaml
     /// </summary>
-    public partial class DescriptionTest : UserControl
+    public partial class Description : UserControl
     {
-        public DescriptionTest()
+        public Description()
         {
             InitializeComponent();
         }

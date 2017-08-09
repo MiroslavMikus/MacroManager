@@ -18,7 +18,7 @@ namespace Macros_Manager.Model.UI
 {
     public class PowerShellNode : BaseTreeNode, IMacroNode<PowershellMacro>
     {
-        public PowerShellNode(IMacroController<PowershellMacro> a_macroController) : base()
+        public PowerShellNode(IMacroController<PowershellMacro> a_macroController)
         {
             MController = a_macroController;
         }

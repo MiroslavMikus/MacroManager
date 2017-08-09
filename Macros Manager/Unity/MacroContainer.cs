@@ -24,22 +24,11 @@ namespace Macros_Manager.Unity
         {
             Container = new UnityContainer();
 
-            // Controllers
-            Container.RegisterType<IMacroController<PowershellMacro>, SimpleMacroController<PowershellMacro>>();
+            Container.RegisterType<IMacroController<PowershellMacro>, SimpleMacroController<PowershellMacro>>(new TransientLifetimeManager());
 
-            // Powershell
-            Container.RegisterType<IMacro, PowershellMacro>
-                (UnityDefs.Powershell.Instance,
-                new TransientLifetimeManager());
+            Container.RegisterType<INode, PowerShellNode>(UnityDefs.Powershell.MacroNode, new TransientLifetimeManager());
 
-
-            Container.RegisterType<INode, PowerShellNode>
-                (UnityDefs.Powershell.MacroNode, new TransientLifetimeManager());
-
-            // Label
-            Container.RegisterType<INode, LabelNode>
-                (UnityDefs.Label.Instance,
-                new TransientLifetimeManager());
+            Container.RegisterType<INode, LabelNode>(UnityDefs.Label.Instance, new TransientLifetimeManager());
         }
     }
 }

@@ -152,8 +152,8 @@
     <Compile Include="Repository\LocalStorage\StorageDefs.cs" />
     <Compile Include="UI\PagePart\Description\DescriptionState.cs" />
     <Compile Include="UI\PagePart\Description\DescriptionViewModel.cs" />
-    <Compile Include="UI\PagePart\Description\DescriptionTest.xaml.cs">
-      <DependentUpon>DescriptionTest.xaml</DependentUpon>
+    <Compile Include="UI\PagePart\Description\Description.xaml.cs">
+      <DependentUpon>Description.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\Content\NewNodeValueConverter.cs" />
     <Compile Include="UI\Content\NewNodeView.xaml.cs">
@@ -173,6 +173,9 @@
     <Compile Include="Tools\EnumExtensions.cs" />
     <Compile Include="Tools\FuncTool.cs" />
     <Compile Include="UI\PagePart\Description\MyXamlSchemaContext.cs" />
+    <Compile Include="UI\PagePart\VewFrame\ViewFrame.xaml.cs">
+      <DependentUpon>ViewFrame.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UI\Tools\AsyncRelayCommand.cs" />
     <Compile Include="UI\Tools\BaseNotifyPropertyChanged.cs" />
     <Compile Include="UI\Tools\IsNullConverter.cs" />
@@ -224,7 +227,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Page Include="UI\PagePart\Description\DescriptionTest.xaml">
+    <Page Include="UI\PagePart\Description\Description.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -245,6 +248,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UI\NodesView\PowershellView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\PagePart\VewFrame\ViewFrame.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
