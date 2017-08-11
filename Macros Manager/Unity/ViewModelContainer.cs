@@ -6,7 +6,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
 using Macros_Manager.UI;
-using Macros_Manager.UI.Content;
 using Macros_Manager.UI.NodesView;
 using Macros_Manager.UI.PagePart;
 using Macros_Manager.UI.PagePart.Description;

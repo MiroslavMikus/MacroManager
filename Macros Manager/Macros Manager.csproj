@@ -155,18 +155,12 @@
     <Compile Include="UI\PagePart\Description\Description.xaml.cs">
       <DependentUpon>Description.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\Content\NewNodeValueConverter.cs" />
-    <Compile Include="UI\Content\NewNodeView.xaml.cs">
+    <Compile Include="UI\PagePart\NewNodeDialog\NewNodeValueConverter.cs" />
+    <Compile Include="UI\PagePart\NewNodeDialog\NewNodeView.xaml.cs">
       <DependentUpon>NewNodeView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\Content\NewNodeViewModel.cs" />
-    <Compile Include="UI\Content\TestContent.xaml.cs">
-      <DependentUpon>TestContent.xaml</DependentUpon>
-    </Compile>
+    <Compile Include="UI\PagePart\NewNodeDialog\NewNodeViewModel.cs" />
     <Compile Include="UI\MainWindowViewModel.cs" />
-    <Compile Include="UI\NewNodeDialog.xaml.cs">
-      <DependentUpon>NewNodeDialog.xaml</DependentUpon>
-    </Compile>
     <Compile Include="UI\NodesView\PowershellView.xaml.cs">
       <DependentUpon>PowershellView.xaml</DependentUpon>
     </Compile>
@@ -231,19 +225,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UI\Content\NewNodeView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="UI\Content\TestContent.xaml">
+    <Page Include="UI\PagePart\NewNodeDialog\NewNodeView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UI\MainWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="UI\NewNodeDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

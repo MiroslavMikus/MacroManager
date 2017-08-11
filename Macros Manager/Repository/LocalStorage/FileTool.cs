@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Macros_Manager.Annotations;
-using Macros_Manager.UI.Content;
 
 namespace Macros_Manager.Repository.LocalStorage
 {

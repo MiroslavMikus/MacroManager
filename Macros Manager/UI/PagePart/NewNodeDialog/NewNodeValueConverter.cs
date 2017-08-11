@@ -1,16 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Data;
 using Macros_Manager.Model.Interfaces;
-using Macros_Manager.Model.UI;
 using Macros_Manager.Tools;
 using Macros_Manager.Unity;
 
-namespace Macros_Manager.UI.Content
+namespace Macros_Manager.UI.PagePart.NewNodeDialog
 {
     public class NewNodeValueConverter : IMultiValueConverter
     {

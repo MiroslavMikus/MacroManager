@@ -11,14 +11,16 @@ using System.Threading.Tasks;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Threading;
+
 using Macros_Manager.Annotations;
 using Macros_Manager.Model;
 using Macros_Manager.Model.Interfaces;
 using Macros_Manager.Model.UI;
 using Macros_Manager.Repository.LocalStorage;
-using Macros_Manager.UI.Content;
+using Macros_Manager.UI.PagePart.NewNodeDialog;
 using Macros_Manager.UI.Tools;
 using MaterialDesignThemes.Wpf;
+using NewNodeView = Macros_Manager.UI.PagePart.NewNodeDialog.NewNodeView;
 
 namespace Macros_Manager.UI
 {
@@ -30,10 +32,6 @@ namespace Macros_Manager.UI
         }
 
         public AppSettings Settings { get; set; }
-
-        public ICommand Sync => new RelayCommand<object>(a => Thread.Sleep(5000));
-
-        public ICommand Async => new AsyncRelayCommand(() => Thread.Sleep(5000));
 
         public ICommand Delete => new RelayCommand<object>(a =>
         {
@@ -54,11 +52,13 @@ namespace Macros_Manager.UI
 
         public ICommand AddNode => new RelayCommand<object>(async a =>
         {
-            var view = new NewNodeView { DataContext = new NewNodeViewModel() };
+            var parentNode = a as INode;
+
+            var view = new NewNodeView { DataContext = new NewNodeViewModel(parentNode) };
 
             INode result = await DialogHost.Show(view, "RootDialog") as INode;
 
-            (a as INode)?.ChildNodes.Add(result);
+            (parentNode)?.ChildNodes.Add(result);
         });
 
         public event PropertyChangedEventHandler PropertyChanged;

@@ -10,7 +10,6 @@ using Macros_Manager.MacroController;
 using Macros_Manager.Model.Interfaces;
 using Macros_Manager.Model.UI;
 using Macros_Manager.Tools;
-using Macros_Manager.UI.Content;
 using Macros_Manager.UI.NodesView;
 using Microsoft.Practices.Unity;
 
