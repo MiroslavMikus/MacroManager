@@ -42,8 +42,8 @@
                  DisplayMemberPath="Instance">
 
             </ComboBox>
-            <ComboBox x:Name="SubType"
-                 wpf:HintAssist.Hint="SubType"
+            <ComboBox x:Name="MacroController"
+                 wpf:HintAssist.Hint="Macro Controller"
                  Margin="0 8 0 0"
                  FontSize="15" Grid.Row="3"
                  ItemsSource="{Binding ElementName=Type, Path=SelectedItem.PossibleTypes}"

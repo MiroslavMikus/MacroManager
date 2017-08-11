@@ -2,7 +2,7 @@
 using System.Globalization;
 using System.Windows.Data;
 
-namespace Macros_Manager.UI.Tools
+namespace Macros_Manager.UI.Converters
 {
     public class IsNullConverter : IValueConverter
     {

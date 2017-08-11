@@ -150,6 +150,7 @@
     <Compile Include="Repository\LocalStorage\FileTool.cs" />
     <Compile Include="Repository\LocalStorage\JsonStorage.cs" />
     <Compile Include="Repository\LocalStorage\StorageDefs.cs" />
+    <Compile Include="UI\Converters\IsLabelConverter.cs" />
     <Compile Include="UI\PagePart\Description\DescriptionState.cs" />
     <Compile Include="UI\PagePart\Description\DescriptionViewModel.cs" />
     <Compile Include="UI\PagePart\Description\Description.xaml.cs">
@@ -172,7 +173,7 @@
     </Compile>
     <Compile Include="UI\Tools\AsyncRelayCommand.cs" />
     <Compile Include="UI\Tools\BaseNotifyPropertyChanged.cs" />
-    <Compile Include="UI\Tools\IsNullConverter.cs" />
+    <Compile Include="UI\Converters\IsNullConverter.cs" />
     <Compile Include="UI\Tools\NotifyPropertyChangedExtension.cs" />
     <Compile Include="UI\Tools\NotifyTaskCompletion.cs" />
     <Compile Include="UI\Tools\RelayCommand.cs" />
@@ -250,9 +251,7 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="UI\Converters\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

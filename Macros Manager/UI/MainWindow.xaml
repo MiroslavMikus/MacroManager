@@ -15,6 +15,7 @@
         TextOptions.TextFormattingMode="Ideal"
         TextOptions.TextRenderingMode="Auto"
         xmlns:dockablz="http://dragablz.net/winfx/xaml/dockablz"
+        xmlns:converters="clr-namespace:Macros_Manager.UI.Converters"
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="{DynamicResource MaterialDesignFont}"
         mc:Ignorable="d"
@@ -29,7 +30,8 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.PopupBox.xaml" />
             </ResourceDictionary.MergedDictionaries>
-            <tools:IsNotNullConverter x:Key="NullConverter"></tools:IsNotNullConverter>
+            <converters:IsNotNullConverter x:Key="NotNullConverter"></converters:IsNotNullConverter>
+            <converters:IsLabelConverter x:Key="LabelConverter"></converters:IsLabelConverter>
         </ResourceDictionary>
     </Window.Resources>
     <Window.DataContext>
@@ -77,7 +79,7 @@
                         <Button ToolTip="Add an item"
                             Command="{Binding AddNode}"
                             CommandParameter="{Binding ElementName=MainTreeView, Path=SelectedItem}"
-                            IsEnabled="{Binding ElementName=MainTreeView, Path=SelectedItem, Converter={StaticResource NullConverter}}">
+                            IsEnabled="{Binding ElementName=MainTreeView, Path=SelectedItem, Converter={StaticResource LabelConverter}}">
                             <Path Data="M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z"
                               Stretch="Uniform"
                               Width="15" Height="15"
