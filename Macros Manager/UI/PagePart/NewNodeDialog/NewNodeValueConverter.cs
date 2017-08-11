@@ -11,6 +11,7 @@ namespace Macros_Manager.UI.PagePart.NewNodeDialog
     {
         public object Convert(object[] a_values, Type a_targetType, object a_parameter, CultureInfo a_culture)
         {
+            return null;
             var firstValue = a_values[0] as string;
 
             if (firstValue == null && a_values[2] == null) return null;
