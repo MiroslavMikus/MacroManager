@@ -6,12 +6,17 @@
              xmlns:wpf="clr-namespace:MaterialDesignThemes.Wpf;assembly=MaterialDesignThemes.Wpf"
              xmlns:system="clr-namespace:System;assembly=mscorlib"
              xmlns:validation="clr-namespace:Macros_Manager.UI.ValidationRules"
+             xmlns:converters="clr-namespace:Macros_Manager.UI.Converters"
              xmlns:newNodeDialog="clr-namespace:Macros_Manager.UI.PagePart.NewNodeDialog"
              Width="400"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     <UserControl.Resources>
-        <newNodeDialog:NewNodeValueConverter x:Key="Converter"></newNodeDialog:NewNodeValueConverter>
+        <ResourceDictionary>
+            <newNodeDialog:NewNodeValueConverter x:Key="Converter"></newNodeDialog:NewNodeValueConverter>
+            <converters:AreNotNullOrFalse x:Key="NotNullOrFalse"/>
+            <converters:InvertBoolean x:Key="InvertBoolean"/>
+        </ResourceDictionary>
     </UserControl.Resources>
     <Grid Margin="16">
         <Grid Margin="16">
@@ -39,15 +44,24 @@
                  Margin="0 6 0 0"
                  FontSize="15" Grid.Row="2"
                  ItemsSource="{Binding Types}"
-                 DisplayMemberPath="Instance">
+                 DisplayMemberPath="Instance"
+                 IsEnabled="{Binding ElementName=NameTextBox, Path=(Validation.HasError), Converter={StaticResource InvertBoolean}}">
 
             </ComboBox>
             <ComboBox x:Name="MacroController"
                  wpf:HintAssist.Hint="Macro Controller"
                  Margin="0 8 0 0"
                  FontSize="15" Grid.Row="3"
-                 ItemsSource="{Binding ElementName=Type, Path=SelectedItem.PossibleTypes}"
-                 IsEnabled="{Binding ElementName=Type, Path=SelectedItem.HasSubtype}"/>
+                 ItemsSource="{Binding ElementName=Type, Path=SelectedItem.PossibleTypes}">
+                <!--IsEnabled="{Binding ElementName=Type, Path=SelectedItem.HasSubtype}">-->
+                <ComboBox.IsEnabled>
+                    <MultiBinding Converter="{StaticResource NotNullOrFalse}">
+                        <Binding ElementName="Type" Path="SelectedItem.HasSubtype"/>
+                        <Binding ElementName="Type" Path="SelectedItem"/>
+                        <Binding ElementName="Type" Path="IsEnabled"/>
+                    </MultiBinding>
+                </ComboBox.IsEnabled>
+            </ComboBox>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Grid.Row="4"
                     Margin="0 16 0 0">
                 <Button IsCancel="True" Margin="8 0 0 0" Style="{DynamicResource MaterialDesignFlatButton}"
@@ -56,8 +70,14 @@
                 </Button>
                 <Button IsDefault="True" Style="{DynamicResource MaterialDesignFlatButton}"
                     Command="{x:Static wpf:DialogHost.CloseDialogCommand}" Content="OK">
+                    <Button.IsEnabled>
+                        <MultiBinding Converter="{StaticResource NotNullOrFalse}">
+                            <Binding ElementName="Type" Path="SelectedItem"/>
+                            <Binding ElementName="Type" Path="IsEnabled"/>
+                        </MultiBinding>
+                    </Button.IsEnabled>
                     <Button.CommandParameter>
-                        <MultiBinding Converter="{StaticResource Converter}"  UpdateSourceTrigger="Explicit">
+                        <MultiBinding Converter="{StaticResource Converter}"  UpdateSourceTrigger="Explicit"> <!--TODO if is Macrocontroller enabled and null, this button should be disabled-->
                             <Binding ElementName="Type" Path="SelectedValue.Instance"></Binding>
                             <Binding ElementName="SubType" Path="SelectedValue"></Binding>
                             <Binding ElementName="NameTextBox" Path="Text"></Binding>

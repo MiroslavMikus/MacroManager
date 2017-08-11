@@ -150,6 +150,8 @@
     <Compile Include="Repository\LocalStorage\FileTool.cs" />
     <Compile Include="Repository\LocalStorage\JsonStorage.cs" />
     <Compile Include="Repository\LocalStorage\StorageDefs.cs" />
+    <Compile Include="UI\Converters\AreNotNullOrFalse.cs" />
+    <Compile Include="UI\Converters\InvertBoolean.cs" />
     <Compile Include="UI\Converters\IsLabelConverter.cs" />
     <Compile Include="UI\PagePart\Description\DescriptionState.cs" />
     <Compile Include="UI\PagePart\Description\DescriptionViewModel.cs" />
