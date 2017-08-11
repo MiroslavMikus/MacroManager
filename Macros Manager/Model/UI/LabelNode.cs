@@ -1,4 +1,5 @@
-﻿using System.Windows.Controls;
+﻿using System.Collections.Generic;
+using System.Windows.Controls;
 using Macros_Manager.UI.Tools;
 using Macros_Manager.Tools;
 using Macros_Manager.Unity;
@@ -24,11 +25,15 @@ namespace Macros_Manager.Model.UI
 
         protected override ContentControl ContentCreator()
         {
-            var result = VmcContainer.Container.Resolve<ContentControl>(UnityDefs.ViewModel.Label);
-
-            if (result != null) result.DataContext = this;
-
-            return result;
+            List<TabItem> items = new List<TabItem>()
+            {
+                new TabItem
+                {
+                    Header = UnityDefs.View.Description,
+                    Content = VmcContainer.Container.Resolve<ContentControl>(UnityDefs.View.Description)
+                }
+            };
+            return CreateViewWrapper(items);
         }
     }
 }

@@ -53,12 +53,9 @@ namespace Macros_Manager.Model.UI
                     Content = VmcContainer.Container.Resolve<ContentControl>(UnityDefs.View.Description)
                 }
             };
-
-            var view = VmcContainer.Container.Resolve<ContentControl>(UnityDefs.View.Frame, new ParameterOverride("a_items", items));
-
-            if (view != null) view.DataContext = this;
-
-            return view;
+            return CreateViewWrapper(items);
         }
+
+
     }
 }

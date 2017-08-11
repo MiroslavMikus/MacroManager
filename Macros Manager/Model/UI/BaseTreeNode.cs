@@ -11,6 +11,10 @@ using Macros_Manager.Model.Interfaces;
 using Macros_Manager.UI.PagePart;
 using Macros_Manager.UI.PagePart.Description;
 using Macros_Manager.UI.Tools;
+using Macros_Manager.Unity;
+using Microsoft.Practices.Unity;
+using static Macros_Manager.Unity.VmcSingeltion;
+
 
 namespace Macros_Manager.Model.UI
 {
@@ -48,5 +52,13 @@ namespace Macros_Manager.Model.UI
 
         public ContentControl Content => ContentCreator();
         protected abstract ContentControl ContentCreator();
+        protected ContentControl CreateViewWrapper(IEnumerable<TabItem> a_tabItems)
+        {
+            var view = VmcContainer.Container.Resolve<ContentControl>(UnityDefs.View.Frame, new ParameterOverride("a_items", a_tabItems));
+
+            if (view != null) view.DataContext = this;
+
+            return view;
+        }
     }
 }
