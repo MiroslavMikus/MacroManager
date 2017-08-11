@@ -10,7 +10,7 @@ using Macros_Manager.UI.Content;
 using Macros_Manager.UI.NodesView;
 using Macros_Manager.UI.PagePart;
 using Macros_Manager.UI.PagePart.Description;
-using Macros_Manager.UI.PagePart.VewFrame;
+using Macros_Manager.UI.PagePart.ViewFrame;
 using Microsoft.Practices.Unity;
 
 namespace Macros_Manager.Unity
@@ -25,16 +25,19 @@ namespace Macros_Manager.Unity
 
             Container.RegisterType<MainWindowViewModel>(UnityDefs.ViewModel.Main,new ContainerControlledLifetimeManager());
 
-            Container.RegisterType<ContentControl, Description>(UnityDefs.ViewModel.LabelViewModel, new ContainerControlledLifetimeManager()); 
+            Container.RegisterType<ContentControl, ViewFrame>(UnityDefs.View.Frame, new ContainerControlledLifetimeManager());
 
-            Container.RegisterType<ContentControl, ViewFrame>(UnityDefs.Powershell.View, new ContainerControlledLifetimeManager(),
-                new InjectionProperty("ContentItems", Container.Resolve<PowershellView>()));
+            Container.RegisterType<ContentControl, Description>(UnityDefs.View.Description, new TransientLifetimeManager());
+
+            Container.RegisterType<ContentControl, Description>(UnityDefs.ViewModel.Label, new ContainerControlledLifetimeManager()); 
+
+            Container.RegisterType<ContentControl, PowershellView>(UnityDefs.Powershell.View, new ContainerControlledLifetimeManager());
         }
 
         public MainWindowViewModel Main => Container.Resolve<MainWindowViewModel>(UnityDefs.ViewModel.Main);
     }
 
-    public static class VmcSingeltion //View Model Container Sigelton
+    public static class VmcSingeltion //View Model Container Singleton
     {
         public static ViewModelContainer VmcContainer = new ViewModelContainer();
     }

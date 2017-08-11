@@ -8,7 +8,15 @@ namespace Macros_Manager.Unity
         {
             public const string Main = "MainViewModel";
 
-            public const string LabelViewModel = "LabelViewModel";
+            public const string Label = "Label";
+
+        }
+
+        public static class View
+        {
+            public const string Frame = "Frame";
+
+            public const string Description = "Description";
         }
 
         public static TypeDef Powershell { get; } = new TypeDef("Powershell", MacroType.Macro | MacroType.LoopMacro);

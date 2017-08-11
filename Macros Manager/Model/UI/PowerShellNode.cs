@@ -6,13 +6,16 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
 using System.Windows.Input;
+
+using Microsoft.Practices.Unity;
+
 using Macros_Manager.Macro;
 using Macros_Manager.Macro.Powershell;
 using Macros_Manager.MacroController;
 using Macros_Manager.Model.Interfaces;
-using Macros_Manager.UI.Tools;
+using Macros_Manager.Tools;
 using Macros_Manager.Unity;
-using Newtonsoft.Json;
+using static Macros_Manager.Unity.VmcSingeltion;
 
 namespace Macros_Manager.Model.UI
 {
@@ -37,12 +40,25 @@ namespace Macros_Manager.Model.UI
 
         protected override ContentControl ContentCreator()
         {
-            var result = VmcSingeltion.VmcContainer.Container.Resolve(typeof(ContentControl), UnityDefs.Powershell.View)
-                as ContentControl;
+            List<TabItem> items = new List<TabItem>()
+            {
+                new TabItem
+                {
+                    Header = "Script",
+                    Content = VmcContainer.Container.Resolve<ContentControl>(UnityDefs.Powershell.View)
+                },
+                new TabItem
+                {
+                    Header = UnityDefs.View.Description,
+                    Content = VmcContainer.Container.Resolve<ContentControl>(UnityDefs.View.Description)
+                }
+            };
 
-            if (result != null) result.DataContext = this;
+            var view = VmcContainer.Container.Resolve<ContentControl>(UnityDefs.View.Frame, new ParameterOverride("a_items", items));
 
-            return result;
+            if (view != null) view.DataContext = this;
+
+            return view;
         }
     }
 }

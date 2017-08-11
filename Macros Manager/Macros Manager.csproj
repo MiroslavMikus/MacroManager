@@ -173,7 +173,7 @@
     <Compile Include="Tools\EnumExtensions.cs" />
     <Compile Include="Tools\FuncTool.cs" />
     <Compile Include="UI\PagePart\Description\MyXamlSchemaContext.cs" />
-    <Compile Include="UI\PagePart\VewFrame\ViewFrame.xaml.cs">
+    <Compile Include="UI\PagePart\ViewFrame\ViewFrame.xaml.cs">
       <DependentUpon>ViewFrame.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\Tools\AsyncRelayCommand.cs" />
@@ -251,7 +251,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UI\PagePart\VewFrame\ViewFrame.xaml">
+    <Page Include="UI\PagePart\ViewFrame\ViewFrame.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

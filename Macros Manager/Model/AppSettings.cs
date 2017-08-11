@@ -46,8 +46,10 @@ namespace Macros_Manager.Model
                 //throw;
                 result = new AppSettings()
                 {
-                    WindowHeight = 400.0,
-                    WindowWidth = 550.0,
+                    WindowHeight = 500.0,
+                    WindowWidth = 650.0,
+                    WinTop = 200,
+                    WinLeft = 200,
                     WinState = WindowState.Normal,
                     TreeWidth = new GridLength(200.0),
                     Nodes = new ObservableCollection<INode>(FakeTreeModel.GetNodes())

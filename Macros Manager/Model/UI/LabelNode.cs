@@ -1,6 +1,9 @@
 ﻿using System.Windows.Controls;
 using Macros_Manager.UI.Tools;
+using Macros_Manager.Tools;
 using Macros_Manager.Unity;
+using static Macros_Manager.Unity.VmcSingeltion;
+
 
 namespace Macros_Manager.Model.UI
 {
@@ -21,8 +24,7 @@ namespace Macros_Manager.Model.UI
 
         protected override ContentControl ContentCreator()
         {
-            var result = VmcSingeltion.VmcContainer.Container.Resolve(typeof(ContentControl), UnityDefs.ViewModel.LabelViewModel)
-                    as ContentControl;
+            var result = VmcContainer.Container.Resolve<ContentControl>(UnityDefs.ViewModel.Label);
 
             if (result != null) result.DataContext = this;
 
