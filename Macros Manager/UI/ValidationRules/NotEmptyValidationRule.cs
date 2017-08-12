@@ -17,4 +17,14 @@ namespace Macros_Manager.UI.ValidationRules
                 : ValidationResult.ValidResult;
         }
     }
+
+    public class MacroControllerValidationRule : ValidationRule
+    {
+        public override ValidationResult Validate(object a_value, CultureInfo a_cultureInfo)
+        {
+            return string.IsNullOrWhiteSpace((a_value ?? "").ToString())
+                ? new ValidationResult(false, "Field is required.")
+                : ValidationResult.ValidResult;
+        }
+    }
 }

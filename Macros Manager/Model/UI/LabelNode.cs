@@ -3,7 +3,7 @@ using System.Windows.Controls;
 using Macros_Manager.UI.Tools;
 using Macros_Manager.Tools;
 using Macros_Manager.Unity;
-using static Macros_Manager.Unity.VmcSingeltion;
+using static Macros_Manager.Unity.VmcSingleton;
 
 
 namespace Macros_Manager.Model.UI

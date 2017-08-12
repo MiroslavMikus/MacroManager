@@ -7,13 +7,14 @@
              xmlns:system="clr-namespace:System;assembly=mscorlib"
              xmlns:validation="clr-namespace:Macros_Manager.UI.ValidationRules"
              xmlns:converters="clr-namespace:Macros_Manager.UI.Converters"
-             xmlns:newNodeDialog="clr-namespace:Macros_Manager.UI.PagePart.NewNodeDialog"
+             xmlns:local="clr-namespace:Macros_Manager.UI.PagePart.NewNodeDialog"
              Width="400"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     <UserControl.Resources>
         <ResourceDictionary>
-            <newNodeDialog:NewNodeValueConverter x:Key="Converter"></newNodeDialog:NewNodeValueConverter>
+            <local:NewNodeValueConverter x:Key="NewNodeConverter"></local:NewNodeValueConverter>
+            <local:OkButtonIsEnabledConverter x:Key="OkButtonConverter"></local:OkButtonIsEnabledConverter>
             <converters:AreNotNullOrFalse x:Key="NotNullOrFalse"/>
             <converters:InvertBoolean x:Key="InvertBoolean"/>
         </ResourceDictionary>
@@ -53,7 +54,6 @@
                  Margin="0 8 0 0"
                  FontSize="15" Grid.Row="3"
                  ItemsSource="{Binding ElementName=Type, Path=SelectedItem.PossibleTypes}">
-                <!--IsEnabled="{Binding ElementName=Type, Path=SelectedItem.HasSubtype}">-->
                 <ComboBox.IsEnabled>
                     <MultiBinding Converter="{StaticResource NotNullOrFalse}">
                         <Binding ElementName="Type" Path="SelectedItem.HasSubtype"/>
@@ -71,16 +71,18 @@
                 <Button IsDefault="True" Style="{DynamicResource MaterialDesignFlatButton}"
                     Command="{x:Static wpf:DialogHost.CloseDialogCommand}" Content="OK">
                     <Button.IsEnabled>
-                        <MultiBinding Converter="{StaticResource NotNullOrFalse}">
+                        <MultiBinding Converter="{StaticResource OkButtonConverter}">
                             <Binding ElementName="Type" Path="SelectedItem"/>
                             <Binding ElementName="Type" Path="IsEnabled"/>
+                            <Binding ElementName="MacroController" Path="SelectedItem"/>
+                            <Binding ElementName="MacroController" Path="IsEnabled"/>
                         </MultiBinding>
                     </Button.IsEnabled>
                     <Button.CommandParameter>
-                        <MultiBinding Converter="{StaticResource Converter}"  UpdateSourceTrigger="Explicit"> <!--TODO if is Macrocontroller enabled and null, this button should be disabled-->
-                            <Binding ElementName="Type" Path="SelectedValue.Instance"></Binding>
-                            <Binding ElementName="SubType" Path="SelectedValue"></Binding>
-                            <Binding ElementName="NameTextBox" Path="Text"></Binding>
+                        <MultiBinding Converter="{StaticResource NewNodeConverter}"  UpdateSourceTrigger="Explicit">
+                            <Binding ElementName="Type" Path="SelectedValue.Instance"/>
+                            <Binding ElementName="SubType" Path="SelectedValue"/>
+                            <Binding ElementName="NameTextBox" Path="Text"/>
                         </MultiBinding>
                     </Button.CommandParameter>
                 </Button>

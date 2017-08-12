@@ -36,7 +36,7 @@ namespace Macros_Manager.Unity
         public MainWindowViewModel Main => Container.Resolve<MainWindowViewModel>(UnityDefs.ViewModel.Main);
     }
 
-    public static class VmcSingeltion //View Model Container Singleton
+    public static class VmcSingleton //View Model Container Singleton
     {
         public static ViewModelContainer VmcContainer = new ViewModelContainer();
     }

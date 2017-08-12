@@ -13,7 +13,7 @@ using Macros_Manager.UI.PagePart.Description;
 using Macros_Manager.UI.Tools;
 using Macros_Manager.Unity;
 using Microsoft.Practices.Unity;
-using static Macros_Manager.Unity.VmcSingeltion;
+using static Macros_Manager.Unity.VmcSingleton;
 
 
 namespace Macros_Manager.Model.UI
