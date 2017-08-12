@@ -1,19 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Macros_Manager.Macro;
 using Macros_Manager.Tools;
 
 namespace Macros_Manager.Unity
 {
     public class TypeDef
     {
-        public TypeDef(string a_instanceName, MacroType a_possibleMacroType, bool a_hasSubtype = true)
+        public TypeDef(string a_instanceName, MacroType a_possiblePossibleMacroType, bool a_hasSubtype = true)
         {
             Instance = a_instanceName;
-            _macroType = a_possibleMacroType;
+            _possibleMacroType = a_possiblePossibleMacroType;
             HasSubtype = a_hasSubtype;
         }
-        private readonly MacroType _macroType;
+
+        public Type CurrentType { get; set; }
+
+        private readonly MacroType _possibleMacroType;
         public bool HasSubtype { get; set; }
 
         public List<string> PossibleTypes
@@ -30,7 +34,7 @@ namespace Macros_Manager.Unity
 
         private string CheckType(MacroType a_macroType)
         {
-            return (_macroType & a_macroType) == a_macroType ? a_macroType.ToString() : null;
+            return (_possibleMacroType & a_macroType) == a_macroType ? a_macroType.ToString() : null;
         }
 
         public string Instance { get; set; }

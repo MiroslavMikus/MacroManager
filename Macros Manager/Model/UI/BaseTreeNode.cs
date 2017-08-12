@@ -26,6 +26,7 @@ namespace Macros_Manager.Model.UI
         {
             ChildNodes = new ObservableCollection<INode>();
             Description = new DescriptionViewModel();
+            CanBeDeleted = true;
         }
 
         public abstract string Name { get; set; }

@@ -22,8 +22,6 @@ namespace Macros_Manager.Macro
         public ICollection<string> ImportedSettings { get; set; }
         public string Script { get; set; }
 
-
-        public string Description { get; set; }
         public object LastResult { get; set; }
     }
 }

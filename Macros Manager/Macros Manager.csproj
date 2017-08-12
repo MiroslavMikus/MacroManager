@@ -171,6 +171,7 @@
     <Compile Include="Tools\EnumExtensions.cs" />
     <Compile Include="Tools\FuncTool.cs" />
     <Compile Include="UI\PagePart\Description\MyXamlSchemaContext.cs" />
+    <Compile Include="UI\PagePart\NewNodeDialog\OkButtonIsEnabledConverter.cs" />
     <Compile Include="UI\PagePart\ViewFrame\ViewFrame.xaml.cs">
       <DependentUpon>ViewFrame.xaml</DependentUpon>
     </Compile>
