@@ -26,7 +26,6 @@
                 <RowDefinition />
                 <RowDefinition />
                 <RowDefinition />
-                <!--<RowDefinition />-->
             </Grid.RowDefinitions>
             <TextBlock>New node:</TextBlock>
             <TextBox x:Name="NameTextBox"
@@ -49,19 +48,6 @@
                  IsEnabled="{Binding ElementName=NameTextBox, Path=(Validation.HasError), Converter={StaticResource InvertBoolean}}">
 
             </ComboBox>
-            <!--<ComboBox x:Name="MacroController"
-                 wpf:HintAssist.Hint="Macro Controller"
-                 Margin="0 8 0 0"
-                 FontSize="15" Grid.Row="3"
-                 ItemsSource="{Binding ElementName=Type, Path=SelectedItem.PossibleTypes}">
-                <ComboBox.IsEnabled>
-                    <MultiBinding Converter="{StaticResource NotNullOrFalse}">
-                        <Binding ElementName="Type" Path="SelectedItem.HasSubtype"/>
-                        <Binding ElementName="Type" Path="SelectedItem"/>
-                        <Binding ElementName="Type" Path="IsEnabled"/>
-                    </MultiBinding>
-                </ComboBox.IsEnabled>
-            </ComboBox>-->
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Grid.Row="4"
                     Margin="0 16 0 0">
                 <Button IsCancel="True" Margin="8 0 0 0" Style="{DynamicResource MaterialDesignFlatButton}"
@@ -74,8 +60,6 @@
                         <MultiBinding Converter="{StaticResource NotNullOrFalse}">
                             <Binding ElementName="Type" Path="SelectedItem"/>
                             <Binding ElementName="Type" Path="IsEnabled"/>
-                            <!--<Binding ElementName="MacroController" Path="SelectedItem"/>
-                            <Binding ElementName="MacroController" Path="IsEnabled"/>-->
                         </MultiBinding>
                     </Button.IsEnabled>
                     <Button.CommandParameter>
