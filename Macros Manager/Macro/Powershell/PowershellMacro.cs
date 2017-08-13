@@ -4,6 +4,7 @@ using System.Linq;
 using System.Management.Automation;
 using System.Threading;
 using System.Threading.Tasks;
+using Macros_Manager.Unity;
 
 namespace Macros_Manager.Macro.Powershell
 {
@@ -15,6 +16,8 @@ namespace Macros_Manager.Macro.Powershell
         }
 
         public string Name { get; set; }
+        public TypeDef Definition { get; set; }
+
         public async Task Run(CancellationToken a_token)
         {
             if (Script == null) return;

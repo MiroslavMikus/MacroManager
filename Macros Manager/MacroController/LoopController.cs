@@ -7,9 +7,9 @@ using Newtonsoft.Json;
 
 namespace Macros_Manager.MacroController
 {
-    public class LoopController<T> : SimpleMacroController<T> where T : IMacro
+    public class LoopController : SimpleMacroController
     {
-        public LoopController(T a_macro) : base(a_macro)
+        public LoopController(IMacro a_macro) : base(a_macro)
         {
             _excutionTimer = new Timer();
             _excutionTimer.Elapsed += (a_sender, a_args) =>

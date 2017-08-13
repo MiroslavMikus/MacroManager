@@ -3,6 +3,7 @@ using System.Globalization;
 using System.Windows.Data;
 using System.Windows.Forms;
 using Macros_Manager.Macro;
+using Macros_Manager.Macro.Powershell;
 using Macros_Manager.MacroController;
 using Macros_Manager.Model.Interfaces;
 using Macros_Manager.Model.UI;
@@ -23,7 +24,11 @@ namespace Macros_Manager.UI.PagePart.NewNodeDialog
             var elementTypeDef = a_values[1] as TypeDef;
 
             if (!elementTypeDef.HasSubtype)
+            {
+                if (!MacroContainer.Container.IsRegistered<INode>(elementTypeDef.Instance)) return null; // todo add error message
+
                 return MacroContainer.Container.Resolve<INode>(elementTypeDef.Instance, new ParameterOverride("a_name", elementname));
+            }
 
             try
             {
@@ -33,12 +38,19 @@ namespace Macros_Manager.UI.PagePart.NewNodeDialog
 
                 node.Name = elementname;
 
+                if (node is IMacroNode<PowershellMacro>)
+                {
+                    var test = node as IMacroNode<IMacro>;
+
+                    test.MController.Macro.Definition = elementTypeDef;
+                }
+
                 return node;
             }
             catch (Exception ex)
             {
-            }
                 return null;
+            }
         }
 
         public object[] ConvertBack(object a_value, Type[] a_targetTypes, object a_parameter, CultureInfo a_culture)

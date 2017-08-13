@@ -9,7 +9,7 @@ namespace Macros_Manager.Tools
             return a_container.Resolve(typeof(T), a_def, a_overrides) as T;
         }
 
-        public static T Resolve<T>(this UnityContainer a_container,params ResolverOverride[] a_overrides) where T : class
+        public static T Resolve<T>(this UnityContainer a_container, params ResolverOverride[] a_overrides) where T : class
         {
             return a_container.Resolve(typeof(T), a_overrides) as T;
         }

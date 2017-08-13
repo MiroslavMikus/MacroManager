@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
+using Macros_Manager.Unity;
 
 namespace Macros_Manager.Macro
 {
@@ -11,6 +12,7 @@ namespace Macros_Manager.Macro
                 ImportedSettings = new List<string>();
         }
         public string Name { get; set; } = "fake";
+        public TypeDef Definition { get; set; }
 
         public string ExternalMacro { get; set; }
 

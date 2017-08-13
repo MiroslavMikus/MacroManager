@@ -14,10 +14,6 @@ namespace Macros_Manager.MacroController
         [JsonIgnore]
         ICommand Stop { get; }
         bool IsActive { get; set; }
-    }
-
-    public interface IMacroController<T> : IMacroController where T : IMacro
-    {
-        T Macro { get; set; }
+        IMacro Macro { get; set; }
     }
 }

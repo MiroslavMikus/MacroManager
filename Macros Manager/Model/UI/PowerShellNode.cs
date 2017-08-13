@@ -14,6 +14,7 @@ using Macros_Manager.Macro.Powershell;
 using Macros_Manager.MacroController;
 using Macros_Manager.Model.Interfaces;
 using Macros_Manager.Tools;
+using Macros_Manager.UI.PagePart.Settings;
 using Macros_Manager.Unity;
 using static Macros_Manager.Unity.VmcSingleton;
 
@@ -51,6 +52,11 @@ namespace Macros_Manager.Model.UI
                 {
                     Header = UnityDefs.View.Description,
                     Content = VmcContainer.Container.Resolve<ContentControl>(UnityDefs.View.Description)
+                },
+                                new TabItem
+                {
+                    Header = "Settings",
+                    Content = VmcContainer.Container.Resolve<SettingsView>()
                 }
             };
             return CreateViewWrapper(items);

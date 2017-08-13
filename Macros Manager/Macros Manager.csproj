@@ -172,6 +172,9 @@
     <Compile Include="Tools\FuncTool.cs" />
     <Compile Include="UI\PagePart\Description\MyXamlSchemaContext.cs" />
     <Compile Include="UI\PagePart\NewNodeDialog\OkButtonIsEnabledConverter.cs" />
+    <Compile Include="UI\PagePart\Settings\SettingsView.xaml.cs">
+      <DependentUpon>SettingsView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UI\PagePart\ViewFrame\ViewFrame.xaml.cs">
       <DependentUpon>ViewFrame.xaml</DependentUpon>
     </Compile>
@@ -229,6 +232,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UI\NodesView\PowershellView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\PagePart\Settings\SettingsView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

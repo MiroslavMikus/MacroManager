@@ -23,11 +23,11 @@ namespace Macros_Manager.Unity
         {
             Container = new UnityContainer();
 
-            Container.RegisterType<IMacroController<IMacro>, SimpleMacroController<IMacro>>(MacroType.Macro.ToString());
+            Container.RegisterType<IMacroController, SimpleMacroController>(MacroType.Macro.ToString());
 
-            Container.RegisterType<IMacroController<IMacro>, LoopController<IMacro>>(MacroType.LoopMacro.ToString());
+            Container.RegisterType<IMacroController, LoopController>(MacroType.LoopMacro.ToString());
 
-            Container.RegisterType<IMacroController<PowershellMacro>, SimpleMacroController<PowershellMacro>>(new TransientLifetimeManager());
+            Container.RegisterType<IMacroController, SimpleMacroController>(new TransientLifetimeManager());
 
             Container.RegisterType<INode, PowerShellNode>(UnityDefs.Powershell.MacroNode, new TransientLifetimeManager());
 
