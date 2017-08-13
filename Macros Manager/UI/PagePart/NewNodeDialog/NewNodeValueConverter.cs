@@ -10,6 +10,7 @@ using Macros_Manager.Model.UI;
 using Macros_Manager.Tools;
 using Macros_Manager.Unity;
 using Microsoft.Practices.Unity;
+using static Macros_Manager.Unity.MacroContainer;
 
 namespace Macros_Manager.UI.PagePart.NewNodeDialog
 {
@@ -25,27 +26,27 @@ namespace Macros_Manager.UI.PagePart.NewNodeDialog
 
             if (!elementTypeDef.HasSubtype)
             {
-                if (!MacroContainer.Container.IsRegistered<INode>(elementTypeDef.Instance)) return null; // todo add error message
+                if (!Container.IsRegistered<INode>(elementTypeDef.Instance)) return null; // todo add error message
 
-                return MacroContainer.Container.Resolve<INode>(elementTypeDef.Instance, new ParameterOverride("a_name", elementname));
+                return Container.Resolve<INode>(elementTypeDef.Instance, new ParameterOverride("a_name", elementname));
             }
 
             try
             {
-                if (elementTypeDef.CurrentType == null) return null;
+                var controllerName = a_values[2] as string;
 
-                var node = MacroContainer.Container.Resolve<INode>(elementTypeDef.MacroNode);
+                if (elementTypeDef.CurrentType == null || controllerName == null) return null;
 
-                node.Name = elementname;
+                var macro = Container.Resolve(elementTypeDef.CurrentType) as IMacro;
 
-                if (node is IMacroNode<PowershellMacro>)
-                {
-                    var test = node as IMacroNode<IMacro>;
+                macro.Name = elementname;
 
-                    test.MController.Macro.Definition = elementTypeDef;
-                }
+                macro.Definition = elementTypeDef;
 
-                return node;
+                var controller = Container.Resolve<IMacroController>(controllerName, new ParameterOverride("a_macro", macro));
+
+                return Container.Resolve<INode>(UnityDefs.Powershell.MacroNode,
+                    new ParameterOverride("a_macroController", controller));
             }
             catch (Exception ex)
             {

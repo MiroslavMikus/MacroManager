@@ -20,14 +20,14 @@ using static Macros_Manager.Unity.VmcSingleton;
 
 namespace Macros_Manager.Model.UI
 {
-    public class PowerShellNode : BaseTreeNode, IMacroNode<PowershellMacro>
+    public class PowerShellNode : BaseTreeNode, IMacroNode
     {
-        public PowerShellNode(IMacroController<PowershellMacro> a_macroController)
+        public PowerShellNode(IMacroController a_macroController)
         {
             MController = a_macroController;
         }
 
-        public IMacroController<PowershellMacro> MController { get; set; }
+        public IMacroController MController { get; set; }
 
         public sealed override string Name
         {

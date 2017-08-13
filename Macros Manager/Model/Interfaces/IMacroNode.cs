@@ -3,8 +3,8 @@ using Macros_Manager.MacroController;
 
 namespace Macros_Manager.Model.Interfaces
 {
-    public interface IMacroNode<T> : INode where T : IMacro
+    public interface IMacroNode : INode
     {
-        IMacroController<T> MController { get; set; }
+        IMacroController MController { get; set; }
     }
 }
