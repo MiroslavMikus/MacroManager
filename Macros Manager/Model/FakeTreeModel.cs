@@ -14,7 +14,8 @@ namespace Macros_Manager.Model
     {
         public static ICollection<INode> GetNodes()
         {
-            var ps = MacroContainer.Container.Resolve<INode>(UnityDefs.Powershell.MacroNode);
+            var ps = MacroContainer.Container.Resolve<IMacroNode>();
+
             ps.Name = "Powershell";
             ObservableCollection<INode> result = new ObservableCollection<INode>
             {

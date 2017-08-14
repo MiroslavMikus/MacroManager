@@ -29,9 +29,9 @@ namespace Macros_Manager.Unity
 
             Container.RegisterType<IMacroController, SimpleMacroController>(new TransientLifetimeManager());
 
-            Container.RegisterType<IMacro, PowershellMacro>(UnityDefs.Powershell.Instance, new TransientLifetimeManager());
+            Container.RegisterType<IMacro, PowershellMacro>(new TransientLifetimeManager());
 
-            Container.RegisterType<INode, PowerShellNode>(UnityDefs.Powershell.MacroNode, new TransientLifetimeManager());
+            Container.RegisterType<IMacroNode, MacroNode>(new TransientLifetimeManager());
 
             Container.RegisterType<INode, LabelNode>(UnityDefs.Label.Instance, new TransientLifetimeManager());
         }

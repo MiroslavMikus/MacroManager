@@ -144,7 +144,7 @@
     <Compile Include="Model\FakeTreeModel.cs" />
     <Compile Include="Model\UI\BaseTreeNode.cs" />
     <Compile Include="Model\UI\LabelNode.cs" />
-    <Compile Include="Model\UI\PowerShellNode.cs" />
+    <Compile Include="Model\UI\MacroNode.cs" />
     <Compile Include="Tools\UnityContainerExtensions.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Repository\LocalStorage\FileTool.cs" />

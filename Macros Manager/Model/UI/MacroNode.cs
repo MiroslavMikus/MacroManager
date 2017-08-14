@@ -20,9 +20,9 @@ using static Macros_Manager.Unity.VmcSingleton;
 
 namespace Macros_Manager.Model.UI
 {
-    public class PowerShellNode : BaseTreeNode, IMacroNode
+    public class MacroNode : BaseTreeNode, IMacroNode
     {
-        public PowerShellNode(IMacroController a_macroController)
+        public MacroNode(IMacroController a_macroController)
         {
             MController = a_macroController;
         }

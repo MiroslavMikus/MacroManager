@@ -45,8 +45,7 @@ namespace Macros_Manager.UI.PagePart.NewNodeDialog
 
                 var controller = Container.Resolve<IMacroController>(controllerName, new ParameterOverride("a_macro", macro));
 
-                return Container.Resolve<INode>(UnityDefs.Powershell.MacroNode,
-                    new ParameterOverride("a_macroController", controller));
+                return Container.Resolve<IMacroNode>(new ParameterOverride("a_macroController", controller));
             }
             catch (Exception ex)
             {
