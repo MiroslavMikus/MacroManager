@@ -23,9 +23,9 @@ namespace Macros_Manager.Unity
         {
             Container = new UnityContainer();
 
-            Container.RegisterType<IMacroController, SimpleMacroController>(MacroType.Macro.ToString());
+            Container.RegisterType<IMacroController, SimpleMacroController>(MacroControllerTypes.Macro.ToString());
 
-            Container.RegisterType<IMacroController, LoopController>(MacroType.LoopMacro.ToString());
+            Container.RegisterType<IMacroController, LoopController>(MacroControllerTypes.LoopMacro.ToString());
 
             Container.RegisterType<IMacroController, SimpleMacroController>(new TransientLifetimeManager());
 

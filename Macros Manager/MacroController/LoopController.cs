@@ -18,7 +18,7 @@ namespace Macros_Manager.MacroController
             };
         }
 
-        public override MacroType MType => MacroType.LoopMacro;
+        public override MacroControllerTypes MControllerTypes => MacroControllerTypes.LoopMacro;
         public override ICommand Execute => new AsyncRelayCommand(() =>
         {
 

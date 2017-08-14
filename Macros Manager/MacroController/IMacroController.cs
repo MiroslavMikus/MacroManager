@@ -8,7 +8,7 @@ namespace Macros_Manager.MacroController
 {
     public interface IMacroController : INotifyPropertyChanged
     {
-        MacroType MType { get; }
+        MacroControllerTypes MControllerTypes { get; }
         [JsonIgnore]
         ICommand Execute { get; }
         [JsonIgnore]

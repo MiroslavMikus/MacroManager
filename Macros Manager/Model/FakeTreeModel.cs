@@ -17,6 +17,9 @@ namespace Macros_Manager.Model
             var ps = MacroContainer.Container.Resolve<IMacroNode>();
 
             ps.Name = "Powershell";
+
+            ps.MController.Macro.Definition = UnityDefs.Powershell.Copy(MacroControllerTypes.Macro);
+
             ObservableCollection<INode> result = new ObservableCollection<INode>
             {
                 new LabelNode("Dashboards")

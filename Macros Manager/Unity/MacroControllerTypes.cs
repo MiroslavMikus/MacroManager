@@ -3,7 +3,7 @@
 namespace Macros_Manager.Unity
 {
     [Flags()]
-    public enum MacroType
+    public enum MacroControllerTypes
     {
         Macro = 1,
         LoopMacro = 2,

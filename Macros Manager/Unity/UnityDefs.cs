@@ -20,8 +20,8 @@ namespace Macros_Manager.Unity
             public const string Description = "Description";
         }
 
-        public static TypeDef Powershell { get; } = new TypeDef("Powershell", MacroType.Macro | MacroType.LoopMacro) {CurrentType = typeof(PowershellMacro)};
-        public static TypeDef AHK { get; } = new TypeDef("AHK", MacroType.Macro | MacroType.LoopMacro| MacroType.ToogleMacro);
-        public static TypeDef Label { get; } = new TypeDef("Label", MacroType.None, false);
+        public static TypeDef Powershell { get; } = new TypeDef("Powershell", MacroControllerTypes.Macro | MacroControllerTypes.LoopMacro) {CurrentType = typeof(PowershellMacro)};
+        public static TypeDef AHK { get; } = new TypeDef("AHK", MacroControllerTypes.Macro | MacroControllerTypes.LoopMacro| MacroControllerTypes.ToogleMacro);
+        public static TypeDef Label { get; } = new TypeDef("Label", MacroControllerTypes.None, false);
     }
 }

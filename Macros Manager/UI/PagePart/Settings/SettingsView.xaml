@@ -3,12 +3,13 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:controllers="clr-namespace:Macros_Manager.MacroController"
              xmlns:local="clr-namespace:Macros_Manager.UI.PagePart.Settings"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="400">
-    <WrapPanel >
-        <materialDesign:Card Width="300" Margin="5" Padding="5">
+    <StackPanel Orientation="Vertical">
+        <materialDesign:Card Margin="5" Padding="5">
             <StackPanel Orientation="Vertical">
                 <DockPanel LastChildFill="True">
                     <Label DockPanel.Dock="Left">Name :</Label>
@@ -16,13 +17,26 @@
                 </DockPanel>
             </StackPanel>
         </materialDesign:Card>
-        <materialDesign:Card Width="300" Margin="5" Padding="5">
-            <StackPanel Orientation="Vertical">
-                <DockPanel LastChildFill="True">
-                    <Label DockPanel.Dock="Left">Name :</Label>
-                    <TextBox Width="NaN" Text="{Binding Name}"></TextBox>
-                </DockPanel>
-            </StackPanel>
+        <materialDesign:Card Margin="5" Padding="5" Content="{Binding MController}">
+            <materialDesign:Card.Resources>
+                <DataTemplate DataType="{x:Type controllers:SimpleMacroController}">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Label Grid.Column="0" Grid.Row="0" Content="Controller Type :"/>
+                        <ComboBox Grid.Column="1" Grid.Row="0" 
+                                  ItemsSource="{Binding Macro.Definition.PossibleTypes}"
+                                  SelectedItem="{Binding Macro.Definition.CurrentControllerTypes}"/>
+                        
+                    </Grid>
+                </DataTemplate>
+            </materialDesign:Card.Resources>
         </materialDesign:Card>
-    </WrapPanel>
+    </StackPanel>
 </UserControl>
