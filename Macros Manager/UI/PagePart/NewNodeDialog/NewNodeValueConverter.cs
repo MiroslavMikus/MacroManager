@@ -41,15 +41,17 @@ namespace Macros_Manager.UI.PagePart.NewNodeDialog
 
                 macro.Name = elementname;
 
-                Unity.MacroControllerTypes controllerTypesType;
+                MacroControllerTypes controllerTypesType;
 
                 if (!Enum.TryParse(controllerName, out controllerTypesType)) return null;
 
                 macro.Definition = elementTypeDef.Copy(controllerTypesType);
 
+                macro.Definition.CurrentType = macro.GetType();
+
                 var controller = Container.Resolve<IMacroController>(controllerName, new ParameterOverride("a_macro", macro));
 
-                return Container.Resolve<IMacroNode>(new ParameterOverride("a_macroControllerTypes", controller));
+                return Container.Resolve<IMacroNode>(new ParameterOverride("a_macroController", controller));
             }
             catch (Exception ex)
             {

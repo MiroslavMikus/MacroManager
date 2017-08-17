@@ -7,7 +7,7 @@ using Macros_Manager.UI.Tools;
 
 namespace Macros_Manager.Unity
 {
-    public class TypeDef : BaseNotifyPropertyChanged
+    public class TypeDef
     {
         public TypeDef(string a_instanceName, MacroControllerTypes a_possiblePossibleMacroControllersTypes, bool a_hasSubtype = true)
         {
@@ -18,14 +18,10 @@ namespace Macros_Manager.Unity
 
         public Type CurrentType { get; set; }
 
-        private MacroControllerTypes _currentControllerTypes;
-        public MacroControllerTypes CurrentControllerTypes
-        {
-            get { return _currentControllerTypes; }
-            set { this.MutateVerbose(ref _currentControllerTypes, value, RaisePropertyChanged()); }
-        }
+        public MacroControllerTypes CurrentControllerType { get; set; }
 
         public readonly MacroControllerTypes PossibleMacroControllersTypes;
+
         public bool HasSubtype { get; set; }
 
         public List<string> PossibleTypes
@@ -64,7 +60,7 @@ namespace Macros_Manager.Unity
         {
             return new TypeDef(a_def.Instance, a_def.PossibleMacroControllersTypes, a_def.HasSubtype)
             {
-                CurrentControllerTypes = a_newControllerTypes
+                CurrentControllerType = a_newControllerTypes
             };
         }
     }

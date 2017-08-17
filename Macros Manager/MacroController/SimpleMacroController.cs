@@ -13,7 +13,10 @@ namespace Macros_Manager.MacroController
             Macro = a_macro;
         }
         private readonly CancellationTokenSource _tokenSource = new CancellationTokenSource();
+
+
         public IMacro Macro { get; set; }
+
         public virtual MacroControllerTypes MControllerTypes => MacroControllerTypes.Macro;
         public virtual ICommand Execute => new AsyncRelayCommand(async () =>
         {
