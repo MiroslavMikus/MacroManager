@@ -175,6 +175,7 @@
     <Compile Include="UI\PagePart\Settings\SettingsView.xaml.cs">
       <DependentUpon>SettingsView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UI\PagePart\Settings\StringToMacroControllerTypeConverter.cs" />
     <Compile Include="UI\PagePart\ViewFrame\ViewFrame.xaml.cs">
       <DependentUpon>ViewFrame.xaml</DependentUpon>
     </Compile>

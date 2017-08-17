@@ -8,6 +8,9 @@
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="400">
+    <UserControl.Resources>
+        <local:StringToMacroControllerTypeConverter x:Key="MacroControllerTypeConverter"></local:StringToMacroControllerTypeConverter>
+    </UserControl.Resources>
     <StackPanel Orientation="Vertical">
         <materialDesign:Card Margin="5" Padding="5">
             <StackPanel Orientation="Vertical">
@@ -32,7 +35,7 @@
                         <Label Grid.Column="0" Grid.Row="0" Content="Controller Type :"/>
                         <ComboBox Grid.Column="1" Grid.Row="0" 
                                   ItemsSource="{Binding Macro.Definition.PossibleTypes}"
-                                  SelectedItem="{Binding Macro.Definition.CurrentControllerType}"/>
+                                  SelectedItem="{Binding Macro.Definition.CurrentControllerType , Converter={StaticResource MacroControllerTypeConverter}}"/>
                         
                     </Grid>
                 </DataTemplate>
