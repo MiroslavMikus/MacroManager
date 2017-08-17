@@ -31,7 +31,8 @@ namespace Macros_Manager.Macro.Powershell
 
                 ps.AddScript(Script);
 
-                LastResult = await Task.Factory.FromAsync((a, b) => ps.BeginInvoke(), ps.EndInvoke,null);
+                //LastResult = await Task.Factory.FromAsync((a, b) => ps.BeginInvoke(), ps.EndInvoke,null);
+                LastResult = ps.Invoke();
             }
         }
 

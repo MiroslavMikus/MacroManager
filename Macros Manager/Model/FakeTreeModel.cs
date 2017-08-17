@@ -14,12 +14,6 @@ namespace Macros_Manager.Model
     {
         public static ICollection<INode> GetNodes()
         {
-            var ps = MacroContainer.Container.Resolve<IMacroNode>();
-
-            ps.Name = "Powershell";
-
-            ps.MController.Macro.Definition = UnityDefs.Powershell.Copy(MacroControllerTypes.Macro);
-
             ObservableCollection<INode> result = new ObservableCollection<INode>
             {
                 new LabelNode("Dashboards")
@@ -35,11 +29,54 @@ namespace Macros_Manager.Model
                         MacroContainer.Container.Resolve<INode>(UnityDefs.Label.Instance, new ParameterOverride("a_name","Fourth MacroNode")),
                     }
                 },
-                ps,
+                CreateFakePowershellNode(),
                 MacroContainer.Container.Resolve<INode>(UnityDefs.Label.Instance, new ParameterOverride("a_name","AHK")),
                 MacroContainer.Container.Resolve<INode>(UnityDefs.Label.Instance, new ParameterOverride("a_name","SQL")),
             };
             return result;
+        }
+
+        private static IMacroNode CreateFakePowershellNode()
+        {
+            string script =
+@"$itemPath = 'C:\temp';
+
+$tempExist = Test-Path $tempPath;
+
+if (!$tempExist){
+    New-Item -Path $itemPath -ItemType Directory;
+}
+
+$pathToFile = Join-Path -Path $itemPath -ChildPath temp.txt;
+
+ipconfig /all > $pathToFile;
+
+Start-Process $pathToFile -Wait;
+
+Remove-Item -Path $pathToFile;
+
+if (!$tempExist){
+    Remove-Item -Path $itemPath;
+}";
+
+            string description = 
+@"## Comment
+Easy script which shows IpConfig in Notepad.
+> Note this notepad will be stored on HDD in C:\temp and after closing notepad will be automatically deleted";
+
+            var ps = MacroContainer.Container.Resolve<IMacroNode>();
+
+            ps.Name = "Powershell";
+
+            ps.Description.RawDescripiton = description;
+
+            ps.MController.Macro.Script = script;
+
+            ps.MController.Macro.Definition = UnityDefs.Powershell.Copy(MacroControllerTypes.Macro);
+
+
+
+            return ps;
         }
     }
 }

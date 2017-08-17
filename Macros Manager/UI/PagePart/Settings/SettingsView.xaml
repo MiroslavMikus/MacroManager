@@ -35,7 +35,8 @@
                         <Label Grid.Column="0" Grid.Row="0" Content="Controller Type :"/>
                         <ComboBox Grid.Column="1" Grid.Row="0" 
                                   ItemsSource="{Binding Macro.Definition.PossibleTypes}"
-                                  SelectedItem="{Binding Macro.Definition.CurrentControllerType , Converter={StaticResource MacroControllerTypeConverter}}"/>
+                                  SelectedItem="{Binding Macro.Definition.CurrentControllerType,
+                                                Converter={StaticResource MacroControllerTypeConverter}}"/>
                         
                     </Grid>
                 </DataTemplate>
