@@ -74,8 +74,6 @@ Easy script which shows IpConfig in Notepad.
 
             ps.MController.Macro.Definition = UnityDefs.Powershell.Copy(MacroControllerTypes.Macro);
 
-
-
             return ps;
         }
     }

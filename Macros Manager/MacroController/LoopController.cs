@@ -1,4 +1,5 @@
-﻿using Macros_Manager.Macro;
+﻿using System;
+using Macros_Manager.Macro;
 using Macros_Manager.Unity;
 using System.Timers;
 using System.Windows.Input;
@@ -27,7 +28,7 @@ namespace Macros_Manager.MacroController
 
             base.TestScript.Execute(null);
 
-            _excutionTimer.Interval = TimerInterval;
+            _excutionTimer.Interval = _timerInterval;
 
             _excutionTimer.Start();
         });
@@ -46,8 +47,8 @@ namespace Macros_Manager.MacroController
         private double _timerInterval;
         public double TimerInterval
         {
-            get { return _timerInterval; }
-            set { this.MutateVerbose(ref _timerInterval, value, RaisePropertyChanged()); }
+            get { return _timerInterval / 1000; }
+            set { this.MutateVerbose(ref _timerInterval, value * 1000, RaisePropertyChanged()); }
         }
 
         private readonly Timer _excutionTimer;
