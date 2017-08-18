@@ -24,5 +24,10 @@ namespace Macros_Manager.UI.PagePart.Settings
         {
             InitializeComponent();
         }
+
+        private void ComboBox_OnDropDownClosed(object a_sender, EventArgs a_e)
+        {
+            TgEnable.IsChecked = false;
+        }
     }
 }

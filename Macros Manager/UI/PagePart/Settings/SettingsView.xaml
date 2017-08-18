@@ -7,10 +7,14 @@
              xmlns:local="clr-namespace:Macros_Manager.UI.PagePart.Settings"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:validation="clr-namespace:Macros_Manager.UI.ValidationRules"
+             xmlns:converters="clr-namespace:Macros_Manager.UI.Converters"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="400">
     <UserControl.Resources>
-        <local:StringToMacroControllerTypeConverter x:Key="MacroControllerTypeConverter"></local:StringToMacroControllerTypeConverter>
+        <ResourceDictionary>
+            <local:StringToMacroControllerTypeConverter x:Key="MacroControllerTypeConverter"></local:StringToMacroControllerTypeConverter>
+            <converters:InvertBoolean x:Key="InvertConverter"></converters:InvertBoolean>
+        </ResourceDictionary>
     </UserControl.Resources>
     <StackPanel Orientation="Vertical">
         <materialDesign:Card Margin="5" Padding="5">
@@ -29,27 +33,46 @@
                 </DockPanel>
             </StackPanel>
         </materialDesign:Card>
+
+        <materialDesign:Card Margin="5" Padding="5">
+            <materialDesign:Card.Content>
+                <DockPanel LastChildFill="True">
+                    <Label DockPanel.Dock="Left" Content="Controller Type :"/>
+                    <ToggleButton x:Name="TgEnable" DockPanel.Dock="Right" Margin="10 0 10 0"></ToggleButton>
+                    <ComboBox ItemsSource="{Binding MController.Macro.Definition.PossibleTypes}"
+                                  SelectedItem="{Binding MController.Macro.Definition.CurrentControllerType,
+                                                Converter={StaticResource MacroControllerTypeConverter}, Mode=TwoWay}"
+                                  IsEnabled="{Binding ElementName=TgEnable, Path=IsChecked}"
+                                  DropDownClosed="ComboBox_OnDropDownClosed"/>
+                </DockPanel>
+            </materialDesign:Card.Content>
+        </materialDesign:Card>
+
         <materialDesign:Card Margin="5" Padding="5" Content="{Binding MController}">
             <materialDesign:Card.Resources>
-                <DataTemplate DataType="{x:Type controllers:SimpleMacroController}">
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="*"/>
-                        </Grid.RowDefinitions>
-                        <Label Grid.Column="0" Grid.Row="0" Content="Controller Type :"/>
-                        <ComboBox Grid.Column="1" Grid.Row="0" 
-                                  ItemsSource="{Binding Macro.Definition.PossibleTypes}"
-                                  SelectedItem="{Binding Macro.Definition.CurrentControllerType,
-                                                Converter={StaticResource MacroControllerTypeConverter}}"/>
-                        
-                    </Grid>
+                <DataTemplate DataType="{x:Type controllers:LoopController}">
+                    <DockPanel LastChildFill="True">
+                        <Button DockPanel.Dock="Left" Command="{Binding MController.Activate}">Activate</Button>
+                        <Button DockPanel.Dock="Right" Command="{Binding MController.Stop}">Stop</Button>
+                    </DockPanel>
                 </DataTemplate>
             </materialDesign:Card.Resources>
         </materialDesign:Card>
+
+        <materialDesign:Card Margin="5" Padding="5">
+            <materialDesign:Card.Content>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="3*"/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+                    <Button Margin="3" Grid.Column="0" Background="LimeGreen" Command="{Binding MController.Activate}" BorderBrush="{x:Null}"
+                            IsEnabled="{Binding MController.IsActive , Converter={StaticResource InvertConverter}}">Activate</Button>
+                    <Button Margin="3" Grid.Column="1" Background="Red" Command="{Binding MController.Stop}" BorderBrush="{x:Null}"
+                            IsEnabled="{Binding MController.IsActive}">Stop</Button>
+                </Grid>
+            </materialDesign:Card.Content>
+        </materialDesign:Card>
+
     </StackPanel>
 </UserControl>
