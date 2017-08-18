@@ -8,7 +8,7 @@ namespace Macros_Manager.UI.Converters
     {
         public object Convert(object a_value, Type a_targetType, object a_parameter, CultureInfo a_culture)
         {
-            return !(bool) a_value;
+            return a_value != null && !(bool) a_value;
         }
 
         public object ConvertBack(object a_value, Type a_targetType, object a_parameter, CultureInfo a_culture)

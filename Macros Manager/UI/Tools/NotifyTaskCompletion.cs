@@ -46,7 +46,7 @@ namespace Macros_Manager.UI.Tools
 
         public Task<TResult> TempTask { get; set; }
         public Task<TResult> Task { get; set; }
-        public TResult Result => (Task.Status == TaskStatus.RanToCompletion) ? Task.Result : default(TResult);
+        public TResult Result => Task.Status == TaskStatus.RanToCompletion ? Task.Result : default(TResult);
         public TaskStatus Status => Task.Status;
         public bool IsCompleted => Task.IsCompleted;
         public bool IsNotCompleted => !Task.IsCompleted;

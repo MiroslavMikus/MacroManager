@@ -16,7 +16,7 @@ namespace Macros_Manager.UI.Tools
         public RelayCommand(Action<T> a_execute, Predicate<T> a_canExecute)
         {
             if (a_execute == null)
-                throw new ArgumentNullException("a_execute");
+                throw new ArgumentNullException(nameof(a_execute));
 
             _execute = a_execute;
             _canExecute = a_canExecute;

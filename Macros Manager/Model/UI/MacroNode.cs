@@ -53,7 +53,7 @@ namespace Macros_Manager.Model.UI
                     Header = UnityDefs.View.Description,
                     Content = VmcContainer.Container.Resolve<ContentControl>(UnityDefs.View.Description)
                 },
-                                new TabItem
+                new TabItem
                 {
                     Header = "Settings",
                     Content = VmcContainer.Container.Resolve<SettingsView>()

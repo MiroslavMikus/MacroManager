@@ -59,7 +59,7 @@ namespace Macros_Manager.UI
             INode result = await DialogHost.Show(view, "RootDialog") as INode;
 
             if (result != null)
-                (parentNode)?.ChildNodes.Add(result);
+                parentNode?.ChildNodes.Add(result);
         });
 
         public event PropertyChangedEventHandler PropertyChanged;
