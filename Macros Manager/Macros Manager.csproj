@@ -165,8 +165,8 @@
     </Compile>
     <Compile Include="UI\PagePart\NewNodeDialog\NewNodeViewModel.cs" />
     <Compile Include="UI\MainWindowViewModel.cs" />
-    <Compile Include="UI\NodesView\PowershellView.xaml.cs">
-      <DependentUpon>PowershellView.xaml</DependentUpon>
+    <Compile Include="UI\PagePart\ScriptView.xaml.cs">
+      <DependentUpon>ScriptView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Tools\EnumExtensions.cs" />
     <Compile Include="Tools\FuncTool.cs" />
@@ -232,7 +232,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UI\NodesView\PowershellView.xaml">
+    <Page Include="UI\PagePart\ScriptView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

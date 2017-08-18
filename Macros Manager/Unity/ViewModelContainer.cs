@@ -6,7 +6,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
 using Macros_Manager.UI;
-using Macros_Manager.UI.NodesView;
 using Macros_Manager.UI.PagePart;
 using Macros_Manager.UI.PagePart.Description;
 using Macros_Manager.UI.PagePart.ViewFrame;
@@ -30,7 +29,7 @@ namespace Macros_Manager.Unity
 
             Container.RegisterType<ContentControl, Description>(UnityDefs.ViewModel.Label, new ContainerControlledLifetimeManager()); 
 
-            Container.RegisterType<ContentControl, PowershellView>(UnityDefs.Powershell.View, new ContainerControlledLifetimeManager());
+            Container.RegisterType<ContentControl, ScriptView>(UnityDefs.View.ScriptView, new ContainerControlledLifetimeManager());
         }
 
         public MainWindowViewModel Main => Container.Resolve<MainWindowViewModel>(UnityDefs.ViewModel.Main);

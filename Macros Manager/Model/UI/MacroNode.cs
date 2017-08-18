@@ -46,7 +46,7 @@ namespace Macros_Manager.Model.UI
                 new TabItem
                 {
                     Header = "Script",
-                    Content = VmcContainer.Container.Resolve<ContentControl>(UnityDefs.Powershell.View)
+                    Content = VmcContainer.Container.Resolve<ContentControl>(UnityDefs.View.ScriptView)
                 },
                 new TabItem
                 {

@@ -18,6 +18,8 @@ namespace Macros_Manager.Unity
             public const string Frame = "Frame";
 
             public const string Description = "Description";
+
+            public const string ScriptView = "ScriptView";
         }
 
         public static TypeDef Powershell { get; } = new TypeDef("Powershell", MacroControllerTypes.Macro | MacroControllerTypes.LoopMacro) {CurrentType = typeof(PowershellMacro)};

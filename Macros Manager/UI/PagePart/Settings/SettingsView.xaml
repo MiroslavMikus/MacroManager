@@ -6,6 +6,7 @@
              xmlns:controllers="clr-namespace:Macros_Manager.MacroController"
              xmlns:local="clr-namespace:Macros_Manager.UI.PagePart.Settings"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:validation="clr-namespace:Macros_Manager.UI.ValidationRules"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="400">
     <UserControl.Resources>
@@ -16,7 +17,15 @@
             <StackPanel Orientation="Vertical">
                 <DockPanel LastChildFill="True">
                     <Label DockPanel.Dock="Left">Name :</Label>
-                    <TextBox Width="NaN" Text="{Binding Name}"></TextBox>
+                    <TextBox DockPanel.Dock="Top">
+                        <TextBox.Text>
+                            <Binding Path="Name" UpdateSourceTrigger="PropertyChanged">
+                                <Binding.ValidationRules>
+                                    <validation:NotEmptyValidationRule ValidatesOnTargetUpdated="True" />
+                                </Binding.ValidationRules>
+                            </Binding>
+                        </TextBox.Text>
+                    </TextBox>
                 </DockPanel>
             </StackPanel>
         </materialDesign:Card>
