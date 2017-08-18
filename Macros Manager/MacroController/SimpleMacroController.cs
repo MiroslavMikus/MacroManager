@@ -14,18 +14,35 @@ namespace Macros_Manager.MacroController
         }
         private readonly CancellationTokenSource _tokenSource = new CancellationTokenSource();
 
-
+        private bool _executing;
+        public bool Executing
+        {
+            get { return _executing; }
+            set { this.MutateVerbose(ref _executing, value, RaisePropertyChanged()); }
+        }
         public IMacro Macro { get; set; }
 
         public virtual MacroControllerTypes MControllerTypes => MacroControllerTypes.Macro;
-        public virtual ICommand Execute => new AsyncRelayCommand(async () =>
+        public virtual ICommand TestScript => new AsyncRelayCommand(async () =>
         {
-            await Macro.Run(_tokenSource.Token);
+            Executing = true;
+            try
+            {
+                await Macro.Run(_tokenSource.Token);
+            }
+            finally
+            {
+                Executing = false;
+            }
+
         });
+
+        public virtual ICommand Activate => TestScript;
 
         public virtual ICommand Stop => new RelayCommand<object>(a =>
         {
             _tokenSource.Cancel();
+            Executing = false;
         });
 
         private bool _isActive;

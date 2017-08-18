@@ -10,10 +10,13 @@ namespace Macros_Manager.MacroController
     {
         MacroControllerTypes MControllerTypes { get; }
         [JsonIgnore]
-        ICommand Execute { get; }
+        ICommand TestScript { get; }
+        [JsonIgnore]
+        ICommand Activate { get; }
         [JsonIgnore]
         ICommand Stop { get; }
         bool IsActive { get; set; }
+        bool Executing { get; set; }
         IMacro Macro { get; set; }
     }
 }

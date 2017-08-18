@@ -14,19 +14,18 @@ namespace Macros_Manager.MacroController
             _excutionTimer = new Timer();
             _excutionTimer.Elapsed += (a_sender, a_args) =>
             {
-                base.Execute.Execute(null);
+                base.TestScript.Execute(null);
             };
         }
 
         public override MacroControllerTypes MControllerTypes => MacroControllerTypes.LoopMacro;
-        public override ICommand Execute => new AsyncRelayCommand(() =>
+        public override ICommand Activate => new AsyncRelayCommand(() =>
         {
+            IsActive = true;
 
             if (_excutionTimer?.Interval == null) return;
 
-            IsActive = true;
-
-            base.Execute.Execute(null);
+            base.TestScript.Execute(null);
 
             _excutionTimer.Interval = TimerInterval;
 
