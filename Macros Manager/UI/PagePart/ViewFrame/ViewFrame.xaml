@@ -5,8 +5,17 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:des="clr-namespace:Macros_Manager.UI.PagePart.Description"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="400">
+             d:DesignHeight="300" d:DesignWidth="400" BorderThickness="5">
+    <UserControl.Style>
+        <Style TargetType="{x:Type UserControl}">
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding MController.IsActive}" Value="true">
+                    <Setter Property="BorderBrush" Value="Red"/>
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+    </UserControl.Style>
     <Grid>
-        <TabControl x:Name="MainViewFrame" Margin="0 1 0 0"/>
+        <TabControl x:Name="MainViewFrame" /> <!--Margin="0 1 0 0"-->
     </Grid>
 </UserControl>

@@ -154,6 +154,7 @@
     <Compile Include="UI\Converters\InvertBoolean.cs" />
     <Compile Include="UI\Converters\IsLabelConverter.cs" />
     <Compile Include="UI\Converters\IsNotNullConverter.cs" />
+    <Compile Include="UI\Converters\ObjectToTypeStringConverter.cs" />
     <Compile Include="UI\PagePart\Description\DescriptionState.cs" />
     <Compile Include="UI\PagePart\Description\DescriptionViewModel.cs" />
     <Compile Include="UI\PagePart\Description\Description.xaml.cs">

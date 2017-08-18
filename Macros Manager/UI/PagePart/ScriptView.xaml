@@ -4,10 +4,15 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:converters="clr-namespace:Macros_Manager.UI.Converters"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
+    <UserControl.Resources>
+        <converters:InvertBoolean x:Key="InvertConverter"></converters:InvertBoolean>
+    </UserControl.Resources>
     <DockPanel LastChildFill="True">
-        <Button DockPanel.Dock="Bottom" Content="_Test" Margin="10" Command="{Binding MController.TestScript }"></Button>
+        <Button DockPanel.Dock="Bottom" Content="_Test" Margin="10" Command="{Binding MController.TestScript }"
+                IsEnabled="{Binding MController.IsActive , Converter={StaticResource InvertConverter}}"/>
         <TextBox Margin="10"
                  Padding="5"
                  VerticalContentAlignment="Top"

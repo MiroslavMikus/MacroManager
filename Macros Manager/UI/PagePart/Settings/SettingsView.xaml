@@ -14,6 +14,7 @@
         <ResourceDictionary>
             <local:StringToMacroControllerTypeConverter x:Key="MacroControllerTypeConverter"></local:StringToMacroControllerTypeConverter>
             <converters:InvertBoolean x:Key="InvertConverter"></converters:InvertBoolean>
+            <converters:ObjectToTypeStringConverter x:Key="ObjectToTypeStringConverter"></converters:ObjectToTypeStringConverter>
         </ResourceDictionary>
     </UserControl.Resources>
     <StackPanel Orientation="Vertical">
@@ -49,7 +50,17 @@
             </materialDesign:Card.Content>
         </materialDesign:Card>
 
-        <materialDesign:Card Margin="5" Padding="5" Content="{Binding MController}">
+        <materialDesign:Card x:Name="SettingsCard" Margin="5" Padding="5" Content="{Binding MController}">
+            <materialDesign:Card.Style>
+                <Style TargetType="{x:Type materialDesign:Card}" >
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding ElementName=SettingsCard, Path=Content, Converter={StaticResource ObjectToTypeStringConverter}}" 
+                                     Value="SimpleMacroController">
+                            <Setter Property="Visibility" Value="Collapsed"></Setter>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </materialDesign:Card.Style>
             <materialDesign:Card.Resources>
                 <DataTemplate DataType="{x:Type controllers:LoopController}">
                     <DockPanel LastChildFill="True">
@@ -57,7 +68,7 @@
                         <TextBox DockPanel.Dock="Right" 
                                  PreviewTextInput="NumberValidationTextBox" 
                                  PreviewKeyDown="UIElement_OnPreviewKeyDown"
-                                 Text="{Binding TimerInterval, Mode=TwoWay}" >
+                                 Text="{Binding TimerInterval, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" >
                             <TextBox.CommandBindings>
                                 <CommandBinding Command="Paste" CanExecute="CommandBinding_OnCanExecute"></CommandBinding>
                             </TextBox.CommandBindings>
@@ -77,9 +88,9 @@
                         <ColumnDefinition Width="2*"/>
                     </Grid.ColumnDefinitions>
                     <Button Margin="3" Grid.Column="0" Background="LimeGreen" Command="{Binding MController.Activate}" BorderBrush="{x:Null}"
-                            IsEnabled="{Binding MController.IsActive , Converter={StaticResource InvertConverter}}">Activate</Button>
+                            IsEnabled="{Binding MController.IsActive , Converter={StaticResource InvertConverter}}">_Activate</Button>
                     <Button Margin="3" Grid.Column="1" Background="Red" Command="{Binding MController.Stop}" BorderBrush="{x:Null}"
-                            IsEnabled="{Binding MController.IsActive}">Stop</Button>
+                            IsEnabled="{Binding MController.IsActive}">_Stop</Button>
                 </Grid>
             </materialDesign:Card.Content>
         </materialDesign:Card>

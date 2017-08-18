@@ -50,21 +50,19 @@
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
                 <TreeView Grid.Row="0" x:Name="MainTreeView" ItemsSource="{Binding Settings.Nodes}">
-                    <TreeView.ItemTemplate >
+                    <TreeView.ItemTemplate>
                         <HierarchicalDataTemplate ItemsSource="{Binding ChildNodes}">
-                            <Label Content="{Binding Name}"/>
-                            <!--<Label>-->
-                            <!--<Label.Style>
-                                    <Style TargetType="Label">
-                                        <Setter Property="Content" Value="{Binding Name}"></Setter>
+                            <Label Content="{Binding Name}" >
+                                <Label.Style>
+                                    <Style TargetType="{x:Type Label}" BasedOn="{StaticResource MaterialDesignLabel}">
                                         <Style.Triggers>
-                                            <DataTrigger Binding="{Binding Name}" Value="">
-                                                <Setter Property="Content" Value="new"></Setter>
+                                            <DataTrigger Binding="{Binding MController.IsActive}" Value="true">
+                                                <Setter Property="Background" Value="Red"/>
                                             </DataTrigger>
                                         </Style.Triggers>
                                     </Style>
                                 </Label.Style>
-                            </Label>-->
+                            </Label>
                         </HierarchicalDataTemplate>
                     </TreeView.ItemTemplate>
                 </TreeView>
