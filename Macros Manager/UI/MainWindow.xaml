@@ -52,8 +52,18 @@
                 <TreeView Grid.Row="0" x:Name="MainTreeView" ItemsSource="{Binding Settings.Nodes}">
                     <TreeView.ItemTemplate>
                         <HierarchicalDataTemplate ItemsSource="{Binding ChildNodes}">
+                            <HierarchicalDataTemplate.ItemContainerStyle>
+                                <Style TargetType="{x:Type TreeViewItem}" BasedOn="{StaticResource MaterialDesignTreeViewItem}"> <!--Todo Improve Here, this style is not working correct, works without 'BasedOn' Attribute-->
+                                    <Setter Property="BorderThickness" Value="1"/>
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding MController.IsActive}" Value="true">
+                                            <Setter Property="BorderBrush" Value="Red"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </HierarchicalDataTemplate.ItemContainerStyle>
                             <Label Content="{Binding Name}" >
-                                <Label.Style>
+                                <!--<Label.Style>
                                     <Style TargetType="{x:Type Label}" BasedOn="{StaticResource MaterialDesignLabel}">
                                         <Style.Triggers>
                                             <DataTrigger Binding="{Binding MController.IsActive}" Value="true">
@@ -61,7 +71,7 @@
                                             </DataTrigger>
                                         </Style.Triggers>
                                     </Style>
-                                </Label.Style>
+                                </Label.Style>-->
                             </Label>
                         </HierarchicalDataTemplate>
                     </TreeView.ItemTemplate>
