@@ -35,7 +35,7 @@ namespace Macros_Manager.Model.UI
             set
             {
                 MController.Macro.Name = value;
-                RaisePropertyChanged().Invoke(new PropertyChangedEventArgs("Name"));
+                OnPropertyChanged();
             }
         }
 
@@ -53,30 +53,35 @@ namespace Macros_Manager.Model.UI
                 OnPropertyChanged("MController");
             }
         }
-        
+
         protected override ContentControl ContentCreator()
         {
-            List<TabItem> items = new List<TabItem>()
+            if (_contentSingleton == null)
             {
-                new TabItem
+                List<TabItem> items = new List<TabItem>()
                 {
-                    Header = "Script",
-                    Content = VmcContainer.Container.Resolve<ContentControl>(UnityDefs.View.ScriptView)
-                },
-                new TabItem
-                {
-                    Header = UnityDefs.View.Description,
-                    Content = VmcContainer.Container.Resolve<ContentControl>(UnityDefs.View.Description)
-                },
-                new TabItem
-                {
-                    Header = "Settings",
-                    Content = VmcContainer.Container.Resolve<SettingsView>()
-                }
-            };
-            return CreateViewWrapper(items);
+                    new TabItem
+                    {
+                        Header = "Script",
+                        Content = VmcContainer.Container.Resolve<ContentControl>(UnityDefs.View.ScriptView)
+                    },
+                    new TabItem
+                    {
+                        Header = UnityDefs.View.Description,
+                        Content = VmcContainer.Container.Resolve<ContentControl>(UnityDefs.View.Description)
+                    },
+                    new TabItem
+                    {
+                        Header = "Settings",
+                        Content = VmcContainer.Container.Resolve<SettingsView>()
+                    }
+                };
+                _contentSingleton = CreateViewWrapper(items);
+            }
+            return _contentSingleton;
         }
 
+        private ContentControl _contentSingleton;
 
     }
 }
