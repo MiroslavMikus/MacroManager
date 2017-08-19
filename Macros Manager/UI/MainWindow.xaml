@@ -20,8 +20,8 @@
         FontFamily="{DynamicResource MaterialDesignFont}"
         mc:Ignorable="d"
         Title="Macro Manager" 
-        Height="{Binding Settings.WindowHeight, Mode=TwoWay}" 
-        Width="{Binding Settings.WindowWidth, Mode=TwoWay}"
+        Height="{Binding Settings.WindowHeight, Mode=TwoWay}" MinHeight="400" 
+        Width="{Binding Settings.WindowWidth, Mode=TwoWay}" MinWidth="600"
         WindowState="{Binding Settings.WinState, Mode=TwoWay}"
         Top="{Binding Settings.WinTop, Mode=TwoWay}"
         Left="{Binding Settings.WinLeft, Mode=TwoWay}">

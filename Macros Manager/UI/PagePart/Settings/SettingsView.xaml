@@ -9,91 +9,118 @@
              xmlns:validation="clr-namespace:Macros_Manager.UI.ValidationRules"
              xmlns:converters="clr-namespace:Macros_Manager.UI.Converters"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="400">
+             d:DesignHeight="1000" d:DesignWidth="400">
     <UserControl.Resources>
         <ResourceDictionary>
             <local:StringToMacroControllerTypeConverter x:Key="MacroControllerTypeConverter"></local:StringToMacroControllerTypeConverter>
             <converters:InvertBoolean x:Key="InvertConverter"></converters:InvertBoolean>
             <converters:ObjectToTypeStringConverter x:Key="ObjectToTypeStringConverter"></converters:ObjectToTypeStringConverter>
+            <Style x:Key="CardHeader" TargetType="{x:Type TextBlock}" >
+                <Setter Property="FontSize" Value="16"/>
+                <Setter Property="Margin" Value="20 10 10 10"></Setter>
+            </Style>
+            <Style x:Key="CardTextBlock" TargetType="{x:Type TextBlock}" >
+                <Setter Property="Margin" Value="10"></Setter>
+            </Style>
+            <Style x:Key="CardTextBox" TargetType="{x:Type TextBox}" BasedOn="{StaticResource MaterialDesignTextBox}" >
+                <Setter Property="Margin" Value="10 7 10 13"></Setter>
+                <Setter Property="HorizontalContentAlignment" Value="Right"></Setter>
+            </Style>
+            <Style x:Key="Card" TargetType="{x:Type materialDesign:Card}" >
+                <Setter Property="Padding" Value="5"/>
+                <Setter Property="Margin" Value="5"></Setter>
+            </Style>
         </ResourceDictionary>
     </UserControl.Resources>
-    <StackPanel Orientation="Vertical">
-        <materialDesign:Card Margin="5" Padding="5">
-            <StackPanel Orientation="Vertical">
-                <DockPanel LastChildFill="True">
-                    <Label DockPanel.Dock="Left">Name :</Label>
-                    <TextBox DockPanel.Dock="Top">
-                        <TextBox.Text>
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <StackPanel Orientation="Vertical" >
+
+
+            <!--Node-->
+            <materialDesign:Card Style="{StaticResource Card}">
+                <StackPanel Orientation="Vertical">
+                    <TextBlock Style="{StaticResource ResourceKey=CardHeader}">Node :</TextBlock>
+                    <DockPanel LastChildFill="True">
+                        <TextBlock Style="{StaticResource ResourceKey=CardTextBlock}" DockPanel.Dock="Left"><Run Text="Name :"/></TextBlock>
+                        <TextBox DockPanel.Dock="Top" Style="{StaticResource CardTextBox}">
                             <Binding Path="Name" UpdateSourceTrigger="PropertyChanged">
                                 <Binding.ValidationRules>
                                     <validation:NotEmptyValidationRule ValidatesOnTargetUpdated="True" />
                                 </Binding.ValidationRules>
                             </Binding>
-                        </TextBox.Text>
-                    </TextBox>
-                </DockPanel>
-            </StackPanel>
-        </materialDesign:Card>
+                        </TextBox>
+                    </DockPanel>
+                </StackPanel>
+            </materialDesign:Card>
 
-        <materialDesign:Card Margin="5" Padding="5">
-            <materialDesign:Card.Content>
-                <DockPanel LastChildFill="True">
-                    <Label DockPanel.Dock="Left" Content="Controller Type :"/>
-                    <ToggleButton x:Name="TgEnable" DockPanel.Dock="Right" Margin="10 0 10 0"></ToggleButton>
-                    <ComboBox ItemsSource="{Binding MController.Macro.Definition.PossibleTypes}"
-                                  SelectedItem="{Binding ControllerType,
-                                                Converter={StaticResource MacroControllerTypeConverter}, Mode=TwoWay, 
-                                                UpdateSourceTrigger=PropertyChanged, Delay=250}"
-                                  IsEnabled="{Binding ElementName=TgEnable, Path=IsChecked}"
-                                  DropDownClosed="ComboBox_OnDropDownClosed"/>
-                </DockPanel>
-            </materialDesign:Card.Content>
-        </materialDesign:Card>
-
-        <materialDesign:Card x:Name="SettingsCard" Margin="5" Padding="5" Content="{Binding MController}">
-            <materialDesign:Card.Style>
-                <Style TargetType="{x:Type materialDesign:Card}" >
-                    <Style.Triggers>
-                        <DataTrigger Binding="{Binding ElementName=SettingsCard, Path=Content, Converter={StaticResource ObjectToTypeStringConverter}}" 
-                                     Value="SimpleMacroController">
-                            <Setter Property="Visibility" Value="Collapsed"></Setter>
-                        </DataTrigger>
-                    </Style.Triggers>
-                </Style>
-            </materialDesign:Card.Style>
-            <materialDesign:Card.Resources>
-                <DataTemplate DataType="{x:Type controllers:LoopController}">
+            <!--Controller-->
+            <materialDesign:Card Style="{StaticResource Card}">
+                <StackPanel Orientation="Vertical">
+                    <TextBlock Style="{StaticResource CardHeader}">Controller :</TextBlock>
                     <DockPanel LastChildFill="True">
-                        <Label DockPanel.Dock="Left">Repeat Inverval in Seconds :</Label>
+                        <TextBlock Style="{StaticResource CardTextBlock}" DockPanel.Dock="Left" Text="Controller Type :"/>
+                        <ToggleButton x:Name="TgEnable" DockPanel.Dock="Right" Margin="10 0 10 0" />
+                        <ComboBox ItemsSource="{Binding MController.Macro.Definition.PossibleTypes}"
+                                  SelectedItem="{Binding ControllerType, Converter={StaticResource MacroControllerTypeConverter}, Delay=250, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                  IsEnabled="{Binding IsChecked, ElementName=TgEnable}"
+                                  DropDownClosed="ComboBox_OnDropDownClosed"
+                                  HorizontalContentAlignment="Right"/>
+                    </DockPanel>
+
+                    <!--Controller Custom Settings -> Put to DateTemplate-->
+                    <ContentControl Content="{Binding MController}">
+                        <ContentControl.Resources>
+                            <DataTemplate DataType="{x:Type controllers:LoopController}">
+                                <DockPanel LastChildFill="True">
+                                    <TextBlock DockPanel.Dock="Left" Text="Repeat Inverval in Seconds :" Style="{StaticResource CardTextBlock}"/>
+                                    <TextBox DockPanel.Dock="Right" Style="{StaticResource CardTextBox}"
+                                         PreviewTextInput="NumberValidationTextBox" 
+                                         PreviewKeyDown="UIElement_OnPreviewKeyDown"
+                                         Text="{Binding TimerInterval, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" >
+                                        <TextBox.CommandBindings>
+                                            <CommandBinding Command="Paste" CanExecute="CommandBinding_OnCanExecute"/>
+                                        </TextBox.CommandBindings>
+                                    </TextBox>
+                                </DockPanel>
+                            </DataTemplate>
+                            <DataTemplate DataType="{x:Type controllers:SimpleMacroController}"/>
+                        </ContentControl.Resources>
+                    </ContentControl>
+
+                    <Grid Margin="0 15 0 5">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="3*"/>
+                            <ColumnDefinition Width="2*"/>
+                        </Grid.ColumnDefinitions>
+                        <Button Margin="3" Grid.Column="0" Background="LimeGreen" Command="{Binding MController.Activate}" BorderBrush="{x:Null}"
+                            IsEnabled="{Binding MController.IsActive, Converter={StaticResource InvertConverter}}" Content="_Activate"/>
+                        <Button Margin="3" Grid.Column="1" Background="Red" Command="{Binding MController.Stop}" BorderBrush="{x:Null}"
+                            IsEnabled="{Binding MController.IsActive}" Content="_Stop"/>
+                    </Grid>
+                </StackPanel>
+            </materialDesign:Card>
+            
+            <!--Description-->
+            <materialDesign:Card Style="{StaticResource Card}">
+                <StackPanel Orientation="Vertical">
+                    <TextBlock DockPanel.Dock="Left" Style="{StaticResource CardHeader}">Description :</TextBlock>
+                    <DockPanel >
+                        <TextBlock Style="{StaticResource ResourceKey=CardTextBlock}" DockPanel.Dock="Left"><Run Text="Disable description editing :"/></TextBlock>
+                        <ToggleButton HorizontalAlignment="Right" DockPanel.Dock="Right" Margin="10 0 10 0" />
+                    </DockPanel>
+                    <DockPanel >
+                        <TextBlock Style="{StaticResource ResourceKey=CardTextBlock}" DockPanel.Dock="Left"><Run Text="Disable auto-updating :"/></TextBlock>
+                        <ToggleButton x:Name="TbDisableAutoUpdate" HorizontalAlignment="Right" DockPanel.Dock="Right" Margin="10 0 10 0" />
+                    </DockPanel>
+                    <DockPanel>
+                        <TextBlock Style="{StaticResource ResourceKey=CardTextBlock}" DockPanel.Dock="Left"><Run Text="Auto-Updating interval in seconds :"/></TextBlock>
                         <TextBox DockPanel.Dock="Right" 
                                  PreviewTextInput="NumberValidationTextBox" 
                                  PreviewKeyDown="UIElement_OnPreviewKeyDown"
-                                 Text="{Binding TimerInterval, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" >
-                            <TextBox.CommandBindings>
-                                <CommandBinding Command="Paste" CanExecute="CommandBinding_OnCanExecute"></CommandBinding>
-                            </TextBox.CommandBindings>
-                        </TextBox>
+                                 Style="{StaticResource CardTextBox}"/>
                     </DockPanel>
-                </DataTemplate>
-                <DataTemplate DataType="{x:Type controllers:SimpleMacroController}">
-                </DataTemplate>
-            </materialDesign:Card.Resources>
-        </materialDesign:Card>
-
-        <materialDesign:Card Margin="5" Padding="5">
-            <materialDesign:Card.Content>
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="3*"/>
-                        <ColumnDefinition Width="2*"/>
-                    </Grid.ColumnDefinitions>
-                    <Button Margin="3" Grid.Column="0" Background="LimeGreen" Command="{Binding MController.Activate}" BorderBrush="{x:Null}"
-                            IsEnabled="{Binding MController.IsActive , Converter={StaticResource InvertConverter}}">_Activate</Button>
-                    <Button Margin="3" Grid.Column="1" Background="Red" Command="{Binding MController.Stop}" BorderBrush="{x:Null}"
-                            IsEnabled="{Binding MController.IsActive}">_Stop</Button>
-                </Grid>
-            </materialDesign:Card.Content>
-        </materialDesign:Card>
-
-    </StackPanel>
+                </StackPanel>
+            </materialDesign:Card>
+        </StackPanel>
+    </ScrollViewer>
 </UserControl>
