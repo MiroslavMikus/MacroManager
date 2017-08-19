@@ -41,7 +41,7 @@
                     <Label DockPanel.Dock="Left" Content="Controller Type :"/>
                     <ToggleButton x:Name="TgEnable" DockPanel.Dock="Right" Margin="10 0 10 0"></ToggleButton>
                     <ComboBox ItemsSource="{Binding MController.Macro.Definition.PossibleTypes}"
-                                  SelectedItem="{Binding MController.Macro.Definition.CurrentControllerType,
+                                  SelectedItem="{Binding ControllerType,
                                                 Converter={StaticResource MacroControllerTypeConverter}, Mode=TwoWay, 
                                                 UpdateSourceTrigger=PropertyChanged, Delay=250}"
                                   IsEnabled="{Binding ElementName=TgEnable, Path=IsChecked}"

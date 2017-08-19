@@ -26,6 +26,8 @@ namespace Macros_Manager.Unity
 
             Container.RegisterType<IMacroController, LoopController>(MacroControllerTypes.LoopMacro.ToString(), new TransientLifetimeManager());
 
+            Container.RegisterType<IMacroController, SimpleMacroController>(MacroControllerTypes.Macro.ToString(), new TransientLifetimeManager());
+
             Container.RegisterType<IMacroController, SimpleMacroController>(new TransientLifetimeManager());
 
             Container.RegisterType<IMacro, PowershellMacro>(new TransientLifetimeManager());

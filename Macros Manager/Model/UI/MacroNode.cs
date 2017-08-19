@@ -39,6 +39,21 @@ namespace Macros_Manager.Model.UI
             }
         }
 
+        public MacroControllerTypes ControllerType
+        {
+            get { return MController.Macro.Definition.CurrentControllerType; }
+            set
+            {
+                if (MController.Macro.Definition.CurrentControllerType == value) return;
+
+                MController = MacroContainer.Container.Resolve<IMacroController>(value.ToString(), new ParameterOverride("a_macro", MController.Macro));
+
+                MController.Macro.Definition.CurrentControllerType = value;
+
+                OnPropertyChanged("MController");
+            }
+        }
+        
         protected override ContentControl ContentCreator()
         {
             List<TabItem> items = new List<TabItem>()
