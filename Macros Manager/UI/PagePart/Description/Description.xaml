@@ -11,11 +11,32 @@
                     Key="U"
                     Command="{Binding Description.UpdateDocument}"></KeyBinding>
     </UserControl.InputBindings>
+    <UserControl.Resources>
+        <Style x:Key="DisableEditingStyle" TargetType="{x:Type ColumnDefinition}">
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding Description.DisableEditing}" Value="true">
+                    <Setter Property="Width" Value="0"/>
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+    </UserControl.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="*"/>
+            <ColumnDefinition>
+                <ColumnDefinition.Style>
+                    <Style TargetType="{x:Type ColumnDefinition}" BasedOn="{StaticResource DisableEditingStyle}">
+                        <Setter Property="Width" Value="Auto"/>
+                    </Style>
+                </ColumnDefinition.Style>
+            </ColumnDefinition>
+            <ColumnDefinition>
+                <ColumnDefinition.Style>
+                    <Style TargetType="{x:Type ColumnDefinition}" BasedOn="{StaticResource DisableEditingStyle}">
+                        <Setter Property="Width" Value="*"/>
+                    </Style>
+                </ColumnDefinition.Style>
+            </ColumnDefinition>
         </Grid.ColumnDefinitions>
         <FlowDocumentScrollViewer Document="{Binding Description.MdDescripiton }" Grid.Column="0"/>
         <GridSplitter Width="2" ResizeBehavior="PreviousAndNext" Grid.Column="1"/>
@@ -23,7 +44,17 @@
             <Button x:Name="UpdateButton" DockPanel.Dock="Bottom" Margin="10" 
                     Command="{Binding Description.UpdateDocument}"
                     ToolTip="Update Document without delay (Ctrl+U)">_Update Document</Button>
-            <ProgressBar DockPanel.Dock="Bottom" Value="{Binding Description.RefreshProgress}" Margin="2"></ProgressBar>            
+            <ProgressBar DockPanel.Dock="Bottom" Value="{Binding Description.RefreshProgress}" Margin="2">
+                <ProgressBar.Style >
+                    <Style TargetType="{x:Type ProgressBar}" BasedOn="{StaticResource MaterialDesignLinearProgressBar}">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Description.DisableAutoUpdate}" Value="true">
+                                <Setter Property="Visibility" Value="Collapsed"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </ProgressBar.Style>
+            </ProgressBar>
             <TextBox VerticalContentAlignment="Top" 
                      FontFamily="Consolas" 
                      TextWrapping="Wrap" 

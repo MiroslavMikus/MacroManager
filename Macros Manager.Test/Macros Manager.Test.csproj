@@ -51,7 +51,6 @@
   </Choose>
   <ItemGroup>
     <Compile Include="SyntaxTest.cs" />
-    <Compile Include="TestEnumExtension.cs" />
     <Compile Include="TestPowershellMacro.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

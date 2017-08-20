@@ -26,9 +26,8 @@ namespace Macros_Manager.UI.PagePart.Description
                 .Build();
         }
 
-        public DescriptionViewModel(DescriptionState a_initState = DescriptionState.SplitView)
+        public DescriptionViewModel()
         {
-            State = a_initState;
             RefreshTimer = CreateRefreshTimer();
             ProgressTimer = CreateProgressTimer();
             RefreshInterval = 5;
@@ -90,7 +89,7 @@ namespace Macros_Manager.UI.PagePart.Description
             {
                 this.MutateVerbose(ref _rawDescription, value, RaisePropertyChanged());
 
-                if (!_autoUpdateIsActive) return;
+                if (_disableAutoUpdate) return;
 
                 StopTimers();
                 RefreshTimer.Interval = TimeSpan.FromSeconds(RefreshInterval);
@@ -99,19 +98,24 @@ namespace Macros_Manager.UI.PagePart.Description
             }
         }
 
-        private bool _autoUpdateIsActive;
-        public bool AutoUpdateIsActive
+        private bool _disableAutoUpdate;
+        public bool DisableAutoUpdate
         {
-            get { return _autoUpdateIsActive; }
-            set { this.MutateVerbose(ref _autoUpdateIsActive, value, RaisePropertyChanged()); }
+            get { return _disableAutoUpdate; }
+            set { this.MutateVerbose(ref _disableAutoUpdate, value, RaisePropertyChanged()); }
+        }
+
+        private bool _disableEditing;
+        public bool DisableEditing
+        {
+            get { return _disableEditing; }
+            set { this.MutateVerbose(ref _disableEditing, value, RaisePropertyChanged()); }
         }
 
         [JsonIgnore]
         public DispatcherTimer RefreshTimer;
         [JsonIgnore]
         public DispatcherTimer ProgressTimer;
-
-        public DescriptionState State { get; set; }
 
         private FlowDocument _mdDescripiton;
 
@@ -138,11 +142,5 @@ namespace Macros_Manager.UI.PagePart.Description
             }
 
         }
-
-        [JsonIgnore]
-        public ICommand ChangeView => new RelayCommand<object>(a =>
-        {
-            State = State.Next();
-        });
     }
 }

@@ -58,7 +58,7 @@ namespace Macros_Manager.Model.UI
         {
             if (_contentSingleton == null)
             {
-                List<TabItem> items = new List<TabItem>()
+                List<TabItem> items = new List<TabItem>
                 {
                     new TabItem
                     {
