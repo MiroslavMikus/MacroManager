@@ -8,6 +8,7 @@
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:validation="clr-namespace:Macros_Manager.UI.ValidationRules"
              xmlns:converters="clr-namespace:Macros_Manager.UI.Converters"
+             xmlns:loopController="clr-namespace:Macros_Manager.MacroController.LoopController"
              mc:Ignorable="d" 
              d:DesignHeight="1000" d:DesignWidth="400">
     <UserControl.Resources>
@@ -76,7 +77,7 @@
                     <!--Controller Custom Settings -> Put to DateTemplate-->
                     <ContentPresenter x:Name="CpCustomSettings" Content="{Binding MController}">
                         <ContentPresenter.Resources>
-                            <DataTemplate x:Name="DtLoopController" DataType="{x:Type controllers:LoopController}" >
+                            <DataTemplate x:Name="DtLoopController" DataType="{x:Type loopController:LoopController}" >
                                 <StackPanel Orientation="Vertical">
                                     <DockPanel LastChildFill="True">
                                         <TextBlock DockPanel.Dock="Left" Text="Repeat Inverval in Seconds :" Style="{StaticResource CardTextBlock}"/>
@@ -99,14 +100,14 @@
                                             <RowDefinition/>
                                         </Grid.RowDefinitions>
 
-                                        <RadioButton Grid.Column="0" Grid.Row="0" VerticalAlignment="Center"></RadioButton>
+                                        <RadioButton Grid.Column="0" Grid.Row="0" VerticalAlignment="Center" IsChecked="{Binding Infinite}"></RadioButton>
                                         <TextBlock Grid.Column="1" Grid.Row="0" Style="{StaticResource CardTextBlock}">Infiinte Loop</TextBlock>
 
-                                        <RadioButton Grid.Column="0" Grid.Row="1" VerticalAlignment="Center"></RadioButton>
+                                        <RadioButton Grid.Column="0" Grid.Row="1" VerticalAlignment="Center" IsChecked="{Binding LoopCount}"></RadioButton>
                                         <TextBlock Grid.Column="1" Grid.Row="1" Style="{StaticResource CardTextBlock}">Loop Couter</TextBlock>
-                                        <TextBox Grid.Column="2" Grid.Row="1" Style="{StaticResource NumberTextBox}"></TextBox>
+                                        <TextBox Grid.Column="2" Grid.Row="1" Style="{StaticResource NumberTextBox}" Text="{Binding LoopCounter}"></TextBox>
 
-                                        <RadioButton Grid.Column="0" Grid.Row="2" VerticalAlignment="Center"></RadioButton>
+                                        <RadioButton Grid.Column="0" Grid.Row="2" VerticalAlignment="Center" IsChecked="{Binding LoopUntil}"></RadioButton>
                                         <TextBlock Grid.Column="1" Grid.Row="2" Style="{StaticResource CardTextBlock}">Loop until</TextBlock>
                                         <local:FutureDatePicker Grid.Column="2" Grid.Row="2"></local:FutureDatePicker>
 

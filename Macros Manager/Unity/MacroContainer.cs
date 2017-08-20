@@ -7,6 +7,7 @@ using System.Windows.Controls;
 using Macros_Manager.Macro;
 using Macros_Manager.Macro.Powershell;
 using Macros_Manager.MacroController;
+using Macros_Manager.MacroController.LoopController;
 using Macros_Manager.Model.Interfaces;
 using Macros_Manager.Model.UI;
 using Macros_Manager.Tools;
