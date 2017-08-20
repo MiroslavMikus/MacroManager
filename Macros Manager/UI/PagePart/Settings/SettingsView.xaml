@@ -110,14 +110,16 @@
                     </DockPanel>
                     <DockPanel >
                         <TextBlock Style="{StaticResource ResourceKey=CardTextBlock}" DockPanel.Dock="Left"><Run Text="Disable auto-updating :"/></TextBlock>
-                        <ToggleButton x:Name="TbDisableAutoUpdate" HorizontalAlignment="Right" DockPanel.Dock="Right" Margin="10 0 10 0" />
+                        <ToggleButton x:Name="TbDisableAutoUpdate" HorizontalAlignment="Right" DockPanel.Dock="Right" Margin="10 0 10 0" 
+                                      IsChecked="{Binding Description.AutoUpdateIsActive,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource InvertConverter}}"/>
                     </DockPanel>
-                    <DockPanel>
+                    <DockPanel IsEnabled="{Binding ElementName=TbDisableAutoUpdate, Path=IsChecked, Converter={StaticResource InvertConverter}}">
                         <TextBlock Style="{StaticResource ResourceKey=CardTextBlock}" DockPanel.Dock="Left"><Run Text="Auto-Updating interval in seconds :"/></TextBlock>
                         <TextBox DockPanel.Dock="Right" 
                                  PreviewTextInput="NumberValidationTextBox" 
                                  PreviewKeyDown="UIElement_OnPreviewKeyDown"
-                                 Style="{StaticResource CardTextBox}"/>
+                                 Style="{StaticResource CardTextBox}"
+                                 Text="{Binding Description.RefreshInterval, Mode=TwoWay,  UpdateSourceTrigger=PropertyChanged, Delay=300}"/>
                     </DockPanel>
                 </StackPanel>
             </materialDesign:Card>

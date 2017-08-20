@@ -40,7 +40,7 @@ namespace Macros_Manager.UI.PagePart.Description
                 DispatcherPriority.Normal,
                 (a, b) =>
                 {
-                    RefreshProgress += 100.0 / (RefreshInterval / 100.0);
+                    RefreshProgress += 100.0 / (RefreshInterval * 10);
                 }, Dispatcher.CurrentDispatcher);
         }
 
@@ -78,7 +78,7 @@ namespace Macros_Manager.UI.PagePart.Description
         private int _refreshInterval; // in seconds
         public int RefreshInterval
         {
-            get { return _refreshInterval * 1000; }
+            get { return _refreshInterval; }
             set { this.MutateVerbose(ref _refreshInterval, value, RaisePropertyChanged()); }
         }
 
@@ -89,11 +89,21 @@ namespace Macros_Manager.UI.PagePart.Description
             set
             {
                 this.MutateVerbose(ref _rawDescription, value, RaisePropertyChanged());
+
+                if (!_autoUpdateIsActive) return;
+
                 StopTimers();
-                RefreshTimer.Interval = TimeSpan.FromMilliseconds(RefreshInterval);
+                RefreshTimer.Interval = TimeSpan.FromSeconds(RefreshInterval);
                 RefreshTimer.Start();
                 ProgressTimer.Start();
             }
+        }
+
+        private bool _autoUpdateIsActive;
+        public bool AutoUpdateIsActive
+        {
+            get { return _autoUpdateIsActive; }
+            set { this.MutateVerbose(ref _autoUpdateIsActive, value, RaisePropertyChanged()); }
         }
 
         [JsonIgnore]
