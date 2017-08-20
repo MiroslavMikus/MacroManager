@@ -1,4 +1,6 @@
 ﻿using System;
+using System.CodeDom;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,6 +15,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Macros_Manager.MacroController;
+using Macros_Manager.UI.Tools;
+using MahApps.Metro.Controls;
 
 namespace Macros_Manager.UI.PagePart.Settings
 {
@@ -53,8 +58,6 @@ namespace Macros_Manager.UI.PagePart.Settings
         /// <summary>
         /// Disable Paste
         /// </summary>
-        /// <param name="a_sender"></param>
-        /// <param name="a_e"></param>
         private void CommandBinding_OnCanExecute(object a_sender, CanExecuteRoutedEventArgs a_e)
         {
             a_e.CanExecute = false;

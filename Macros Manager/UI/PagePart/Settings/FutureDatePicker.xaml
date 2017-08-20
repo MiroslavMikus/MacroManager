@@ -1,0 +1,41 @@
+﻿<UserControl x:Class="Macros_Manager.UI.PagePart.Settings.FutureDatePicker"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:validation="clr-namespace:Macros_Manager.UI.ValidationRules"
+             xmlns:local="clr-namespace:Macros_Manager.UI.PagePart.Settings"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <validation:DateCheck x:Key="DateCheckObject" />
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <DatePicker Grid.Column="0" Margin="10" x:Name="FuturePickerDate" materialDesign:HintAssist.Hint="Future Date" SelectedDateChanged="FuturePickerDate_OnSelectedDateChanged" >
+            <DatePicker.SelectedDate>
+                <Binding Path="RepeatUntilDate" UpdateSourceTrigger="PropertyChanged">
+                    <Binding.ValidationRules>
+                        <validation:FutureDateValidationRule ValidatesOnTargetUpdated="True" />
+                    </Binding.ValidationRules>
+                </Binding>
+            </DatePicker.SelectedDate>
+        </DatePicker>
+        <materialDesign:TimePicker x:Name="FuturePickerTime" Grid.Column="1" Is24Hours="True" Margin="10" >
+            <materialDesign:TimePicker.SelectedTime>
+                <Binding Path="RepeatUntilTime" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
+                    <Binding.ValidationRules>
+                        <validation:FutureTimeValidationRule DateToCheck="{StaticResource DateCheckObject}"/>
+                    </Binding.ValidationRules>
+                </Binding>
+            </materialDesign:TimePicker.SelectedTime>
+
+        </materialDesign:TimePicker>
+    </Grid>
+</UserControl>

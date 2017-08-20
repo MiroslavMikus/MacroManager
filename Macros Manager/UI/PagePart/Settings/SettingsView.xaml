@@ -20,7 +20,8 @@
                 <Setter Property="Margin" Value="20 10 10 10"></Setter>
             </Style>
             <Style x:Key="CardTextBlock" TargetType="{x:Type TextBlock}" >
-                <Setter Property="Margin" Value="10"></Setter>
+                <Setter Property="Margin" Value="10"/>
+                <Setter Property="VerticalAlignment" Value="Center"></Setter>
             </Style>
             <Style x:Key="CardTextBox" TargetType="{x:Type TextBox}" BasedOn="{StaticResource MaterialDesignTextBox}" >
                 <Setter Property="Margin" Value="10 7 10 13"></Setter>
@@ -30,6 +31,11 @@
                 <Setter Property="Padding" Value="5"/>
                 <Setter Property="Margin" Value="5"></Setter>
             </Style>
+            <Style x:Key="NumberTextBox" TargetType="{x:Type TextBox}" BasedOn="{StaticResource CardTextBox}">
+                <EventSetter Event="PreviewTextInput" Handler="NumberValidationTextBox"/>
+                <EventSetter Event="PreviewKeyDown" Handler="UIElement_OnPreviewKeyDown"></EventSetter>
+            </Style>
+
         </ResourceDictionary>
     </UserControl.Resources>
     <ScrollViewer VerticalScrollBarVisibility="Auto">
@@ -68,24 +74,48 @@
                     </DockPanel>
 
                     <!--Controller Custom Settings -> Put to DateTemplate-->
-                    <ContentControl Content="{Binding MController}">
-                        <ContentControl.Resources>
-                            <DataTemplate DataType="{x:Type controllers:LoopController}">
-                                <DockPanel LastChildFill="True">
-                                    <TextBlock DockPanel.Dock="Left" Text="Repeat Inverval in Seconds :" Style="{StaticResource CardTextBlock}"/>
-                                    <TextBox DockPanel.Dock="Right" Style="{StaticResource CardTextBox}"
-                                         PreviewTextInput="NumberValidationTextBox" 
-                                         PreviewKeyDown="UIElement_OnPreviewKeyDown"
+                    <ContentPresenter x:Name="CpCustomSettings" Content="{Binding MController}">
+                        <ContentPresenter.Resources>
+                            <DataTemplate x:Name="DtLoopController" DataType="{x:Type controllers:LoopController}" >
+                                <StackPanel Orientation="Vertical">
+                                    <DockPanel LastChildFill="True">
+                                        <TextBlock DockPanel.Dock="Left" Text="Repeat Inverval in Seconds :" Style="{StaticResource CardTextBlock}"/>
+                                        <TextBox DockPanel.Dock="Right" Style="{StaticResource NumberTextBox}"
                                          Text="{Binding TimerInterval, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" >
-                                        <TextBox.CommandBindings>
-                                            <CommandBinding Command="Paste" CanExecute="CommandBinding_OnCanExecute"/>
-                                        </TextBox.CommandBindings>
-                                    </TextBox>
-                                </DockPanel>
+                                            <TextBox.CommandBindings>
+                                                <CommandBinding Command="Paste" CanExecute="CommandBinding_OnCanExecute"/>
+                                            </TextBox.CommandBindings>
+                                        </TextBox>
+                                    </DockPanel>
+                                    <Grid Margin="10">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition />
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition/>
+                                            <RowDefinition/>
+                                            <RowDefinition/>
+                                        </Grid.RowDefinitions>
+
+                                        <RadioButton Grid.Column="0" Grid.Row="0" VerticalAlignment="Center"></RadioButton>
+                                        <TextBlock Grid.Column="1" Grid.Row="0" Style="{StaticResource CardTextBlock}">Infiinte Loop</TextBlock>
+
+                                        <RadioButton Grid.Column="0" Grid.Row="1" VerticalAlignment="Center"></RadioButton>
+                                        <TextBlock Grid.Column="1" Grid.Row="1" Style="{StaticResource CardTextBlock}">Loop Couter</TextBlock>
+                                        <TextBox Grid.Column="2" Grid.Row="1" Style="{StaticResource NumberTextBox}"></TextBox>
+
+                                        <RadioButton Grid.Column="0" Grid.Row="2" VerticalAlignment="Center"></RadioButton>
+                                        <TextBlock Grid.Column="1" Grid.Row="2" Style="{StaticResource CardTextBlock}">Loop until</TextBlock>
+                                        <local:FutureDatePicker Grid.Column="2" Grid.Row="2"></local:FutureDatePicker>
+
+                                    </Grid>
+                                </StackPanel>
                             </DataTemplate>
                             <DataTemplate DataType="{x:Type controllers:SimpleMacroController}"/>
-                        </ContentControl.Resources>
-                    </ContentControl>
+                        </ContentPresenter.Resources>
+                    </ContentPresenter>
 
                     <Grid Margin="0 15 0 5">
                         <Grid.ColumnDefinitions>
@@ -99,7 +129,7 @@
                     </Grid>
                 </StackPanel>
             </materialDesign:Card>
-            
+
             <!--Description-->
             <materialDesign:Card Style="{StaticResource Card}">
                 <StackPanel Orientation="Vertical">
@@ -116,9 +146,7 @@
                     <DockPanel IsEnabled="{Binding ElementName=TbDisableAutoUpdate, Path=IsChecked, Converter={StaticResource InvertConverter}}">
                         <TextBlock Style="{StaticResource ResourceKey=CardTextBlock}" DockPanel.Dock="Left"><Run Text="Auto-Updating interval in seconds :"/></TextBlock>
                         <TextBox DockPanel.Dock="Right" 
-                                 PreviewTextInput="NumberValidationTextBox" 
-                                 PreviewKeyDown="UIElement_OnPreviewKeyDown"
-                                 Style="{StaticResource CardTextBox}"
+                                 Style="{StaticResource NumberTextBox}"
                                  Text="{Binding Description.RefreshInterval, Mode=TwoWay,  UpdateSourceTrigger=PropertyChanged, Delay=300}"/>
                     </DockPanel>
                 </StackPanel>

@@ -145,6 +145,7 @@
     <Compile Include="Model\UI\BaseTreeNode.cs" />
     <Compile Include="Model\UI\LabelNode.cs" />
     <Compile Include="Model\UI\MacroNode.cs" />
+    <Compile Include="Tools\DateTimeExtensions.cs" />
     <Compile Include="Tools\UnityContainerExtensions.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Repository\LocalStorage\FileTool.cs" />
@@ -172,6 +173,9 @@
     <Compile Include="Tools\FuncTool.cs" />
     <Compile Include="UI\PagePart\Description\MyXamlSchemaContext.cs" />
     <Compile Include="UI\PagePart\NewNodeDialog\OkButtonIsEnabledConverter.cs" />
+    <Compile Include="UI\PagePart\Settings\FutureDatePicker.xaml.cs">
+      <DependentUpon>FutureDatePicker.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UI\PagePart\Settings\SettingsView.xaml.cs">
       <DependentUpon>SettingsView.xaml</DependentUpon>
     </Compile>
@@ -182,9 +186,14 @@
     <Compile Include="UI\Tools\AsyncRelayCommand.cs" />
     <Compile Include="UI\Tools\BaseNotifyPropertyChanged.cs" />
     <Compile Include="UI\Converters\IsNullConverter.cs" />
+    <Compile Include="UI\Tools\FindVisualElement.cs" />
     <Compile Include="UI\Tools\NotifyPropertyChangedExtension.cs" />
     <Compile Include="UI\Tools\NotifyTaskCompletion.cs" />
     <Compile Include="UI\Tools\RelayCommand.cs" />
+    <Compile Include="UI\ValidationRules\CheckDateValidation.cs" />
+    <Compile Include="UI\ValidationRules\DateCheck.cs" />
+    <Compile Include="UI\ValidationRules\FutureDateValidationRule.cs" />
+    <Compile Include="UI\ValidationRules\FutureTimeValidationRule.cs" />
     <Compile Include="UI\ValidationRules\NotEmptyValidationRule.cs" />
     <Compile Include="Unity\MacroContainer.cs" />
     <Compile Include="Tools\StringExtensions.cs" />
@@ -233,6 +242,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UI\PagePart\ScriptView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\PagePart\Settings\FutureDatePicker.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
