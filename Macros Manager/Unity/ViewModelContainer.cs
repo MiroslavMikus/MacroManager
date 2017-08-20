@@ -25,7 +25,7 @@ namespace Macros_Manager.Unity
 
             Container.RegisterType<ContentControl, ViewFrame>(UnityDefs.View.Frame, new TransientLifetimeManager());
 
-            Container.RegisterType<ContentControl, Description>(UnityDefs.View.Description, new ContainerControlledLifetimeManager());
+            Container.RegisterType<ContentControl, Description>(UnityDefs.View.Description, new TransientLifetimeManager());
 
             Container.RegisterType<ContentControl, Description>(UnityDefs.ViewModel.Label, new ContainerControlledLifetimeManager()); 
 
