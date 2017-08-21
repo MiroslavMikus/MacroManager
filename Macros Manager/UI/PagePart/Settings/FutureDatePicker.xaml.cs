@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Macros_Manager.UI.DependencyObjects;
 using Macros_Manager.UI.ValidationRules;
 using MahApps.Metro.Controls;
 
@@ -25,7 +26,6 @@ namespace Macros_Manager.UI.PagePart.Settings
         public FutureDatePicker()
         {
             InitializeComponent();
-            FuturePickerDate.BlackoutDates.AddDatesInPast();
         }
 
         private void FuturePickerDate_OnSelectedDateChanged(object a_sender, SelectionChangedEventArgs a_e)

@@ -6,11 +6,12 @@
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:validation="clr-namespace:Macros_Manager.UI.ValidationRules"
              xmlns:local="clr-namespace:Macros_Manager.UI.PagePart.Settings"
+             xmlns:root="clr-namespace:Macros_Manager.UI.DependencyObjects"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
+             d:DesignHeight="50" d:DesignWidth="300">
     <UserControl.Resources>
         <ResourceDictionary>
-            <validation:DateCheck x:Key="DateCheckObject" />
+            <root:DateCheck x:Key="DateCheckObject" />
         </ResourceDictionary>
     </UserControl.Resources>
     <Grid>
@@ -18,7 +19,7 @@
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <DatePicker Grid.Column="0" Margin="10" x:Name="FuturePickerDate" materialDesign:HintAssist.Hint="Future Date" SelectedDateChanged="FuturePickerDate_OnSelectedDateChanged" >
+        <DatePicker Grid.Column="0" Margin="10" root:AttachedProperties.BlockPastDates="true" x:Name="FuturePickerDate" materialDesign:HintAssist.Hint="Future Date" SelectedDateChanged="FuturePickerDate_OnSelectedDateChanged" >
             <DatePicker.SelectedDate>
                 <Binding Path="RepeatUntilDate" UpdateSourceTrigger="PropertyChanged">
                     <Binding.ValidationRules>

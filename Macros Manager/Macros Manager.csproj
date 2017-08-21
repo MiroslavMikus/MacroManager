@@ -156,6 +156,7 @@
     <Compile Include="UI\Converters\IsLabelConverter.cs" />
     <Compile Include="UI\Converters\IsNotNullConverter.cs" />
     <Compile Include="UI\Converters\ObjectToTypeStringConverter.cs" />
+    <Compile Include="UI\DependencyObjects\AttachedProperties.cs" />
     <Compile Include="UI\PagePart\Description\DescriptionViewModel.cs" />
     <Compile Include="UI\PagePart\Description\Description.xaml.cs">
       <DependentUpon>Description.xaml</DependentUpon>
@@ -191,7 +192,7 @@
     <Compile Include="UI\Tools\NotifyTaskCompletion.cs" />
     <Compile Include="UI\Tools\RelayCommand.cs" />
     <Compile Include="UI\ValidationRules\CheckDateValidation.cs" />
-    <Compile Include="UI\ValidationRules\DateCheck.cs" />
+    <Compile Include="UI\DependencyObjects\DateCheck.cs" />
     <Compile Include="UI\ValidationRules\FutureDateValidationRule.cs" />
     <Compile Include="UI\ValidationRules\FutureTimeValidationRule.cs" />
     <Compile Include="UI\ValidationRules\NotEmptyValidationRule.cs" />

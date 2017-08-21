@@ -180,7 +180,7 @@ namespace Macros_Manager.MacroController.LoopController
             }
         }
 
-        private void CommandWrapper(Action a_acitonToWrap)
+        private void CommandWrapper(Action a_actionToWrap)
         {
             IsActive = true;
 
@@ -188,7 +188,7 @@ namespace Macros_Manager.MacroController.LoopController
 
             _excutionTimer = new Timer();
 
-            a_acitonToWrap();
+            a_actionToWrap();
 
             _excutionTimer.Interval = _timerInterval;
 

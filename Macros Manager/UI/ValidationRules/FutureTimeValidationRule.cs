@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
 using Macros_Manager.Tools;
+using Macros_Manager.UI.DependencyObjects;
 
 namespace Macros_Manager.UI.ValidationRules
 {

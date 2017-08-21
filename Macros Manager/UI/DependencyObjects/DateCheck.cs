@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows;
 
-namespace Macros_Manager.UI.ValidationRules
+namespace Macros_Manager.UI.DependencyObjects
 {
     public class DateCheck : DependencyObject
     {
