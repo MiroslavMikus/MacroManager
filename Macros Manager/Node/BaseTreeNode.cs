@@ -1,22 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Controls;
-using System.Windows.Input;
-using Macros_Manager.Model.Interfaces;
-using Macros_Manager.UI.PagePart;
+using Macros_Manager.Node.Interfaces;
 using Macros_Manager.UI.PagePart.Description;
 using Macros_Manager.UI.Tools;
 using Macros_Manager.Unity;
 using Microsoft.Practices.Unity;
-using static Macros_Manager.Unity.VmcSingleton;
 
-
-namespace Macros_Manager.Model.UI
+namespace Macros_Manager.Node
 {
     public abstract class BaseTreeNode : BaseNotifyPropertyChanged, INode
     {
@@ -55,7 +46,7 @@ namespace Macros_Manager.Model.UI
         protected abstract ContentControl ContentCreator();
         protected ContentControl CreateViewWrapper(IEnumerable<TabItem> a_tabItems)
         {
-            var view = VmcContainer.Container.Resolve<ContentControl>(UnityDefs.View.Frame, new ParameterOverride("a_items", a_tabItems));
+            var view = VmcSingleton.VmcContainer.Container.Resolve<ContentControl>(UnityDefs.View.Frame, new ParameterOverride("a_items", a_tabItems));
 
             if (view != null) view.DataContext = this;
 

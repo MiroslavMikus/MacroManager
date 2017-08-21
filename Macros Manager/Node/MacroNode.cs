@@ -1,24 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using System.Windows.Controls;
-using System.Windows.Input;
-
-using Microsoft.Practices.Unity;
-
-using Macros_Manager.Macro;
-using Macros_Manager.Macro.Powershell;
 using Macros_Manager.MacroController;
-using Macros_Manager.Model.Interfaces;
+using Macros_Manager.Node.Interfaces;
 using Macros_Manager.Tools;
 using Macros_Manager.UI.PagePart.Settings;
 using Macros_Manager.Unity;
-using static Macros_Manager.Unity.VmcSingleton;
+using Microsoft.Practices.Unity;
 
-namespace Macros_Manager.Model.UI
+namespace Macros_Manager.Node
 {
     public class MacroNode : BaseTreeNode, IMacroNode
     {
@@ -63,17 +52,17 @@ namespace Macros_Manager.Model.UI
                     new TabItem
                     {
                         Header = "Script",
-                        Content = VmcContainer.Container.Resolve<ContentControl>(UnityDefs.View.ScriptView)
+                        Content = VmcSingleton.VmcContainer.Container.Resolve<ContentControl>(UnityDefs.View.ScriptView)
                     },
                     new TabItem
                     {
                         Header = UnityDefs.View.Description,
-                        Content = VmcContainer.Container.Resolve<ContentControl>(UnityDefs.View.Description)
+                        Content = VmcSingleton.VmcContainer.Container.Resolve<ContentControl>(UnityDefs.View.Description)
                     },
                     new TabItem
                     {
                         Header = "Settings",
-                        Content = VmcContainer.Container.Resolve<SettingsView>()
+                        Content = VmcSingleton.VmcContainer.Container.Resolve<SettingsView>()
                     }
                 };
                 _contentSingleton = CreateViewWrapper(items);

@@ -1,12 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Windows.Controls;
-using Macros_Manager.UI.Tools;
 using Macros_Manager.Tools;
+using Macros_Manager.UI.Tools;
 using Macros_Manager.Unity;
-using static Macros_Manager.Unity.VmcSingleton;
 
-
-namespace Macros_Manager.Model.UI
+namespace Macros_Manager.Node
 {
     public class LabelNode : BaseTreeNode
     {
@@ -30,7 +28,7 @@ namespace Macros_Manager.Model.UI
                 new TabItem
                 {
                     Header = UnityDefs.View.Description,
-                    Content = VmcContainer.Container.Resolve<ContentControl>(UnityDefs.View.Description)
+                    Content = VmcSingleton.VmcContainer.Container.Resolve<ContentControl>(UnityDefs.View.Description)
                 }
             };
             return CreateViewWrapper(items);

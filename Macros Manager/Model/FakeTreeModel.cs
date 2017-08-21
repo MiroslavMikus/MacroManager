@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using Macros_Manager.Model.Interfaces;
-using Macros_Manager.Model.UI;
+using Macros_Manager.Node;
+using Macros_Manager.Node.Interfaces;
 using Macros_Manager.Tools;
 using Macros_Manager.Unity;
 using Microsoft.Practices.Unity;

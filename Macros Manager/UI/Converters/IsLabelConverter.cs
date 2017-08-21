@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Globalization;
 using System.Windows.Data;
-using Macros_Manager.Model.UI;
+using Macros_Manager.Node;
 
 namespace Macros_Manager.UI.Converters
 {

@@ -137,14 +137,15 @@
     </Compile>
     <Compile Include="MacroController\IMacroController.cs" />
     <Compile Include="MacroController\LoopController\LoopController.cs" />
+    <Compile Include="MacroController\LoopController\LoopControllerStates.cs" />
     <Compile Include="MacroController\SimpleMacroController.cs" />
     <Compile Include="Macro\FakeMacro.cs" />
     <Compile Include="Macro\Powershell\PowershellMacro.cs" />
     <Compile Include="Model\AppSettings.cs" />
     <Compile Include="Model\FakeTreeModel.cs" />
-    <Compile Include="Model\UI\BaseTreeNode.cs" />
-    <Compile Include="Model\UI\LabelNode.cs" />
-    <Compile Include="Model\UI\MacroNode.cs" />
+    <Compile Include="Node\BaseTreeNode.cs" />
+    <Compile Include="Node\LabelNode.cs" />
+    <Compile Include="Node\MacroNode.cs" />
     <Compile Include="Tools\DateTimeExtensions.cs" />
     <Compile Include="Tools\UnityContainerExtensions.cs" />
     <Compile Include="Properties\Annotations.cs" />
@@ -207,10 +208,10 @@
     <Compile Include="UI\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Model\Interfaces\IHasContent.cs" />
+    <Compile Include="Node\Interfaces\IHasContent.cs" />
     <Compile Include="Macro\IMacro.cs" />
-    <Compile Include="Model\Interfaces\IMacroNode.cs" />
-    <Compile Include="Model\Interfaces\INode.cs" />
+    <Compile Include="Node\Interfaces\IMacroNode.cs" />
+    <Compile Include="Node\Interfaces\INode.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>

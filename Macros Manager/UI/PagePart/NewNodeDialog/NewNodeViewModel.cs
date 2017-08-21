@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Security.AccessControl;
-using Macros_Manager.Model.Interfaces;
-using Macros_Manager.Model.UI;
+using Macros_Manager.Node;
+using Macros_Manager.Node.Interfaces;
 using Macros_Manager.UI.Tools;
 using Macros_Manager.Unity;
 

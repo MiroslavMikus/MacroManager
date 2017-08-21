@@ -2,7 +2,7 @@
 using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Threading;
-using Macros_Manager.Model.Interfaces;
+using Macros_Manager.Node.Interfaces;
 using Macros_Manager.Repository.LocalStorage;
 
 namespace Macros_Manager.Model

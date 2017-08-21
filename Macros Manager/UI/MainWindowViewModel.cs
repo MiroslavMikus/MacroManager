@@ -14,8 +14,7 @@ using System.Windows.Threading;
 
 using Macros_Manager.Annotations;
 using Macros_Manager.Model;
-using Macros_Manager.Model.Interfaces;
-using Macros_Manager.Model.UI;
+using Macros_Manager.Node.Interfaces;
 using Macros_Manager.Repository.LocalStorage;
 using Macros_Manager.UI.PagePart.NewNodeDialog;
 using Macros_Manager.UI.Tools;

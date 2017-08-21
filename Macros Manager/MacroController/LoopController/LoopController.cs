@@ -66,13 +66,7 @@ namespace Macros_Manager.MacroController.LoopController
             }
         }
 
-        private int _loopCounter;
-
-        public int LoopCounter
-        {
-            get { return _loopCounter; }
-            set { _loopCounter = value; }
-        }
+        public int LoopCounter { get; set; }
 
         public override ICommand Activate
         {
@@ -194,12 +188,5 @@ namespace Macros_Manager.MacroController.LoopController
 
             _excutionTimer.Start();
         }
-    }
-
-    public enum LoopControllerStates
-    {
-        Infinite,
-        LoopCount,
-        LoopUntil
     }
 }
