@@ -42,16 +42,6 @@ namespace Macros_Manager.Unity
         }
 
         public string Instance { get; set; }
-        public string View => Instance.Combine(_defaultView);
-        public string Settings => Instance.Combine(_defaultSettings);
-        public string MacroNode => Instance.Combine(MacroControllerTypes.Macro);
-        public string LoopNode => Instance.Combine(MacroControllerTypes.LoopMacro);
-        public string ToogleNode => Instance.Combine(MacroControllerTypes.ToogleMacro);
-
-        private static readonly string _defaultView = "View";
-
-        private static readonly string _defaultSettings = "Settings";
-
     }
 
     public static class TypeDefExtensions
