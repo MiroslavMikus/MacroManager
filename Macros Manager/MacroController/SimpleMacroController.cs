@@ -1,8 +1,8 @@
 ﻿using System.Threading;
 using System.Windows.Input;
 using Macros_Manager.Macro;
-using Macros_Manager.UI.Tools;
 using Macros_Manager.Unity;
+using Macros_Manager.View.Tools;
 
 namespace Macros_Manager.MacroController
 {

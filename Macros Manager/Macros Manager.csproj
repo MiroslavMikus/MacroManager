@@ -164,51 +164,51 @@
     <Compile Include="Repository\LocalStorage\FileTool.cs" />
     <Compile Include="Repository\LocalStorage\JsonStorage.cs" />
     <Compile Include="Repository\LocalStorage\StorageDefs.cs" />
-    <Compile Include="UI\Converters\AreNotNullOrFalse.cs" />
-    <Compile Include="UI\Converters\InvertBoolean.cs" />
-    <Compile Include="UI\Converters\IsLabelConverter.cs" />
-    <Compile Include="UI\Converters\IsNotNullConverter.cs" />
-    <Compile Include="UI\Converters\ObjectToTypeStringConverter.cs" />
-    <Compile Include="UI\DependencyObjects\AttachedProperties.cs" />
-    <Compile Include="UI\PagePart\Description\DescriptionViewModel.cs" />
-    <Compile Include="UI\PagePart\Description\Description.xaml.cs">
+    <Compile Include="View\Converters\AreNotNullOrFalse.cs" />
+    <Compile Include="View\Converters\InvertBoolean.cs" />
+    <Compile Include="View\Converters\IsLabelConverter.cs" />
+    <Compile Include="View\Converters\IsNotNullConverter.cs" />
+    <Compile Include="View\Converters\ObjectToTypeStringConverter.cs" />
+    <Compile Include="View\DependencyObjects\AttachedProperties.cs" />
+    <Compile Include="View\PagePart\Description\DescriptionViewModel.cs" />
+    <Compile Include="View\PagePart\Description\Description.xaml.cs">
       <DependentUpon>Description.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\PagePart\NewNodeDialog\NewNodeValueConverter.cs" />
-    <Compile Include="UI\PagePart\NewNodeDialog\NewNodeView.xaml.cs">
+    <Compile Include="View\PagePart\NewNodeDialog\NewNodeValueConverter.cs" />
+    <Compile Include="View\PagePart\NewNodeDialog\NewNodeView.xaml.cs">
       <DependentUpon>NewNodeView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\PagePart\NewNodeDialog\NewNodeViewModel.cs" />
-    <Compile Include="UI\MainWindowViewModel.cs" />
-    <Compile Include="UI\PagePart\ScriptView.xaml.cs">
+    <Compile Include="View\PagePart\NewNodeDialog\NewNodeViewModel.cs" />
+    <Compile Include="View\MainWindowViewModel.cs" />
+    <Compile Include="View\PagePart\ScriptView.xaml.cs">
       <DependentUpon>ScriptView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Tools\EnumExtensions.cs" />
     <Compile Include="Tools\FuncTool.cs" />
-    <Compile Include="UI\PagePart\Description\MyXamlSchemaContext.cs" />
-    <Compile Include="UI\PagePart\NewNodeDialog\OkButtonIsEnabledConverter.cs" />
-    <Compile Include="UI\PagePart\Settings\FutureDatePicker.xaml.cs">
+    <Compile Include="View\PagePart\Description\MyXamlSchemaContext.cs" />
+    <Compile Include="View\PagePart\NewNodeDialog\OkButtonIsEnabledConverter.cs" />
+    <Compile Include="View\PagePart\Settings\FutureDatePicker.xaml.cs">
       <DependentUpon>FutureDatePicker.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\PagePart\Settings\SettingsView.xaml.cs">
+    <Compile Include="View\PagePart\Settings\SettingsView.xaml.cs">
       <DependentUpon>SettingsView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\PagePart\Settings\StringToMacroControllerTypeConverter.cs" />
-    <Compile Include="UI\PagePart\ViewFrame\ViewFrame.xaml.cs">
+    <Compile Include="View\PagePart\Settings\StringToMacroControllerTypeConverter.cs" />
+    <Compile Include="View\PagePart\ViewFrame\ViewFrame.xaml.cs">
       <DependentUpon>ViewFrame.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\Tools\AsyncRelayCommand.cs" />
-    <Compile Include="UI\Tools\BaseNotifyPropertyChanged.cs" />
-    <Compile Include="UI\Converters\IsNullConverter.cs" />
-    <Compile Include="UI\Tools\FindVisualElement.cs" />
-    <Compile Include="UI\Tools\NotifyPropertyChangedExtension.cs" />
-    <Compile Include="UI\Tools\NotifyTaskCompletion.cs" />
-    <Compile Include="UI\Tools\RelayCommand.cs" />
-    <Compile Include="UI\ValidationRules\CheckDateValidation.cs" />
-    <Compile Include="UI\DependencyObjects\DateCheck.cs" />
-    <Compile Include="UI\ValidationRules\FutureDateValidationRule.cs" />
-    <Compile Include="UI\ValidationRules\FutureTimeValidationRule.cs" />
-    <Compile Include="UI\ValidationRules\NotEmptyValidationRule.cs" />
+    <Compile Include="View\Tools\AsyncRelayCommand.cs" />
+    <Compile Include="View\Tools\BaseNotifyPropertyChanged.cs" />
+    <Compile Include="View\Converters\IsNullConverter.cs" />
+    <Compile Include="View\Tools\FindVisualElement.cs" />
+    <Compile Include="View\Tools\NotifyPropertyChangedExtension.cs" />
+    <Compile Include="View\Tools\NotifyTaskCompletion.cs" />
+    <Compile Include="View\Tools\RelayCommand.cs" />
+    <Compile Include="View\ValidationRules\CheckDateValidation.cs" />
+    <Compile Include="View\DependencyObjects\DateCheck.cs" />
+    <Compile Include="View\ValidationRules\FutureDateValidationRule.cs" />
+    <Compile Include="View\ValidationRules\FutureTimeValidationRule.cs" />
+    <Compile Include="View\ValidationRules\NotEmptyValidationRule.cs" />
     <Compile Include="Unity\MacroContainer.cs" />
     <Compile Include="Tools\StringExtensions.cs" />
     <Compile Include="Unity\MacroControllerTypes.cs" />
@@ -217,7 +217,7 @@
     <Compile Include="Unity\UnityDefs.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="UI\MainWindow.xaml.cs">
+    <Compile Include="View\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Node\Interfaces\IHasContent.cs" />
@@ -243,39 +243,39 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Page Include="UI\PagePart\Description\Description.xaml">
+    <Page Include="View\PagePart\Description\Description.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UI\PagePart\NewNodeDialog\NewNodeView.xaml">
+    <Page Include="View\PagePart\NewNodeDialog\NewNodeView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UI\MainWindow.xaml">
+    <Page Include="View\MainWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UI\PagePart\ScriptView.xaml">
+    <Page Include="View\PagePart\ScriptView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UI\PagePart\Settings\FutureDatePicker.xaml">
+    <Page Include="View\PagePart\Settings\FutureDatePicker.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UI\PagePart\Settings\SettingsView.xaml">
+    <Page Include="View\PagePart\Settings\SettingsView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UI\PagePart\ViewFrame\ViewFrame.xaml">
+    <Page Include="View\PagePart\ViewFrame\ViewFrame.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UI\Resources\ExternalResources.xaml">
+    <Page Include="View\Resources\ExternalResources.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UI\Resources\MhAppsBrushes.xaml">
+    <Page Include="View\Resources\MhAppsBrushes.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

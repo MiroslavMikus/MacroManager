@@ -1,0 +1,27 @@
+﻿<UserControl x:Class="Macros_Manager.View.PagePart.ScriptView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:converters1="clr-namespace:Macros_Manager.View.Converters"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <UserControl.Resources>
+        <converters1:InvertBoolean x:Key="InvertConverter"></converters1:InvertBoolean>
+    </UserControl.Resources>
+    <DockPanel LastChildFill="True">
+        <Button DockPanel.Dock="Bottom" Content="_Test" Margin="10" Command="{Binding MController.TestScript }"
+                IsEnabled="{Binding MController.IsActive , Converter={StaticResource InvertConverter}}"/>
+        <TextBox Margin="10"
+                 Padding="5"
+                 VerticalContentAlignment="Top"
+                 TextWrapping="Wrap"
+                 AcceptsReturn="True"     
+                 AcceptsTab="True"
+                 FontFamily="Consolas"
+                 VerticalScrollBarVisibility="Auto"
+                 materialDesign:HintAssist.Hint="Powershell Script"
+                 Text="{Binding MController.Macro.Script, UpdateSourceTrigger=PropertyChanged}"/>
+    </DockPanel>
+</UserControl>

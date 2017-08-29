@@ -2,9 +2,9 @@
 using System.Collections.ObjectModel;
 using System.Windows.Controls;
 using Macros_Manager.Node.Interfaces;
-using Macros_Manager.UI.PagePart.Description;
-using Macros_Manager.UI.Tools;
 using Macros_Manager.Unity;
+using Macros_Manager.View.PagePart.Description;
+using Macros_Manager.View.Tools;
 using Microsoft.Practices.Unity;
 
 namespace Macros_Manager.Node

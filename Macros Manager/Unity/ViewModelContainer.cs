@@ -6,10 +6,10 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
 using Macros_Manager.UI;
-using Macros_Manager.UI.PagePart;
-using Macros_Manager.UI.PagePart.Description;
-using Macros_Manager.UI.PagePart.ViewFrame;
+using Macros_Manager.View.PagePart.Description;
+using Macros_Manager.View.PagePart.ViewFrame;
 using Microsoft.Practices.Unity;
+using ScriptView = Macros_Manager.View.PagePart.ScriptView;
 
 namespace Macros_Manager.Unity
 {

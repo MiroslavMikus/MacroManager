@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using Macros_Manager.Macro;
 using Macros_Manager.Tools;
-using Macros_Manager.UI.Tools;
 
 namespace Macros_Manager.Unity
 {

@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Windows.Controls;
 using Macros_Manager.Tools;
-using Macros_Manager.UI.Tools;
 using Macros_Manager.Unity;
+using Macros_Manager.View.Tools;
 
 namespace Macros_Manager.Node
 {

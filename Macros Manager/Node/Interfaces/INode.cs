@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using System.ComponentModel;
-using Macros_Manager.UI.PagePart.Description;
+using Macros_Manager.View.PagePart.Description;
 
 namespace Macros_Manager.Node.Interfaces
 {

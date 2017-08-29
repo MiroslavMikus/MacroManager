@@ -4,12 +4,12 @@
              xmlns:local="clr-namespace:Macros_Manager"
              xmlns:dragablz="http://dragablz.net/winfx/xaml/dragablz"
              xmlns:unity="clr-namespace:Macros_Manager.Unity"
-             StartupUri="UI/MainWindow.xaml">
+             StartupUri="View/MainWindow.xaml">
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="UI/Resources/ExternalResources.xaml" />
-                <ResourceDictionary Source="UI/Resources/MhAppsBrushes.xaml" />
+                <ResourceDictionary Source="View/Resources/ExternalResources.xaml" />
+                <ResourceDictionary Source="View/Resources/MhAppsBrushes.xaml" />
             </ResourceDictionary.MergedDictionaries>
             <unity:ViewModelContainer x:Key="Container"/>
         </ResourceDictionary>

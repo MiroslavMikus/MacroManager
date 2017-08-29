@@ -3,8 +3,8 @@ using System.Windows.Controls;
 using Macros_Manager.MacroController;
 using Macros_Manager.Node.Interfaces;
 using Macros_Manager.Tools;
-using Macros_Manager.UI.PagePart.Settings;
 using Macros_Manager.Unity;
+using Macros_Manager.View.PagePart.Settings;
 using Microsoft.Practices.Unity;
 
 namespace Macros_Manager.Node
