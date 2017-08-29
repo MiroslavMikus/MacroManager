@@ -10,7 +10,7 @@ namespace Macros_Manager.Model
         public string Name { get; set; }
         public bool CanBeDeleted { get; set; }
         public string RawDescription { get; set; }
-        public virtual ICollection<NodeData> ChildNodes { get; set; }
+        public virtual ICollection<NodeData> ChildNodes { get; set; } = new List<NodeData>();
     }
 
     public class MacroNodeData : NodeData
