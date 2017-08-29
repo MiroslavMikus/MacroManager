@@ -12,30 +12,6 @@ namespace Macros_Manager.Test
     public class SyntaxTest
     {
         [TestMethod]
-        public void EnumCast()
-        {
-            Console.WriteLine(Types.Macro.ToString());
-        }
-
-        enum Types
-        {
-            Macro,
-            Loop,
-            Toogle
-        }
-
-        [TestMethod]
-        public void AddNullToList()
-        {
-            var list = new List<string>();
-            list.Add(null);
-            list.Add(null);
-            list.Add(null);
-            list.Add(null);
-            list.Add(null);
-        }
-
-        [TestMethod]
         public void TestRegex()
         {
             var TextToTest = "123 321";
