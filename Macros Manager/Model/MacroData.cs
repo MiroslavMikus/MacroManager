@@ -5,7 +5,6 @@ namespace Macros_Manager.Model
 {
     public class MacroData  
     {
-        [Key]
         public int Id { get; set; }
         public string Name { get; set; }
         public TypeDescriptionData Description { get; set; }

@@ -26,19 +26,13 @@ namespace Macros_Manager.Model
 
         protected override void OnModelCreating(DbModelBuilder a_modelBuilder)
         {
+            ModelConfig.Configure(a_modelBuilder);
+
             var initializer = new MacroContextInitializer(a_modelBuilder);
 
             Database.SetInitializer(initializer);
 
             base.OnModelCreating(a_modelBuilder);
-        }
-    }
-
-    public static class Modelconfig
-    {
-        public static void Configure(MacroContext a_context)
-        {
-
         }
     }
 }

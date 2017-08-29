@@ -4,7 +4,7 @@ using SQLite.CodeFirst;
 
 namespace Macros_Manager.Model
 {
-    public class MacroContextInitializer : SqliteDropCreateDatabaseWhenModelChanges<MacroContext>
+    public class MacroContextInitializer : SqliteDropCreateDatabaseAlways<MacroContext>
     {
         public MacroContextInitializer(DbModelBuilder a_modelBuilder)
             : base(a_modelBuilder)
@@ -37,26 +37,30 @@ namespace Macros_Manager.Model
 
             a_context.NodeData.Add(dashboards);
 
+            var psController = new ControllerData
+            {
+                Type = MacroControllerTypes.LoopMacro,
+                Macro = new MacroData
+                {
+                    Description = UnityDefs.Powershell.GetTypeData(),
+                    Name = "powershell macro",
+                    Script = "notepad",
+                }
+            };
+
+            a_context.Controllers.Add(psController);
+
             var powershell = new MacroNodeData
             {
                 Name = "Powershell",
                 CanBeDeleted = true,
-                RawDescription = "Powershell Descripttion",
-                Controller = new ControllerData
-                {
-                    Type = MacroControllerTypes.LoopMacro,
-                    Macro = new MacroData
-                    {
-                        Description = UnityDefs.Powershell.GetTypeData(),
-                        Name = "powershell macro",
-                        Script = "notepad",
-                    }
-                }
+                RawDescription = "Powershell Description",
+                Controller = psController
             };
 
             a_context.MacroNodes.Add(powershell);
 
-            base.Seed(a_context);
+            a_context.SaveChanges();
         }
     }
 }
