@@ -1,13 +1,16 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace Macros_Manager.Model
 {
     public class NodeData
     {
+        [Key]
+        public int Id { get; set; }
         public string Name { get; set; }
         public bool CanBeDeleted { get; set; }
         public string RawDescription { get; set; }
-        public ICollection<NodeData> ChildNodes { get; set; }
+        public virtual ICollection<NodeData> ChildNodes { get; set; }
     }
 
     public class MacroNodeData : NodeData
