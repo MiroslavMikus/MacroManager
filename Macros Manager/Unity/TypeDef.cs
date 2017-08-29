@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Macros_Manager.Macro;
+using Macros_Manager.Model;
 using Macros_Manager.Tools;
 
 namespace Macros_Manager.Unity
@@ -13,6 +14,15 @@ namespace Macros_Manager.Unity
             Instance = a_instanceName;
             PossibleMacroControllersTypes = a_possiblePossibleMacroControllersTypes;
             HasSubtype = a_hasSubtype;
+        }
+
+        public TypeDescriptionData GetTypeData()
+        {
+            return new TypeDescriptionData
+            {
+                Instance = this.Instance,
+                PossibleMacroControllersTypes = PossibleMacroControllersTypes
+            };
         }
 
         public Type CurrentType { get; set; }

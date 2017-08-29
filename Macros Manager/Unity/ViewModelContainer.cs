@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
-using Macros_Manager.UI;
+using Macros_Manager.View;
 using Macros_Manager.View.PagePart.Description;
 using Macros_Manager.View.PagePart.ViewFrame;
 using Microsoft.Practices.Unity;
