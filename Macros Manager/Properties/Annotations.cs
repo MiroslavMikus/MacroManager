@@ -668,14 +668,14 @@ namespace Macros_Manager.Annotations
 
   /// <summary>
   /// ASP.NET MVC attribute. Indicates that a parameter is an MVC Master. Use this attribute
-  /// for custom wrappers similar to <c>System.Web.Mvc.Controller.View(String, String)</c>.
+  /// for custom wrappers similar to <c>System.Web.Mvc.TController.View(String, String)</c>.
   /// </summary>
   [AttributeUsage(AttributeTargets.Parameter)]
   public sealed class AspMvcMasterAttribute : Attribute { }
 
   /// <summary>
   /// ASP.NET MVC attribute. Indicates that a parameter is an MVC model type. Use this attribute
-  /// for custom wrappers similar to <c>System.Web.Mvc.Controller.View(String, Object)</c>.
+  /// for custom wrappers similar to <c>System.Web.Mvc.TController.View(String, Object)</c>.
   /// </summary>
   [AttributeUsage(AttributeTargets.Parameter)]
   public sealed class AspMvcModelTypeAttribute : Attribute { }
@@ -723,7 +723,7 @@ namespace Macros_Manager.Annotations
   /// ASP.NET MVC attribute. If applied to a parameter, indicates that the parameter
   /// is an MVC view component. If applied to a method, the MVC view name is calculated implicitly
   /// from the context. Use this attribute for custom wrappers similar to
-  /// <c>System.Web.Mvc.Controller.View(Object)</c>.
+  /// <c>System.Web.Mvc.TController.View(Object)</c>.
   /// </summary>
   [AttributeUsage(AttributeTargets.Parameter | AttributeTargets.Method)]
   public sealed class AspMvcViewAttribute : Attribute { }

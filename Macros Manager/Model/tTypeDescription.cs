@@ -3,7 +3,7 @@ using Macros_Manager.Unity;
 
 namespace Macros_Manager.Model
 {
-    public class TypeDescriptionData
+    public class tTypeDescription
     {
         public int Id { get; set; }
         public string Instance { get; set; }

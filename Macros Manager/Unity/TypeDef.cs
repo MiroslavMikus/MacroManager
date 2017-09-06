@@ -16,9 +16,9 @@ namespace Macros_Manager.Unity
             HasSubtype = a_hasSubtype;
         }
 
-        public TypeDescriptionData GetTypeData()
+        public tTypeDescription GetTypeData()
         {
-            return new TypeDescriptionData
+            return new tTypeDescription
             {
                 Instance = this.Instance,
                 PossibleMacroControllersTypes = PossibleMacroControllersTypes

@@ -64,9 +64,9 @@
             <!--Controller-->
             <materialDesign:Card Style="{StaticResource Card}">
                 <StackPanel Orientation="Vertical">
-                    <TextBlock Style="{StaticResource CardHeader}">Controller :</TextBlock>
+                    <TextBlock Style="{StaticResource CardHeader}">TController :</TextBlock>
                     <DockPanel LastChildFill="True">
-                        <TextBlock Style="{StaticResource CardTextBlock}" DockPanel.Dock="Left" Text="Controller Type :"/>
+                        <TextBlock Style="{StaticResource CardTextBlock}" DockPanel.Dock="Left" Text="TController Type :"/>
                         <ToggleButton x:Name="TgEnable" DockPanel.Dock="Right" Margin="10 0 10 0" />
                         <ComboBox ItemsSource="{Binding MController.Macro.Definition.PossibleTypes}"
                                   SelectedItem="{Binding ControllerType, Converter={StaticResource MacroControllerTypeConverter}, Delay=250, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"

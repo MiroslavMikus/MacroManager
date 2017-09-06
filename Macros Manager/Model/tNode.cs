@@ -4,17 +4,17 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Macros_Manager.Model
 {
-    public class NodeData
+    public class tNode
     {
         public int Id { get; set; }
         public string Name { get; set; }
         public bool CanBeDeleted { get; set; }
         public string RawDescription { get; set; }
-        public virtual ICollection<NodeData> ChildNodes { get; set; } = new List<NodeData>();
+        public virtual ICollection<tNode> ChildNodes { get; set; } = new List<tNode>();
     }
 
-    public class MacroNodeData : NodeData
+    public class TMacroTNode : tNode
     {
-        public ControllerData Controller { get; set; }
+        public tController TController { get; set; }
     }
 }

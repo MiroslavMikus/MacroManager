@@ -16,35 +16,35 @@ namespace Macros_Manager.Model
 
         private static void ConfigureNodeData(DbModelBuilder a_modelBuilder)
         {
-            a_modelBuilder.Entity<NodeData>().ToTable("NodeData")
+            a_modelBuilder.Entity<tNode>().ToTable("tNode")
                 .HasKey(a => a.Id);
         }
 
         private static void ConfigureMacroNodeData(DbModelBuilder a_modelBuilder)
         {
-            a_modelBuilder.Entity<MacroNodeData>().ToTable("MacroNodeData")
-                .HasRequired(a => a.Controller)
+            a_modelBuilder.Entity<TMacroTNode>().ToTable("TMacroTNode")
+                .HasRequired(a => a.TController)
                 .WithRequiredPrincipal()
                 .WillCascadeOnDelete(false);
         }
 
         private static void ConfigureControllerData(DbModelBuilder a_modelBuilder)
         {
-            a_modelBuilder.Entity<ControllerData>().ToTable("ControllerData")
+            a_modelBuilder.Entity<tController>().ToTable("tController")
                 .HasKey(a => a.Id);
 
-            a_modelBuilder.Entity<ControllerData>()
-                .HasRequired(a => a.Macro)
+            a_modelBuilder.Entity<tController>()
+                .HasRequired(a => a.TMacro)
                 .WithRequiredPrincipal()
                 .WillCascadeOnDelete(false);
         }
 
         private static void ConfigureMacroData(DbModelBuilder a_modelBuilder)
         {
-            a_modelBuilder.Entity<MacroData>().ToTable("MacroData")
+            a_modelBuilder.Entity<tMacro>().ToTable("tMacro")
                 .HasKey(a => a.Id);
 
-            a_modelBuilder.Entity<MacroData>()
+            a_modelBuilder.Entity<tMacro>()
                 .HasRequired(a => a.Description)
                 .WithRequiredPrincipal()
                 .WillCascadeOnDelete(false);
@@ -52,7 +52,7 @@ namespace Macros_Manager.Model
 
         private static void ConfigureTypeDescritptionData(DbModelBuilder a_modelBuilder)
         {
-            a_modelBuilder.Entity<TypeDescriptionData>().ToTable("TypeDescriptionData")
+            a_modelBuilder.Entity<tTypeDescription>().ToTable("tTypeDescription")
                 .HasKey(a => a.Id);
         }
     }

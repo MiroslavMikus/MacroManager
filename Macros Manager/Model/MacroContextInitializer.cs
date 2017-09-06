@@ -13,20 +13,20 @@ namespace Macros_Manager.Model
 
         protected override void Seed(MacroContext a_context)
         {
-            var dashboards = new NodeData
+            var dashboards = new tNode
             {
                 Name = "Dashboards",
                 CanBeDeleted = false,
                 RawDescription = "Dashboard description",
                 ChildNodes = 
                 {
-                    new NodeData
+                    new tNode
                     {
                         Name = "First Dashboard",
                         CanBeDeleted = true,
                         RawDescription = "Dashboard description"
                     },
-                    new NodeData
+                    new tNode
                     {
                         Name = "First Dashboard",
                         CanBeDeleted = true,
@@ -37,10 +37,10 @@ namespace Macros_Manager.Model
 
             a_context.NodeData.Add(dashboards);
 
-            var psController = new ControllerData
+            var psController = new tController
             {
                 Type = MacroControllerTypes.LoopMacro,
-                Macro = new MacroData
+                TMacro = new tMacro
                 {
                     Description = UnityDefs.Powershell.GetTypeData(),
                     Name = "powershell macro",
@@ -50,12 +50,12 @@ namespace Macros_Manager.Model
 
             a_context.Controllers.Add(psController);
 
-            var powershell = new MacroNodeData
+            var powershell = new TMacroTNode
             {
                 Name = "Powershell",
                 CanBeDeleted = true,
                 RawDescription = "Powershell Description",
-                Controller = psController
+                TController = psController
             };
 
             a_context.MacroNodes.Add(powershell);

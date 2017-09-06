@@ -18,11 +18,11 @@ namespace Macros_Manager.Model
             Configuration.LazyLoadingEnabled = true;
         }
 
-        public DbSet<NodeData> NodeData { get; set; }
-        public DbSet<MacroNodeData> MacroNodes { get; set; }
-        public DbSet<TypeDescriptionData> TypeDescriptions { get; set; }
-        public DbSet<MacroData> Macros { get; set; }
-        public DbSet<ControllerData> Controllers { get; set; }
+        public DbSet<tNode> NodeData { get; set; }
+        public DbSet<TMacroTNode> MacroNodes { get; set; }
+        public DbSet<tTypeDescription> TypeDescriptions { get; set; }
+        public DbSet<tMacro> Macros { get; set; }
+        public DbSet<tController> Controllers { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder a_modelBuilder)
         {
