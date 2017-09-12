@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Windows.Controls;
+using Macros_Manager.Model;
 using Macros_Manager.Node.Interfaces;
 using Macros_Manager.Unity;
 using Macros_Manager.View.PagePart.Description;
@@ -18,6 +19,20 @@ namespace Macros_Manager.Node
             ChildNodes = new ObservableCollection<INode>();
             Description = new DescriptionViewModel();
             CanBeDeleted = true;
+        }
+
+        public static INode ResolvetNode(tNode a_data)
+        {
+            //Name = a_data.Name;
+            //CanBeDeleted = a_data.CanBeDeleted;
+            //Description.RawDescripiton = a_data.RawDescription;
+            ////(a_data is tMarcoNode)
+            //if (a_data.ChildNodes == null) return;
+
+            //foreach (var childNode in a_data.ChildNodes)
+            //{
+            //    ChildNodes.Add(new LabelNode(childNode));
+            //}
         }
 
         public abstract string Name { get; set; }

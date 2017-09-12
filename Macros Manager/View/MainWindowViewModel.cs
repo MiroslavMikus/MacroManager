@@ -1,32 +1,36 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Runtime.Remoting.Metadata.W3cXsd2001;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
-using System.Windows.Controls;
 using System.Windows.Input;
-using System.Windows.Threading;
-
-using Macros_Manager.Annotations;
 using Macros_Manager.Model;
 using Macros_Manager.Node.Interfaces;
-using Macros_Manager.Repository.LocalStorage;
 using Macros_Manager.View.PagePart.NewNodeDialog;
 using Macros_Manager.View.Tools;
 using MaterialDesignThemes.Wpf;
+using System.Data.Entity;
 using NewNodeView = Macros_Manager.View.PagePart.NewNodeDialog.NewNodeView;
 
-namespace Macros_Manager.UI
+namespace Macros_Manager.View
 {
     public class MainWindowViewModel : INotifyPropertyChanged
     {
         public MainWindowViewModel()
         {
+            using (var context = new MacroContext())
+            {
+                var test2 = context.Macros.Count();
+
+                foreach (var macro in context.MacroNodes.Include(a=>a.TController).Include(a=>a.TController.TMacro).ToList())
+                {
+                    var test = macro;
+                }
+
+                foreach (var macro in context.NodeData.ToList())
+                {
+                    var test = macro;
+                }
+            }
+
             Settings = AppSettings.GetSettings();
         }
 

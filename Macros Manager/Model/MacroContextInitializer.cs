@@ -18,19 +18,22 @@ namespace Macros_Manager.Model
                 Name = "Dashboards",
                 CanBeDeleted = false,
                 RawDescription = "Dashboard description",
+                Type = UnityDefs.NodeTypes.Label,
                 ChildNodes = 
                 {
                     new tNode
                     {
                         Name = "First Dashboard",
                         CanBeDeleted = true,
-                        RawDescription = "Dashboard description"
+                        RawDescription = "Dashboard description",
+                        Type = UnityDefs.NodeTypes.Label,
                     },
                     new tNode
                     {
                         Name = "First Dashboard",
                         CanBeDeleted = true,
                         RawDescription = "Dashboard description",
+                        Type = UnityDefs.NodeTypes.Label
                     }
                 }
             };
@@ -50,12 +53,13 @@ namespace Macros_Manager.Model
 
             a_context.Controllers.Add(psController);
 
-            var powershell = new TMacroTNode
+            var powershell = new tMarcoNode
             {
                 Name = "Powershell",
                 CanBeDeleted = true,
                 RawDescription = "Powershell Description",
-                TController = psController
+                TController = psController,
+                Type = UnityDefs.NodeTypes.Macro,
             };
 
             a_context.MacroNodes.Add(powershell);

@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Windows.Controls;
+using Macros_Manager.Model;
 using Macros_Manager.Tools;
 using Macros_Manager.Unity;
 using Macros_Manager.View.Tools;
@@ -8,7 +9,7 @@ namespace Macros_Manager.Node
 {
     public class LabelNode : BaseTreeNode
     {
-        public LabelNode(string a_name) 
+        public LabelNode(string a_name)
         {
             Name = a_name;
         }

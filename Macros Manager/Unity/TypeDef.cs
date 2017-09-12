@@ -45,7 +45,7 @@ namespace Macros_Manager.Unity
             }
         }
 
-        private string CheckType(MacroControllerTypes a_macroControllerTypes)
+        private string CheckType(MacroControllerTypes a_macroControllerTypes) // compares possible types with type in Argument
         {
             return (PossibleMacroControllersTypes & a_macroControllerTypes) == a_macroControllerTypes ? a_macroControllerTypes.ToString() : null;
         }

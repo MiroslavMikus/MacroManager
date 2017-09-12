@@ -22,7 +22,7 @@ namespace Macros_Manager.Model
 
         private static void ConfigureMacroNodeData(DbModelBuilder a_modelBuilder)
         {
-            a_modelBuilder.Entity<TMacroTNode>().ToTable("TMacroTNode")
+            a_modelBuilder.Entity<tMarcoNode>().ToTable("tMacroNode")
                 .HasRequired(a => a.TController)
                 .WithRequiredPrincipal()
                 .WillCascadeOnDelete(false);
