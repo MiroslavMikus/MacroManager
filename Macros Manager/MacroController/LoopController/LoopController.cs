@@ -6,6 +6,7 @@ using Macros_Manager.Annotations;
 using Macros_Manager.Macro;
 using Macros_Manager.Tools;
 using Macros_Manager.Unity;
+using Macros_Manager.Unity.Enums;
 using Macros_Manager.View.Tools;
 using Timer = System.Timers.Timer;
 
@@ -24,7 +25,7 @@ namespace Macros_Manager.MacroController.LoopController
 
         private LoopControllerStates _state;
 
-        public override MacroControllerTypes MControllerTypes => MacroControllerTypes.LoopMacro;
+        public override MacroControllerType MControllerType => MacroControllerType.LoopMacro;
 
         public override ICommand Stop => new RelayCommand<object>((a) =>
         {

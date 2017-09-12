@@ -1,5 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 using Macros_Manager.Unity;
+using Macros_Manager.Unity.Enums;
 
 namespace Macros_Manager.Model
 {
@@ -7,6 +8,6 @@ namespace Macros_Manager.Model
     {
         public int Id { get; set; }
         public string Instance { get; set; }
-        public MacroControllerTypes PossibleMacroControllersTypes { get; set; }
+        public MacroControllerType PossibleMacroControllersType { get; set; }
     }
 }

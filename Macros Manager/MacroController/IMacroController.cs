@@ -3,6 +3,7 @@ using System.Windows.Input;
 using Macros_Manager.Macro;
 using Macros_Manager.Model;
 using Macros_Manager.Unity;
+using Macros_Manager.Unity.Enums;
 using Microsoft.Practices.Unity;
 using Newtonsoft.Json;
 
@@ -10,7 +11,7 @@ namespace Macros_Manager.MacroController
 {
     public interface IMacroController : INotifyPropertyChanged
     {
-        MacroControllerTypes MControllerTypes { get; }
+        MacroControllerType MControllerType { get; }
         [JsonIgnore]
         ICommand TestScript { get; }
         [JsonIgnore]
@@ -27,7 +28,7 @@ namespace Macros_Manager.MacroController
         public static IMacroController ResolveController(this IMacroController a_controller, tController a_data)
         {
             var def = UnityDefs.GetDefByInstanceName(a_data.TMacro.Description.Instance)
-                .Copy(a_data.TMacro.Description.PossibleMacroControllersTypes);
+                .Copy(a_data.TMacro.Description.PossibleMacroControllersType);
 
             var macro = MacroContainer.Container.Resolve<IMacro>(def.Instance);
 

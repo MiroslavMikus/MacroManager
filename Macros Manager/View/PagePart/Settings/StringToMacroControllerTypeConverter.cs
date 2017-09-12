@@ -2,6 +2,7 @@
 using System.Globalization;
 using System.Windows.Data;
 using Macros_Manager.Unity;
+using Macros_Manager.Unity.Enums;
 
 namespace Macros_Manager.View.PagePart.Settings
 {
@@ -14,7 +15,7 @@ namespace Macros_Manager.View.PagePart.Settings
 
         public object ConvertBack(object a_value, Type a_targetType, object a_parameter, CultureInfo a_culture)
         {
-            MacroControllerTypes type;
+            MacroControllerType type;
 
             Enum.TryParse(a_value?.ToString(), out type);
 

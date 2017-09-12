@@ -91,7 +91,7 @@ namespace Macros_Manager.Annotations
 
   /// <summary>
   /// For a parameter that is expected to be one of the limited set of values.
-  /// Specify fields of which type should be used as values for this parameter.
+  /// Specify fields of which Type should be used as values for this parameter.
   /// </summary>
   [AttributeUsage(AttributeTargets.Parameter | AttributeTargets.Property | AttributeTargets.Field)]
   public sealed class ValueProviderAttribute : Attribute
@@ -119,7 +119,7 @@ namespace Macros_Manager.Annotations
   public sealed class InvokerParameterNameAttribute : Attribute { }
 
   /// <summary>
-  /// Indicates that the method is contained in a type that implements
+  /// Indicates that the method is contained in a Type that implements
   /// <c>System.ComponentModel.INotifyPropertyChanged</c> interface and this method
   /// is used to notify that some property value changed.
   /// </summary>
@@ -249,7 +249,7 @@ namespace Macros_Manager.Annotations
   }
 
   /// <summary>
-  /// Indicates that the value of the marked type (or its derivatives)
+  /// Indicates that the value of the marked Type (or its derivatives)
   /// cannot be compared using '==' or '!=' operators and <c>Equals()</c>
   /// should be used instead. However, using '==' or '!=' for comparison
   /// with <c>null</c> is always permitted.
@@ -272,8 +272,8 @@ namespace Macros_Manager.Annotations
   public sealed class CannotApplyEqualityOperatorAttribute : Attribute { }
 
   /// <summary>
-  /// When applied to a target attribute, specifies a requirement for any type marked
-  /// with the target attribute to implement or inherit specific type or types.
+  /// When applied to a target attribute, specifies a requirement for any Type marked
+  /// with the target attribute to implement or inherit specific Type or types.
   /// </summary>
   /// <example><code>
   /// [BaseTypeRequired(typeof(IComponent)] // Specify requirement
@@ -355,11 +355,11 @@ namespace Macros_Manager.Annotations
     /// <summary>Indicates implicit assignment to a member.</summary>
     Assign = 2,
     /// <summary>
-    /// Indicates implicit instantiation of a type with fixed constructor signature.
+    /// Indicates implicit instantiation of a Type with fixed constructor signature.
     /// That means any unused constructor parameters won't be reported as such.
     /// </summary>
     InstantiatedWithFixedConstructorSignature = 4,
-    /// <summary>Indicates implicit instantiation of a type.</summary>
+    /// <summary>Indicates implicit instantiation of a Type.</summary>
     InstantiatedNoFixedConstructorSignature = 8,
   }
 
@@ -432,8 +432,8 @@ namespace Macros_Manager.Annotations
   }
 
   /// <summary>
-  /// Indicates the type member or parameter of some type, that should be used instead of all other ways
-  /// to get the value that type. This annotation is useful when you have some "context" value evaluated
+  /// Indicates the Type member or parameter of some Type, that should be used instead of all other ways
+  /// to get the value that Type. This annotation is useful when you have some "context" value evaluated
   /// and stored somewhere, meaning that all other ways to get this value must be consolidated with existing one.
   /// </summary>
   /// <example><code>
@@ -505,7 +505,7 @@ namespace Macros_Manager.Annotations
   /// <example>
   /// Applying the attribute on a source template method:
   /// <code>
-  /// [SourceTemplate, MacroControllerTypes(Target = "item", Expression = "suggestVariableName()")]
+  /// [SourceTemplate, MacroControllerType(Target = "item", Expression = "suggestVariableName()")]
   /// public static void forEach&lt;T&gt;(this IEnumerable&lt;T&gt; collection) {
   ///   foreach (var item in collection) {
   ///     //$ $END$
@@ -515,7 +515,7 @@ namespace Macros_Manager.Annotations
   /// Applying the attribute on a template method parameter:
   /// <code>
   /// [SourceTemplate]
-  /// public static void something(this Entity x, [MacroControllerTypes(Expression = "guid()", Editable = -1)] string newguid) {
+  /// public static void something(this Entity x, [MacroControllerType(Expression = "guid()", Editable = -1)] string newguid) {
   ///   /*$ var $x$Id = "$newguid$" + x.ToString();
   ///   x.DoSomething($x$Id); */
   /// }
@@ -674,7 +674,7 @@ namespace Macros_Manager.Annotations
   public sealed class AspMvcMasterAttribute : Attribute { }
 
   /// <summary>
-  /// ASP.NET MVC attribute. Indicates that a parameter is an MVC model type. Use this attribute
+  /// ASP.NET MVC attribute. Indicates that a parameter is an MVC model Type. Use this attribute
   /// for custom wrappers similar to <c>System.Web.Mvc.TController.View(String, Object)</c>.
   /// </summary>
   [AttributeUsage(AttributeTargets.Parameter)]
@@ -789,7 +789,7 @@ namespace Macros_Manager.Annotations
 
   /// <summary>
   /// Indicates how method, constructor invocation or property access
-  /// over collection type affects content of the collection.
+  /// over collection Type affects content of the collection.
   /// </summary>
   [AttributeUsage(AttributeTargets.Method | AttributeTargets.Constructor | AttributeTargets.Property)]
   public sealed class CollectionAccessAttribute : Attribute
@@ -826,7 +826,7 @@ namespace Macros_Manager.Annotations
   /// <summary>
   /// Indicates the condition parameter of the assertion method. The method itself should be
   /// marked by <see cref="AssertionMethodAttribute"/> attribute. The mandatory argument of
-  /// the attribute is the assertion type.
+  /// the attribute is the assertion Type.
   /// </summary>
   [AttributeUsage(AttributeTargets.Parameter)]
   public sealed class AssertionConditionAttribute : Attribute
@@ -840,7 +840,7 @@ namespace Macros_Manager.Annotations
   }
 
   /// <summary>
-  /// Specifies assertion type. If the assertion method argument satisfies the condition,
+  /// Specifies assertion Type. If the assertion method argument satisfies the condition,
   /// then the execution continues. Otherwise, execution is assumed to be halted.
   /// </summary>
   public enum AssertionConditionType
@@ -866,7 +866,7 @@ namespace Macros_Manager.Annotations
   /// <summary>
   /// Indicates that method is pure LINQ method, with postponed enumeration (like Enumerable.Select,
   /// .Where). This annotation allows inference of [InstantHandle] annotation for parameters
-  /// of delegate type by analyzing LINQ method chains.
+  /// of delegate Type by analyzing LINQ method chains.
   /// </summary>
   [AttributeUsage(AttributeTargets.Method)]
   public sealed class LinqTunnelAttribute : Attribute { }
@@ -884,19 +884,19 @@ namespace Macros_Manager.Annotations
   public sealed class RegexPatternAttribute : Attribute { }
 
   /// <summary>
-  /// XAML attribute. Indicates the type that has <c>ItemsSource</c> property and should be treated
-  /// as <c>ItemsControl</c>-derived type, to enable inner items <c>DataContext</c> type resolve.
+  /// XAML attribute. Indicates the Type that has <c>ItemsSource</c> property and should be treated
+  /// as <c>ItemsControl</c>-derived Type, to enable inner items <c>DataContext</c> Type resolve.
   /// </summary>
   [AttributeUsage(AttributeTargets.Class)]
   public sealed class XamlItemsControlAttribute : Attribute { }
 
   /// <summary>
-  /// XAML attribute. Indicates the property of some <c>BindingBase</c>-derived type, that
-  /// is used to bind some item of <c>ItemsControl</c>-derived type. This annotation will
-  /// enable the <c>DataContext</c> type resolve for XAML bindings for such properties.
+  /// XAML attribute. Indicates the property of some <c>BindingBase</c>-derived Type, that
+  /// is used to bind some item of <c>ItemsControl</c>-derived Type. This annotation will
+  /// enable the <c>DataContext</c> Type resolve for XAML bindings for such properties.
   /// </summary>
   /// <remarks>
-  /// Property should have the tree ancestor of the <c>ItemsControl</c> type or
+  /// Property should have the tree ancestor of the <c>ItemsControl</c> Type or
   /// marked with the <see cref="XamlItemsControlAttribute"/> attribute.
   /// </remarks>
   [AttributeUsage(AttributeTargets.Property)]

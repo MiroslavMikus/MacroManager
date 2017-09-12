@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:vm="clr-namespace:Macros_Manager.UI"
+        xmlns:vm="clr-namespace:Macros_Manager.View"
         xmlns:local="clr-namespace:Macros_Manager"
         xmlns:dragablz="http://dragablz.net/winfx/xaml/dragablz"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
@@ -11,10 +11,10 @@
         TextElement.FontWeight="Regular"
         TextElement.FontSize="13"
         xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
-                       TextOptions.TextFormattingMode="Ideal"
+        TextOptions.TextFormattingMode="Ideal"
         TextOptions.TextRenderingMode="Auto"
         xmlns:dockablz="http://dragablz.net/winfx/xaml/dockablz"
-                       xmlns:converters1="clr-namespace:Macros_Manager.View.Converters"
+        xmlns:converters="clr-namespace:Macros_Manager.View.Converters"
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="{DynamicResource MaterialDesignFont}"
         mc:Ignorable="d"
@@ -29,8 +29,8 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.PopupBox.xaml" />
             </ResourceDictionary.MergedDictionaries>
-            <converters1:IsNotNullConverter x:Key="NotNullConverter"></converters1:IsNotNullConverter>
-            <converters1:IsLabelConverter x:Key="LabelConverter"></converters1:IsLabelConverter>
+            <converters:IsNotNullConverter x:Key="NotNullConverter"></converters:IsNotNullConverter>
+            <converters:IsLabelConverter x:Key="LabelConverter"></converters:IsLabelConverter>
         </ResourceDictionary>
     </Window.Resources>
     <Window.DataContext>

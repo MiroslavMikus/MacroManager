@@ -6,6 +6,7 @@ using Macros_Manager.MacroController;
 using Macros_Manager.Node.Interfaces;
 using Macros_Manager.Tools;
 using Macros_Manager.Unity;
+using Macros_Manager.Unity.Enums;
 using Microsoft.Practices.Unity;
 
 namespace Macros_Manager.View.PagePart.NewNodeDialog
@@ -37,11 +38,11 @@ namespace Macros_Manager.View.PagePart.NewNodeDialog
 
                 macro.Name = elementname;
 
-                MacroControllerTypes controllerTypesType;
+                MacroControllerType controllerTypeType;
 
-                if (!Enum.TryParse(controllerName, out controllerTypesType)) return null;
+                if (!Enum.TryParse(controllerName, out controllerTypeType)) return null;
 
-                macro.Definition = elementTypeDef.Copy(controllerTypesType);
+                macro.Definition = elementTypeDef.Copy(controllerTypeType);
 
                 macro.Definition.CurrentType = macro.GetType();
 

@@ -21,20 +21,6 @@ namespace Macros_Manager.Node
             CanBeDeleted = true;
         }
 
-        public static INode ResolvetNode(tNode a_data)
-        {
-            //Name = a_data.Name;
-            //CanBeDeleted = a_data.CanBeDeleted;
-            //Description.RawDescripiton = a_data.RawDescription;
-            ////(a_data is tMarcoNode)
-            //if (a_data.ChildNodes == null) return;
-
-            //foreach (var childNode in a_data.ChildNodes)
-            //{
-            //    ChildNodes.Add(new LabelNode(childNode));
-            //}
-        }
-
         public abstract string Name { get; set; }
 
         public DescriptionViewModel Description { get; set; }

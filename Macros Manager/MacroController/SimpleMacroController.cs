@@ -2,6 +2,7 @@
 using System.Windows.Input;
 using Macros_Manager.Macro;
 using Macros_Manager.Unity;
+using Macros_Manager.Unity.Enums;
 using Macros_Manager.View.Tools;
 
 namespace Macros_Manager.MacroController
@@ -22,7 +23,7 @@ namespace Macros_Manager.MacroController
         }
         public IMacro Macro { get; set; }
 
-        public virtual MacroControllerTypes MControllerTypes => MacroControllerTypes.Macro;
+        public virtual MacroControllerType MControllerType => MacroControllerType.Macro;
         public virtual ICommand TestScript => new AsyncRelayCommand(async () =>
         {
             Executing = true;

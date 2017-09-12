@@ -213,7 +213,7 @@
     <Compile Include="View\ValidationRules\NotEmptyValidationRule.cs" />
     <Compile Include="Unity\MacroContainer.cs" />
     <Compile Include="Tools\StringExtensions.cs" />
-    <Compile Include="Unity\MacroControllerTypes.cs" />
+    <Compile Include="Unity\Enums\MacroControllerType.cs" />
     <Compile Include="Unity\TypeDef.cs" />
     <Compile Include="Unity\ViewModelContainer.cs" />
     <Compile Include="Unity\UnityDefs.cs" />

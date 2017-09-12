@@ -1,5 +1,6 @@
 using System.Data.Entity;
 using Macros_Manager.Unity;
+using Macros_Manager.Unity.Enums;
 using SQLite.CodeFirst;
 
 namespace Macros_Manager.Model
@@ -42,7 +43,7 @@ namespace Macros_Manager.Model
 
             var psController = new tController
             {
-                Type = MacroControllerTypes.LoopMacro,
+                Type = MacroControllerType.LoopMacro,
                 TMacro = new tMacro
                 {
                     Description = UnityDefs.Powershell.GetTypeData(),

@@ -6,6 +6,7 @@ using Macros_Manager.Node;
 using Macros_Manager.Node.Interfaces;
 using Macros_Manager.Tools;
 using Macros_Manager.Unity;
+using Macros_Manager.Unity.Enums;
 using Microsoft.Practices.Unity;
 
 namespace Macros_Manager.Model
@@ -72,7 +73,7 @@ Easy script which shows IpConfig in Notepad.
 
             ps.MController.Macro.Script = script;
 
-            ps.MController.Macro.Definition = UnityDefs.Powershell.Copy(MacroControllerTypes.Macro);
+            ps.MController.Macro.Definition = UnityDefs.Powershell.Copy(MacroControllerType.Macro);
 
             return ps;
         }
