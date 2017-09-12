@@ -17,6 +17,6 @@ namespace Macros_Manager.Model
 
     public class tMarcoNode : tNode
     {
-        public tController TController { get; set; }
+        public tController Controller { get; set; }
     }
 }

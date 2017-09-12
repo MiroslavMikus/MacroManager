@@ -59,7 +59,7 @@ namespace Macros_Manager.Model
                 Name = "Powershell",
                 CanBeDeleted = true,
                 RawDescription = "Powershell Description",
-                TController = psController,
+                Controller = psController,
                 Type = UnityDefs.NodeTypes.Macro,
             };
 

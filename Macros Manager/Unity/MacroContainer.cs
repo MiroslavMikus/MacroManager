@@ -24,6 +24,17 @@ namespace Macros_Manager.Unity
         {
             Container = new UnityContainer();
 
+            SetupMacroController();
+
+            SetupMacro();
+
+            Container.RegisterType<IMacroNode, MacroNode>(new TransientLifetimeManager());
+
+            Container.RegisterType<INode, LabelNode>(UnityDefs.Label.Instance, new TransientLifetimeManager());
+        }
+
+        public static void SetupMacroController()
+        {
             Container.RegisterType<IMacroController, SimpleMacroController>(MacroControllerType.Macro.ToString(), new TransientLifetimeManager());
 
             Container.RegisterType<IMacroController, LoopController>(MacroControllerType.LoopMacro.ToString(), new TransientLifetimeManager());
@@ -31,14 +42,13 @@ namespace Macros_Manager.Unity
             Container.RegisterType<IMacroController, SimpleMacroController>(MacroControllerType.Macro.ToString(), new TransientLifetimeManager());
 
             Container.RegisterType<IMacroController, SimpleMacroController>(new TransientLifetimeManager());
+        }
 
+        public static void SetupMacro()
+        {
             Container.RegisterType<IMacro, PowershellMacro>(new TransientLifetimeManager());
 
             Container.RegisterType<IMacro, PowershellMacro>(UnityDefs.Powershell.Instance, new TransientLifetimeManager());
-
-            Container.RegisterType<IMacroNode, MacroNode>(new TransientLifetimeManager());
-
-            Container.RegisterType<INode, LabelNode>(UnityDefs.Label.Instance, new TransientLifetimeManager());
         }
     }
 }

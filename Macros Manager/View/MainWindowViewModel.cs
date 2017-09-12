@@ -20,7 +20,7 @@ namespace Macros_Manager.View
             {
                 var test2 = context.Macros.Count();
 
-                foreach (var macro in context.MacroNodes.Include(a=>a.TController).Include(a=>a.TController.TMacro).ToList())
+                foreach (var macro in context.MacroNodes.Include(a=>a.Controller).Include(a=>a.Controller.TMacro).ToList())
                 {
                     var test = macro;
                 }
