@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Macros_Manager.Tools
 {
@@ -13,6 +15,13 @@ namespace Macros_Manager.Tools
             int j = Array.IndexOf<T>(arr, a_src) + 1;
 
             return (arr.Length == j) ? arr[0] : arr[j];
+        }
+
+        public static List<string> EnumToList(Type a_enum) 
+        {
+            if (!a_enum.IsEnum) throw new ArgumentException($"Argumnent {a_enum.FullName} is not an Enum");
+
+            return Enum.GetNames(a_enum).ToList();
         }
     }
 }
