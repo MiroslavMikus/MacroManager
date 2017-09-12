@@ -11,6 +11,7 @@ using Macros_Manager.MacroController.LoopController;
 using Macros_Manager.Node;
 using Macros_Manager.Node.Interfaces;
 using Macros_Manager.Tools;
+using Macros_Manager.Unity.Enums;
 using Microsoft.Practices.Unity;
 
 namespace Macros_Manager.Unity
@@ -23,11 +24,11 @@ namespace Macros_Manager.Unity
         {
             Container = new UnityContainer();
 
-            Container.RegisterType<IMacroController, SimpleMacroController>(MacroControllerTypes.Macro.ToString(), new TransientLifetimeManager());
+            Container.RegisterType<IMacroController, SimpleMacroController>(MacroControllerType.Macro.ToString(), new TransientLifetimeManager());
 
-            Container.RegisterType<IMacroController, LoopController>(MacroControllerTypes.LoopMacro.ToString(), new TransientLifetimeManager());
+            Container.RegisterType<IMacroController, LoopController>(MacroControllerType.LoopMacro.ToString(), new TransientLifetimeManager());
 
-            Container.RegisterType<IMacroController, SimpleMacroController>(MacroControllerTypes.Macro.ToString(), new TransientLifetimeManager());
+            Container.RegisterType<IMacroController, SimpleMacroController>(MacroControllerType.Macro.ToString(), new TransientLifetimeManager());
 
             Container.RegisterType<IMacroController, SimpleMacroController>(new TransientLifetimeManager());
 

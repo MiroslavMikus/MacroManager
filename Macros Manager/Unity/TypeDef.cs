@@ -4,15 +4,16 @@ using System.Linq;
 using Macros_Manager.Macro;
 using Macros_Manager.Model;
 using Macros_Manager.Tools;
+using Macros_Manager.Unity.Enums;
 
 namespace Macros_Manager.Unity
 {
     public class TypeDef
     {
-        public TypeDef(string a_instanceName, MacroControllerTypes a_possiblePossibleMacroControllersTypes, bool a_hasSubtype = true)
+        public TypeDef(string a_instanceName, MacroControllerType a_possiblePossibleMacroControllersType, bool a_hasSubtype = true)
         {
             Instance = a_instanceName;
-            PossibleMacroControllersTypes = a_possiblePossibleMacroControllersTypes;
+            PossibleMacroControllersType = a_possiblePossibleMacroControllersType;
             HasSubtype = a_hasSubtype;
         }
 
@@ -21,15 +22,15 @@ namespace Macros_Manager.Unity
             return new tTypeDescription
             {
                 Instance = this.Instance,
-                PossibleMacroControllersTypes = PossibleMacroControllersTypes
+                PossibleMacroControllersType = PossibleMacroControllersType
             };
         }
 
         public Type CurrentType { get; set; }
 
-        public MacroControllerTypes CurrentControllerType { get; set; }
+        public MacroControllerType CurrentControllerType { get; set; }
 
-        public readonly MacroControllerTypes PossibleMacroControllersTypes;
+        public readonly MacroControllerType PossibleMacroControllersType;
 
         public bool HasSubtype { get; set; }
 
@@ -37,17 +38,17 @@ namespace Macros_Manager.Unity
         {
             get
             {
-                return Enum.GetValues(typeof(MacroControllerTypes))
-                    .Cast<MacroControllerTypes>()
+                return Enum.GetValues(typeof(MacroControllerType))
+                    .Cast<MacroControllerType>()
                     .Select(CheckType)
                     .Where(a => a != null)
                     .ToList();
             }
         }
 
-        private string CheckType(MacroControllerTypes a_macroControllerTypes) // compares possible types with type in Argument
+        private string CheckType(MacroControllerType a_macroControllerType) // compares possible types with Type in Argument
         {
-            return (PossibleMacroControllersTypes & a_macroControllerTypes) == a_macroControllerTypes ? a_macroControllerTypes.ToString() : null;
+            return (PossibleMacroControllersType & a_macroControllerType) == a_macroControllerType ? a_macroControllerType.ToString() : null;
         }
 
         public string Instance { get; set; }
@@ -55,11 +56,11 @@ namespace Macros_Manager.Unity
 
     public static class TypeDefExtensions
     {
-        public static TypeDef Copy(this TypeDef a_def, MacroControllerTypes a_newControllerTypes)
+        public static TypeDef Copy(this TypeDef a_def, MacroControllerType a_newControllerType)
         {
-            return new TypeDef(a_def.Instance, a_def.PossibleMacroControllersTypes, a_def.HasSubtype)
+            return new TypeDef(a_def.Instance, a_def.PossibleMacroControllersType, a_def.HasSubtype)
             {
-                CurrentControllerType = a_newControllerTypes
+                CurrentControllerType = a_newControllerType
             };
         }
     }

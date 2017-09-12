@@ -2,6 +2,7 @@
 using System.Linq;
 using Macros_Manager.Annotations;
 using Macros_Manager.Macro.Powershell;
+using Macros_Manager.Unity.Enums;
 
 namespace Macros_Manager.Unity
 {
@@ -37,8 +38,8 @@ namespace Macros_Manager.Unity
 
         private static readonly List<TypeDef> _definitions = new List<TypeDef> { Powershell, AHK, Label };
 
-        public static TypeDef Powershell { get; } = new TypeDef("Powershell", MacroControllerTypes.Macro | MacroControllerTypes.LoopMacro) { CurrentType = typeof(PowershellMacro) };
-        public static TypeDef AHK { get; } = new TypeDef("AHK", MacroControllerTypes.Macro | MacroControllerTypes.LoopMacro | MacroControllerTypes.ToogleMacro);
-        public static TypeDef Label { get; } = new TypeDef("Label", MacroControllerTypes.None, false);
+        public static TypeDef Powershell { get; } = new TypeDef("Powershell", MacroControllerType.Macro | MacroControllerType.LoopMacro) { CurrentType = typeof(PowershellMacro) };
+        public static TypeDef AHK { get; } = new TypeDef("AHK", MacroControllerType.Macro | MacroControllerType.LoopMacro | MacroControllerType.ToogleMacro);
+        public static TypeDef Label { get; } = new TypeDef("Label", MacroControllerType.None, false);
     }
 }
