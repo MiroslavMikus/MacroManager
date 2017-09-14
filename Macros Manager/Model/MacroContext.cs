@@ -20,7 +20,6 @@ namespace Macros_Manager.Model
 
         public DbSet<tNode> NodeData { get; set; }
         public DbSet<tMarcoNode> MacroNodes { get; set; }
-        public DbSet<tTypeDescription> TypeDescriptions { get; set; }
         public DbSet<tMacro> Macros { get; set; }
         public DbSet<tController> Controllers { get; set; }
 

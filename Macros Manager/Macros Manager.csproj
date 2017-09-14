@@ -156,7 +156,6 @@
     <Compile Include="Model\tMacro.cs" />
     <Compile Include="Model\ModelConfig.cs" />
     <Compile Include="Model\tNode.cs" />
-    <Compile Include="Model\tTypeDescription.cs" />
     <Compile Include="Node\BaseTreeNode.cs" />
     <Compile Include="Node\LabelNode.cs" />
     <Compile Include="Node\MacroNode.cs" />

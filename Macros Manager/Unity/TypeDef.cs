@@ -20,15 +20,6 @@ namespace Macros_Manager.Unity
             HasSubtype = a_hasSubtype;
         }
 
-        public tTypeDescription GetTypeData()
-        {
-            return new tTypeDescription
-            {
-                Instance = this.Instance,
-                PossibleMacroControllersType = PossibleMacroControllersType
-            };
-        }
-
         public Type CurrentType { get; set; }
 
         public MacroControllerType CurrentControllerType { get; set; }
@@ -57,7 +48,7 @@ namespace Macros_Manager.Unity
         public string Instance { get; set; }
     }
 
-    public static class TypeDefExtensions
+    public static class TypeDefExtensions // ToDo Should be removed !!
     {
         public static TypeDef Copy(this TypeDef a_def, MacroControllerType a_newControllerType)
         {

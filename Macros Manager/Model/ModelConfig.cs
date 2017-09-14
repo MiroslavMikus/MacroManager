@@ -10,8 +10,6 @@ namespace Macros_Manager.Model
             ConfigureMacroNodeData(a_modelBuilder);
             ConfigureControllerData(a_modelBuilder);
             ConfigureMacroData(a_modelBuilder);
-            ConfigureTypeDescritptionData(a_modelBuilder);
-
         }
 
         private static void ConfigureNodeData(DbModelBuilder a_modelBuilder)
@@ -42,17 +40,6 @@ namespace Macros_Manager.Model
         private static void ConfigureMacroData(DbModelBuilder a_modelBuilder)
         {
             a_modelBuilder.Entity<tMacro>().ToTable("tMacro")
-                .HasKey(a => a.Id);
-
-            a_modelBuilder.Entity<tMacro>()
-                .HasRequired(a => a.Type)
-                .WithRequiredPrincipal()
-                .WillCascadeOnDelete(false);
-        }
-
-        private static void ConfigureTypeDescritptionData(DbModelBuilder a_modelBuilder)
-        {
-            a_modelBuilder.Entity<tTypeDescription>().ToTable("tTypeDescription")
                 .HasKey(a => a.Id);
         }
     }
