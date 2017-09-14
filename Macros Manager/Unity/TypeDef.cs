@@ -13,7 +13,7 @@ namespace Macros_Manager.Unity
     /// </summary>
     public class TypeDef
     {
-        public TypeDef(string a_instanceName, MacroControllerType a_possiblePossibleMacroControllersType, bool a_hasSubtype = true)
+        public TypeDef(MacroType a_instanceName, MacroControllerType a_possiblePossibleMacroControllersType, bool a_hasSubtype = true)
         {
             Instance = a_instanceName;
             PossibleMacroControllersType = a_possiblePossibleMacroControllersType;
@@ -45,7 +45,7 @@ namespace Macros_Manager.Unity
             return (PossibleMacroControllersType & a_macroControllerType) == a_macroControllerType ? a_macroControllerType.ToString() : null;
         }
 
-        public string Instance { get; set; }
+        public MacroType Instance { get; private set; }
     }
 
     public static class TypeDefExtensions // ToDo Should be removed !!

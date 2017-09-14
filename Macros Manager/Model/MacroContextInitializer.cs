@@ -47,7 +47,6 @@ namespace Macros_Manager.Model
                 Macro = new tMacro
                 {
                     Type = MacroType.Powershell,
-                    Name = "powershell macro",
                     Script = "notepad",
                 }
             };

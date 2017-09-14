@@ -9,18 +9,7 @@ namespace Macros_Manager.Node
 {
     public class LabelNode : BaseTreeNode
     {
-        public LabelNode(string a_name)
-        {
-            Name = a_name;
-        }
-
-        private string _name;
-
-        public sealed override string Name
-        {
-            get { return _name; }
-            set { this.MutateVerbose(ref _name, value, RaisePropertyChanged()); }
-        }
+        public LabelNode(INodeModel a_definition) : base(a_definition){}
 
         protected override ContentControl ContentCreator()
         {

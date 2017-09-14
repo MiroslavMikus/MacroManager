@@ -4,20 +4,20 @@ using System.Linq;
 using System.Management.Automation;
 using System.Threading;
 using System.Threading.Tasks;
+using Macros_Manager.Model;
 using Macros_Manager.Unity;
 
 namespace Macros_Manager.Macro.Powershell
 {
     public class PowershellMacro : IMacro
     {
-        public PowershellMacro()
+        public PowershellMacro(tMacro a_definition)
         {
+            _data = a_definition;
             ImportedSettings = new List<string>();
         }
 
-        public string Name { get; set; }
-        public TypeDef Definition { get; set; }
-
+        private tMacro _data;
         public async Task Run(CancellationToken a_token)
         {
             if (Script == null) return;
@@ -37,7 +37,11 @@ namespace Macros_Manager.Macro.Powershell
         }
 
         public ICollection<string> ImportedSettings { get; set; }
-        public string Script { get; set; }
+        public string Script
+        {
+            get { return _data.Script; }
+            set { _data.Script = value; }
+        }
         public object LastResult { get; set; }
     }
 }

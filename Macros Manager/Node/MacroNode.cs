@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Windows.Controls;
 using Macros_Manager.MacroController;
+using Macros_Manager.Model;
 using Macros_Manager.Node.Interfaces;
 using Macros_Manager.Tools;
 using Macros_Manager.Unity;
@@ -12,35 +13,27 @@ namespace Macros_Manager.Node
 {
     public class MacroNode : BaseTreeNode, IMacroNode
     {
-        public MacroNode(IMacroController a_macroController)
+        public MacroNode(tMarcoNode a_definition, IMacroController a_macroController) : base(a_definition)
         {
             MController = a_macroController;
         }
 
-        public IMacroController MController { get; set; }
+        private new tMarcoNode _nodeData;
 
-        public sealed override string Name
-        {
-            get { return MController.Macro.Name; }
-            set
-            {
-                MController.Macro.Name = value;
-                OnPropertyChanged();
-            }
-        }
+        public IMacroController MController { get; set; }
 
         public MacroControllerType ControllerType
         {
-            get { return MController.Macro.Definition.CurrentControllerType; }
+            get { return _nodeData.Controller.Type; }
             set
             {
-                if (MController.Macro.Definition.CurrentControllerType == value) return;
+                if (_nodeData.Controller.Type == value) return;
 
                 MController = MacroContainer.Container.Resolve<IMacroController>(value.ToString(), new ParameterOverride("a_macro", MController.Macro));
 
-                MController.Macro.Definition.CurrentControllerType = value;
+                _nodeData.Controller.Type = value;
 
-                OnPropertyChanged("MController");
+                OnPropertyChanged();
             }
         }
 

@@ -23,32 +23,32 @@ namespace Macros_Manager.View.PagePart.NewNodeDialog
 
             if (!elementTypeDef.HasSubtype)
             {
-                if (!MacroContainer.Container.IsRegistered<INode>(elementTypeDef.Instance)) return null; // todo add error message
+                if (!MacroContainer.Container.IsRegistered<INode>(elementTypeDef.Instance.ToString())) return null; // todo add error message
 
-                return MacroContainer.Container.Resolve<INode>(elementTypeDef.Instance, new ParameterOverride("a_name", elementname));
+                return MacroContainer.Container.Resolve<INode>(elementTypeDef.Instance.ToString(), new ParameterOverride("a_name", elementname));
             }
-
+            return null;
             try
-            {
-                var controllerName = a_values[2] as string;
+            { // todo rebuild with new Model
+                //var controllerName = a_values[2] as string;
 
-                if (elementTypeDef.CurrentType == null || controllerName == null) return null;
+                //if (elementTypeDef.CurrentType == null || controllerName == null) return null;
 
-                var macro = MacroContainer.Container.Resolve(elementTypeDef.CurrentType) as IMacro;
+                //var macro = MacroContainer.Container.Resolve(elementTypeDef.CurrentType) as IMacro;
 
-                macro.Name = elementname;
+                //macro.Name = elementname;
 
-                MacroControllerType controllerTypeType;
+                //MacroControllerType controllerTypeType;
 
-                if (!Enum.TryParse(controllerName, out controllerTypeType)) return null;
+                //if (!Enum.TryParse(controllerName, out controllerTypeType)) return null;
 
-                macro.Definition = elementTypeDef.Copy(controllerTypeType);
+                //macro.Definition = elementTypeDef.Copy(controllerTypeType);
 
-                macro.Definition.CurrentType = macro.GetType();
+                //macro.Definition.CurrentType = macro.GetType();
 
-                var controller = MacroContainer.Container.Resolve<IMacroController>(controllerName, new ParameterOverride("a_macro", macro));
+                //var controller = MacroContainer.Container.Resolve<IMacroController>(controllerName, new ParameterOverride("a_macro", macro));
 
-                return MacroContainer.Container.Resolve<IMacroNode>(new ParameterOverride("a_macroController", controller));
+                //return MacroContainer.Container.Resolve<IMacroNode>(new ParameterOverride("a_macroController", controller));
             }
             catch (Exception ex)
             {

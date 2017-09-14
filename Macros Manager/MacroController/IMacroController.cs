@@ -22,23 +22,4 @@ namespace Macros_Manager.MacroController
         bool Executing { get; set; }
         IMacro Macro { get; set; }
     }
-
-    public static class MacroControllerExtensions
-    {
-        public static IMacroController ResolveController(this IMacroController a_controller, tController a_data)
-        {
-            var def = UnityDefs.GetDefByInstanceName(a_data.Macro.Type.Instance)
-                .Copy(a_data.Macro.Type.PossibleMacroControllersType);
-
-            var macro = MacroContainer.Container.Resolve<IMacro>(def.Instance);
-
-            macro.Definition = def;
-
-            var controller = MacroContainer.Container.Resolve<IMacroController>(a_data.Type.ToString());
-
-            controller.Macro = macro;
-
-            return controller;
-        }
-    }
 }

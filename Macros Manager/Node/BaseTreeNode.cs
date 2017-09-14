@@ -14,14 +14,29 @@ namespace Macros_Manager.Node
     {
         private ICollection<INode> _childNodes;
 
-        protected BaseTreeNode()
+        protected BaseTreeNode(INodeModel a_definition)
         {
+            _nodeData = a_definition;
+
             ChildNodes = new ObservableCollection<INode>();
-            Description = new DescriptionViewModel();
-            CanBeDeleted = true;
+
+            Description = new DescriptionViewModel {RawDescripiton = a_definition.RawDescription};
+
+            CanBeDeleted = _nodeData.CanBeDeleted;
         }
 
-        public abstract string Name { get; set; }
+        protected virtual INodeModel _nodeData { get; set; }
+
+        public virtual string Name
+        {
+            get { return _nodeData.Name; }
+            set
+            {
+                if (_nodeData.Name.Equals(value)) return;
+                _nodeData.Name = value;
+                OnPropertyChanged();
+            }
+        }
 
         public DescriptionViewModel Description { get; set; }
 

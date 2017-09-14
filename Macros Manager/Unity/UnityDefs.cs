@@ -25,14 +25,14 @@ namespace Macros_Manager.Unity
             public const string ScriptView = "ScriptView";
         }
 
-        public static TypeDef GetDefByInstanceName(string a_name)
+        public static TypeDef GetDefByInstanceName(MacroType a_name)
         {
             return _definitions.FirstOrDefault(a => a.Instance == a_name);
         }
 
         private static readonly List<TypeDef> _definitions = new List<TypeDef> { Powershell, AHK };
 
-        public static TypeDef Powershell { get; } = new TypeDef(MacroType.Powershell.ToString(), MacroControllerType.Macro | MacroControllerType.LoopMacro) { CurrentType = typeof(PowershellMacro) };
-        public static TypeDef AHK { get; } = new TypeDef(MacroType.AHK.ToString(), MacroControllerType.Macro | MacroControllerType.LoopMacro | MacroControllerType.ToogleMacro);
+        public static TypeDef Powershell { get; } = new TypeDef(MacroType.Powershell, MacroControllerType.Macro | MacroControllerType.LoopMacro) { CurrentType = typeof(PowershellMacro) };
+        public static TypeDef AHK { get; } = new TypeDef(MacroType.AHK, MacroControllerType.Macro | MacroControllerType.LoopMacro | MacroControllerType.ToogleMacro);
     }
 }

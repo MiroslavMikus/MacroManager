@@ -52,7 +52,7 @@ namespace Macros_Manager.Model
                     WinLeft = 200,
                     WinState = WindowState.Normal,
                     TreeWidth = new GridLength(200.0),
-                    Nodes = new ObservableCollection<INode>(FakeTreeModel.GetNodes())
+                    //Nodes = new ObservableCollection<INode>(FakeTreeModel.GetNodes())
                 };
             }
             return result;
