@@ -3,7 +3,7 @@
 namespace Macros_Manager.View.PagePart.Description
 {
     /// <summary>
-    /// Interaction logic for Description.xaml
+    /// Interaction logic for Type.xaml
     /// </summary>
     public partial class Description : UserControl
     {

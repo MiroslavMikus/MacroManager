@@ -8,6 +8,6 @@ namespace Macros_Manager.Model
     {
         public int Id { get; set; }
         public MacroControllerType Type { get; set; }
-        public tMacro TMacro { get; set; }
+        public tMacro Macro { get; set; }
     }
 }

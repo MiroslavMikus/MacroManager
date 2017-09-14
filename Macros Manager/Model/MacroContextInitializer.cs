@@ -19,7 +19,7 @@ namespace Macros_Manager.Model
                 Name = "Dashboards",
                 CanBeDeleted = false,
                 RawDescription = "Dashboard description",
-                Type = UnityDefs.NodeTypes.Label,
+                Type = NodeType.Label,
                 ChildNodes = 
                 {
                     new tNode
@@ -27,14 +27,14 @@ namespace Macros_Manager.Model
                         Name = "First Dashboard",
                         CanBeDeleted = true,
                         RawDescription = "Dashboard description",
-                        Type = UnityDefs.NodeTypes.Label,
+                        Type = NodeType.Label,
                     },
                     new tNode
                     {
                         Name = "First Dashboard",
                         CanBeDeleted = true,
                         RawDescription = "Dashboard description",
-                        Type = UnityDefs.NodeTypes.Label
+                        Type = NodeType.Label
                     }
                 }
             };
@@ -44,9 +44,9 @@ namespace Macros_Manager.Model
             var psController = new tController
             {
                 Type = MacroControllerType.LoopMacro,
-                TMacro = new tMacro
+                Macro = new tMacro
                 {
-                    Description = UnityDefs.Powershell.GetTypeData(),
+                    Type = MacroType.Powershell,
                     Name = "powershell macro",
                     Script = "notepad",
                 }
@@ -58,9 +58,9 @@ namespace Macros_Manager.Model
             {
                 Name = "Powershell",
                 CanBeDeleted = true,
-                RawDescription = "Powershell Description",
+                RawDescription = "Powershell Type",
                 Controller = psController,
-                Type = UnityDefs.NodeTypes.Macro,
+                Type = NodeType.Macro,
             };
 
             a_context.MacroNodes.Add(powershell);

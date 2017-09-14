@@ -8,6 +8,9 @@ using Macros_Manager.Unity.Enums;
 
 namespace Macros_Manager.Unity
 {
+    /// <summary>
+    /// Defines possible MacroController-Macros pairs
+    /// </summary>
     public class TypeDef
     {
         public TypeDef(string a_instanceName, MacroControllerType a_possiblePossibleMacroControllersType, bool a_hasSubtype = true)

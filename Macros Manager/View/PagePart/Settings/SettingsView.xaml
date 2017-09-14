@@ -135,7 +135,7 @@
             <!--Description-->
             <materialDesign:Card Style="{StaticResource Card}">
                 <StackPanel Orientation="Vertical">
-                    <TextBlock DockPanel.Dock="Left" Style="{StaticResource CardHeader}">Description :</TextBlock>
+                    <TextBlock DockPanel.Dock="Left" Style="{StaticResource CardHeader}">Type :</TextBlock>
                     <DockPanel >
                         <TextBlock Style="{StaticResource ResourceKey=CardTextBlock}" DockPanel.Dock="Left"><Run Text="Disable description editing :"/></TextBlock>
                         <ToggleButton HorizontalAlignment="Right" DockPanel.Dock="Right" Margin="10 0 10 0" IsChecked="{Binding Description.DisableEditing}" />

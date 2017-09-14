@@ -6,23 +6,24 @@ namespace Macros_Manager.Unity.Enums
     {
         Label,
         Macro,
-        Sequence,
-        Dashboard,
-        Data
+        Sequence, // Missing
+        Dashboard, // Missing
+        Data // Missing
     }
 
     [Flags()]
     public enum MacroControllerType
     {
-        Macro = 1,
-        LoopMacro = 2,
-        ToogleMacro = 4,
-        None = 8
+        None = 1,
+        Macro = 2,
+        LoopMacro = 4,
+        ToogleMacro = 8, // Missing
+        ScheduledMacro = 16 // Missing
     }
 
     public enum MacroType
     {
         Powershell,
-        AHK
+        AHK // Missing
     }
 }

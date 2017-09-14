@@ -34,7 +34,7 @@ namespace Macros_Manager.Model
                 .HasKey(a => a.Id);
 
             a_modelBuilder.Entity<tController>()
-                .HasRequired(a => a.TMacro)
+                .HasRequired(a => a.Macro)
                 .WithRequiredPrincipal()
                 .WillCascadeOnDelete(false);
         }
@@ -45,7 +45,7 @@ namespace Macros_Manager.Model
                 .HasKey(a => a.Id);
 
             a_modelBuilder.Entity<tMacro>()
-                .HasRequired(a => a.Description)
+                .HasRequired(a => a.Type)
                 .WithRequiredPrincipal()
                 .WillCascadeOnDelete(false);
         }

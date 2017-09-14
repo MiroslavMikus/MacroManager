@@ -27,8 +27,8 @@ namespace Macros_Manager.MacroController
     {
         public static IMacroController ResolveController(this IMacroController a_controller, tController a_data)
         {
-            var def = UnityDefs.GetDefByInstanceName(a_data.TMacro.Description.Instance)
-                .Copy(a_data.TMacro.Description.PossibleMacroControllersType);
+            var def = UnityDefs.GetDefByInstanceName(a_data.Macro.Type.Instance)
+                .Copy(a_data.Macro.Type.PossibleMacroControllersType);
 
             var macro = MacroContainer.Container.Resolve<IMacro>(def.Instance);
 

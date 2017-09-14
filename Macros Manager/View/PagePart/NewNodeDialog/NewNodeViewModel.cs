@@ -2,6 +2,7 @@
 using Macros_Manager.Node;
 using Macros_Manager.Node.Interfaces;
 using Macros_Manager.Unity;
+using Macros_Manager.Unity.Enums;
 using Macros_Manager.View.Tools;
 
 namespace Macros_Manager.View.PagePart.NewNodeDialog
@@ -15,15 +16,15 @@ namespace Macros_Manager.View.PagePart.NewNodeDialog
                 Types = new List<TypeDef>()
                 {
                     UnityDefs.Powershell,
-                    UnityDefs.AHK,
-                    UnityDefs.Label
+                    UnityDefs.AHK
+                    //UnityDefs.Label
                 };
             }
             else
             {
                 Types = new List<TypeDef>()
                 {
-                    UnityDefs.Label
+                    //UnityDefs.Label
                 };
             }
         }

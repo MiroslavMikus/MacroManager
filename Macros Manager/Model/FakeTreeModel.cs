@@ -27,12 +27,12 @@ namespace Macros_Manager.Model
                             CanBeDeleted = true,
                             ChildNodes = new ObservableCollection<INode>() {new LabelNode("Third MacroNode") {CanBeDeleted = true} }
                         },
-                        MacroContainer.Container.Resolve<INode>(UnityDefs.Label.Instance, new ParameterOverride("a_name","Fourth MacroNode")),
+                        MacroContainer.Container.Resolve<INode>(NodeType.Label.ToString(), new ParameterOverride("a_name","Fourth MacroNode")),
                     }
                 },
                 CreateFakePowershellNode(),
-                MacroContainer.Container.Resolve<INode>(UnityDefs.Label.Instance, new ParameterOverride("a_name","AHK")),
-                MacroContainer.Container.Resolve<INode>(UnityDefs.Label.Instance, new ParameterOverride("a_name","SQL")),
+                MacroContainer.Container.Resolve<INode>(NodeType.Label.ToString(), new ParameterOverride("a_name","AHK")),
+                MacroContainer.Container.Resolve<INode>(NodeType.Label.ToString(), new ParameterOverride("a_name","SQL")),
             };
             return result;
         }
